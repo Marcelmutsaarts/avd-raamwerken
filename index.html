@@ -1514,7 +1514,7 @@ function kid(key){return 'k'+Math.abs([...key].reduce((h,c)=>(h*31+c.charCodeAt(
 function card(label,text,key,opt){KT[kid(key)]=opt&&opt.copy||text;return knip(label,text,key,opt);}
 function closeKnip(focus){const p=$('#kpanel');if(!p)return;p.classList.remove('on');$('#kmap').setAttribute('aria-expanded','false');
   if(focus){const b=$('#kmap');(b&&!b.hidden?b:$('#lf-h')).focus({preventScroll:true});}}
-function knipUI(){const n=LV.knip.length,b=$('#kmap');if(!b)return;b.hidden=!n;$('#kcount').textContent=n;$('#uv').classList.toggle('hk',!!n);
+function knipUI(){const n=LV.knip.length,b=$('#kmap');if(!b)return;const was=b.hidden;b.hidden=!n;$('#kcount').textContent=n;$('#uv').classList.toggle('hk',!!n);if(was!==b.hidden)requestAnimationFrame(hair);
   const pnl=$('#kpanel');if(!pnl.classList.contains('on'))return;
   if(!n){const had=pnl.contains(document.activeElement);closeKnip(had);return;}
   pnl.innerHTML=`<div class="kp-h"><div><b>Knipmap</b><small>${n} ${n===1?'knipsel':'knipsels'} · samen te kopiëren als één werkwijze</small></div><button type="button" class="lnk" data-kclose aria-label="Knipmap sluiten" style="font-size:18px;color:var(--mu)">✕</button></div>
@@ -1696,7 +1696,9 @@ function hair(){const svg=$('#hair'),uv=$('#uv');if(!svg||!uv)return;const panel
   if(!panel||!src||innerWidth<=760||!['rol','pr'].includes(uv.dataset.v)){svg.innerHTML='';svg.setAttribute('width',0);svg.setAttribute('height',0);return;}
   const u=uv.getBoundingClientRect(),a=src.getBoundingClientRect(),b=panel.getBoundingClientRect(),pad=src.matches('.fz-s')?9:3;
   svg.setAttribute('width',u.width);svg.setAttribute('height',u.height);svg.setAttribute('viewBox',`0 0 ${u.width} ${u.height}`);
-  const x0=a.left-u.left-pad,x1=a.right-u.left+pad,y0=a.bottom-u.top+pad,bx0=b.left-u.left,bx1=b.right-u.left,by=b.top-u.top;
+  // staat de strook met principes op twee regels, laat de lijnen dan onder de hele strook beginnen
+  const ps=src.closest('.pstrip'),yb=ps&&ps.offsetHeight>src.offsetHeight*1.6?ps.getBoundingClientRect().bottom:a.bottom+pad;
+  const x0=a.left-u.left-pad,x1=a.right-u.left+pad,y0=yb-u.top,bx0=b.left-u.left,bx1=b.right-u.left,by=b.top-u.top;
   svg.innerHTML=`<path class="hl" d="M${x0} ${y0}L${bx0} ${by}"/><path class="hl" d="M${x1} ${y0}L${bx1} ${by}"/>`;
   if(!reduce())$$('#hair .hl').forEach(p=>{const n=p.getTotalLength();p.animate([{strokeDasharray:n,strokeDashoffset:n},{strokeDasharray:n,strokeDashoffset:0}],{duration:520,delay:260,easing:'ease-out',fill:'backwards'});});}
 function bindAtlas(){const uv=$('#uv');
@@ -1708,7 +1710,7 @@ function bindAtlas(){const uv=$('#uv');
   uv.addEventListener('mouseleave',()=>{if(uv.dataset.v==='lib')$$('#fries .fz').forEach(a=>a.classList.remove('uses','dim'));});
   uv.addEventListener('focusout',e=>{if(uv.dataset.v==='lib'&&!(e.relatedTarget&&e.relatedTarget.closest&&e.relatedTarget.closest('[data-po]')))$$('#fries .fz').forEach(a=>a.classList.remove('uses','dim'));});
   // haarlijnen opnieuw tekenen als de plaat van maat verandert (knipmap, lettertypen, tabbladen)
-  if(window.ResizeObserver){if(LV.ro)LV.ro.disconnect();LV.ro=new ResizeObserver(()=>{clearTimeout(hair.r);hair.r=setTimeout(()=>requestAnimationFrame(hair),60);});LV.ro.observe(uv);}
+  if(window.ResizeObserver){if(LV.ro)LV.ro.disconnect();LV.ro=new ResizeObserver(()=>{clearTimeout(hair.r);hair.r=setTimeout(()=>requestAnimationFrame(hair),60);});LV.ro.observe(uv);LV.ro.observe($('.uv-h'));LV.ro.observe($('#stage'));}
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>requestAnimationFrame(hair));
   uv.addEventListener('focusin',e=>{if(uv.dataset.v!=='lib')return;const po=e.target.closest('[data-po]');if(!po)return;const set=new Set(OPR[po.dataset.po].map(r=>r.id));$$('#fries .fz').forEach(a=>{a.classList.toggle('uses',set.has(a.dataset.r));a.classList.toggle('dim',!set.has(a.dataset.r));});});
   $('#lvBig').onclick=()=>{const on=!document.body.classList.contains('lvbig');document.body.classList.toggle('lvbig',on);store.set('avd-big',on?'1':'0');$('#lvBig').classList.toggle('on',on);$('#lvBig').setAttribute('aria-pressed',on);requestAnimationFrame(hair);};
