@@ -376,7 +376,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 .uv[data-v="over"] .fz:hover .fz-s,.uv[data-v="over"] .fz:focus-visible .fz-s{transform:translateY(-5px);box-shadow:0 0 0 4px var(--pa),0 0 0 5.5px var(--pu),0 30px 40px -18px rgba(60,30,90,.7)}
 .uv[data-v="over"] .fz::after{content:"";position:absolute;inset:0;border:1px solid var(--pu);border-radius:4px;opacity:0;transform:scale(.97);transition:opacity .25s,transform .25s;pointer-events:none}
 .uv[data-v="over"] .fz:hover::after{opacity:1;transform:none}
-.uv[data-v="over"] .fz:hover::before{content:"Uitvergroten";position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--pa);padding:0 6px;font:600 9.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--pu);z-index:1;white-space:nowrap}
+
 /* de strook: dezelfde zegels klein, bovenaan elke uitvergroting */
 .uv:not([data-v="over"]) .fries{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin-top:12px;padding:4px 0}
 .uv:not([data-v="over"]) .fz{flex-direction:row;gap:9px;padding:6px 6px}
@@ -418,7 +418,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 /* Fig. II: de principes als register a, b, c */
 .plist{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
 .plist li{border-bottom:1px solid var(--ln)}
-.plist a{display:grid;grid-template-columns:56px 1fr 22px;gap:14px;align-items:center;padding:13px 6px;text-decoration:none;color:var(--ik);transition:background .2s}
+.plist a{display:grid;grid-template-columns:1fr 22px;gap:14px;align-items:center;padding:13px 6px;text-decoration:none;color:var(--ik);transition:background .2s}
 .plist a>i{position:relative;font:italic 500 46px/1 var(--serif);color:var(--pu);text-align:center}
 .plist a:hover{background:rgba(236,223,254,.4)}
 .plist a:hover>i::after,.plist a:focus-visible>i::after{content:"";position:absolute;inset:-5px 3px;border:1px solid var(--pu);border-radius:3px}
@@ -448,6 +448,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 .qts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 4px}
 .qts .qt{margin:0;padding:12px 14px;border:1px solid var(--ln);border-radius:4px;background:var(--pa);font-size:16px}
 .ph-l{margin-top:14px}
+.evw{font:400 14px/1.5 var(--sans);color:#3a3442;margin-top:10px}.evw b{font-weight:600;color:var(--ik)}
 .nota.pu{border-color:var(--pu);background:rgba(236,223,254,.45)}
 .pn-one{position:relative;z-index:1;max-width:820px}
 .pn-top{position:relative;z-index:1;max-width:780px;margin-bottom:24px}
@@ -460,7 +461,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 .sokkel{margin:4px auto 0}
 .sk-lb{display:flex;justify-content:space-between;gap:12px;font:600 10.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--mu);padding:0 4px 8px;border-bottom:2px solid var(--ik)}
 .sk-lb span:first-child{color:var(--ik)}
-.plinth{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--ln2);border-top:0;background:repeating-linear-gradient(135deg,rgba(29,24,38,.05) 0 1px,transparent 1px 7px),var(--pa2)}
+.plinth{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--ln2);border-top:0;background:var(--pa2)}
 .pb{position:relative;display:flex;align-items:baseline;gap:10px;padding:14px 16px 13px;text-decoration:none;color:var(--ik);border-left:1px solid var(--ln2);transition:background .2s}
 .plinth{list-style:none;margin:0;padding:0}.plinth li{display:flex;min-width:0}.plinth li .pb{flex:1;min-width:0}.plinth li:first-child .pb{border-left:0}
 .pb i{font:700 22px/1 var(--serif);font-style:normal;color:var(--pu);min-width:28px}
@@ -565,8 +566,8 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
   .pn-grid>.pn-r{border-left:0;padding-left:0;border-top:1px solid var(--ln);padding-top:18px}
   .pn-h1{font-size:34px}.panel.pv-pr .pn-h1{font-size:30px}.hseal.xl{width:56px;height:56px;font-size:24px}
   .rfacts div{grid-template-columns:1fr;gap:2px}
-  .plist a{grid-template-columns:36px 1fr 16px;gap:10px}.plist a>i{font-size:32px}.plist b{font-size:18px}
-  .pstrip{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-bottom:16px}.pstrip a:not(.on) span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .plist a{grid-template-columns:1fr 16px;gap:10px}.plist b{font-size:18px}
+  .pstrip{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-bottom:16px}
   .qts,.reg{grid-template-columns:minmax(0,1fr)}
   .hair{display:none}
   .kmap{position:fixed;right:12px;bottom:12px;z-index:40;padding:9px 14px 9px 9px}
@@ -825,17 +826,17 @@ body.atlas .evr em{color:var(--ik)}
 body.atlas .chip{border:1px solid var(--ln2);background:var(--pc);border-radius:4px;font:500 12.5px var(--sans);color:var(--ik)}
 body.atlas .chip:hover{border-color:var(--pu);color:var(--pu)}
 body.atlas .chip.on{background:var(--pu);border-color:var(--pu);color:#fff}
-body.atlas .opn{font:italic 400 13px var(--serif);color:var(--mu)}
+.opsel:empty{display:none}
 /* het vel met de prompt: een knipkaart, geen codeblok */
 body.atlas .out{position:relative;background:#fffdf8;color:var(--ik);border:1px solid var(--ln2);border-radius:3px;padding:0;box-shadow:0 30px 60px -36px rgba(40,25,60,.5)}
-body.atlas .out::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:6px;background:radial-gradient(circle at 4px 0,var(--pa) 3px,transparent 3.5px) 0 0/12px 6px repeat-x}
+
 .out-h{display:flex;justify-content:space-between;gap:10px;padding:13px 18px 10px;border-bottom:1.5px dashed var(--ln2);font:600 10.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
 .out-h .sc{color:var(--pu);margin-right:6px;letter-spacing:0;font-size:13px}
 body.atlas .tabs{background:none;border-radius:0;padding:0 18px;margin:0;gap:22px;border-bottom:1px solid var(--ln)}
 body.atlas .tabs button{flex:none;border-radius:0;padding:10px 0 9px;color:var(--mu);font:600 13.5px var(--sans);border-bottom:2px solid transparent;margin-bottom:-1px;background:none}
 body.atlas .tabs button.on{background:none;color:var(--ik);border-color:var(--pu)}
 body.atlas .out pre{background:none;border-radius:0;margin:0;padding:16px 18px;font:400 14px/1.62 var(--sans);color:var(--ik);max-height:56vh}
-body.atlas .out pre .hl{display:inline-block;font:600 10.5px/2 var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--pu)}
+body.atlas .out pre .hl{display:inline-block;font:700 15px/2 var(--serif);color:var(--ik)}
 body.atlas .out pre .ph{background:linear-gradient(transparent 55%,rgba(236,223,254,.95) 55%);color:var(--pu);border-radius:0}
 body.atlas .out .row{padding:12px 18px;margin:0;border-top:1px solid var(--ln)}
 body.atlas .status{color:var(--te)}
@@ -1344,7 +1345,7 @@ function hub(){
     <div class="tbs">${FW.map(f=>`<a class="tb ${f.feat?'feat':''}" href="${f.url}" ${f.feat?'':'target="_blank" rel="noopener"'} style="--fi:${f.ink}">
       <span class="tb-h"><span>Tabula ${f.t}</span><span>${f.meta}</span></span>
       <h3>${f.n}<small>${f.as}</small></h3>
-      ${f.letters?`<span class="tb-l" aria-hidden="true">${f.letters.map(([L,w,full])=>`<i title="${L} · ${full||w}">${L}</i>`).join('')}</span><span class="tb-w">${f.letters.map(([L,w,full])=>`<span><b>${L}</b> ${full||w}</span>`).join('')}</span>`:`<span class="tb-m">${miniPlate()}<small>${ROLES.length} rollen · ${ROLES.reduce((n,R)=>n+R.lp.length,0)} principes en werkwijzen · ${Object.keys(OPS).length} ontwerpprincipes · ${UP.length} uitgangspunten</small></span>`}
+      ${f.letters?`<span class="tb-l" aria-hidden="true">${f.letters.map(([L,w,full])=>`<i title="${L} · ${full||w}">${L}</i>`).join('')}</span><span class="tb-w">${f.letters.map(([L,w,full])=>`<span ${full?`title="${L} · ${full}"`:''}><b>${L}</b> ${w}</span>`).join('')}</span>`:`<span class="tb-m">${miniPlate()}<small>${ROLES.length} rollen · ${ROLES.reduce((n,R)=>n+R.lp.length,0)} principes en werkwijzen · ${Object.keys(OPS).length} ontwerpprincipes · ${UP.length} uitgangspunten</small></span>`}
       <p>${f.p}</p>
       <span class="tb-f"><span>${f.feat?'Open de atlas':'Lees op aivoordocenten.nl'}${f.feat?'':'<span class="sr"> (opent in een nieuw tabblad)</span>'}</span><span aria-hidden="true">${f.feat?'→':'↗'}</span></span>
       ${f.feat?'<span class="tb-st">Concept v2</span>':''}</a>`).join('')}</div>
@@ -1403,21 +1404,21 @@ function prompthulp(q){const p=new URLSearchParams(q||'');if(p.get('rol')&&ROLES
     history.replaceState(null,'','#/lv/prompthulp');}
   if(!PS.sel){const c=ctx();PS.sel=new Set(lpsOf(c.R).map(x=>x.l));}
   if(!PS.zieEdited)PS.zie=ctx().zie;
-  view.innerHTML=`<section class="hb ph"><div class="wrap"><header class="hb-hd ph-hd"><p class="kick"><a href="#/">Raamwerken</a> <span>›</span> <a href="#/lv">Leerverrijking</a> <span>›</span> Prompthulp</p><h1 class="hb-h1">Van leerdoel naar <em>prompt</em>.</h1><p class="hb-lead">Vul de stappen in. Je prompt groeit mee in ons promptschema: doel, context en voorwaarden, bronnen, voorbeelden en werkwijze. Bouw je een app, kies dan BOUW: een app kan gedrag afdwingen waar een prompt het alleen vraagt.</p></header>
+  view.innerHTML=`<section class="hb ph"><div class="wrap"><header class="hb-hd ph-hd"><h1 class="hb-h1">Van leerdoel naar <em>prompt</em>.</h1><p class="hb-lead">Vul de stappen in. Je prompt groeit mee.</p></header>
   <div class="ph-grid"><div id="phL"></div><div class="sticky" id="phR"></div></div></div></section>`;
   drawPH();}
 function drawPH(){const c=ctx(),R=c.R;
-  $('#phL').innerHTML=`<div class="card"><h3><span class="s">1</span>Leerdoel</h3><p class="hint">Begin bij het leerdoel, niet bij de tool. Wat moet de lerende straks begrijpen of kunnen?</p><textarea id="fLd" rows="2" placeholder="Bijvoorbeeld: de leerling kan uitleggen waarom een ijsblokje in water drijft.">${esc(PS.leerdoel)}</textarea></div>
-  <div class="card"><h3><span class="s">2</span>Rol van AI</h3><p class="hint">Eén rol per leeractiviteit. Combineer rollen alleen als ze elkaar opvolgen.</p><div class="rolepick" role="group" aria-label="Kies een rol">${ROLES.map((x,i)=>`<button type="button" class="rpk ${x.id===PS.rol?'on':''}" data-r="${x.id}" aria-pressed="${x.id===PS.rol}"><i>${i+1}</i><span>${esc(plain(x.n))}</span></button>`).join('')}</div>
+  $('#phL').innerHTML=`<div class="card"><h3><span class="s">1</span>Leerdoel</h3><p class="hint">Wat moet de lerende straks begrijpen of kunnen?</p><textarea id="fLd" rows="2" placeholder="Bijvoorbeeld: de leerling kan uitleggen waarom een ijsblokje in water drijft.">${esc(PS.leerdoel)}</textarea></div>
+  <div class="card"><h3><span class="s">2</span>Rol van AI</h3><div class="rolepick" role="group" aria-label="Kies een rol">${ROLES.map(x=>`<button type="button" class="rpk ${x.id===PS.rol?'on':''}" data-r="${x.id}" aria-pressed="${x.id===PS.rol}"><span>${esc(plain(x.n))}</span></button>`).join('')}</div>
     <p class="ph-desc">${esc(c.S?(SUBTXT[PS.sub]||c.S.kort):R.functie)}</p>${R.subs?`<div class="seg" role="group" aria-label="Kies de variant">${R.subs.map((s,i)=>`<button type="button" class="${PS.sub===i?'on':''}" data-sub="${i}" aria-pressed="${PS.sub===i}">${esc(s.n)}</button>`).join('')}</div>`:''}</div>
-  <div class="card"><h3><span class="s">3</span>Principes en werkwijzen</h3><p class="hint">Instellingen, geen wetten: zet uit wat niet past bij je doel, taak en lerende. Met <b>+</b> voeg je een ontwerpprincipe toe als bouwsteen. Stapel ze niet automatisch: kies wat bij de taak past.</p>${lpsOf(R).map(({p,l})=>`<label class="lpcheck"><input type="checkbox" data-l="${l}" ${PS.sel.has(l)?'checked':''}><div><b>${esc(p.n)}</b><span>${esc(p.ai)}</span>${evRow(p.a,p.m)}</div></label><div class="opsel">${p.op.map(o=>p.note&&p.note[o]?`<span class="opn">${esc(OPS[o].n)}: ${esc(p.note[o].toLowerCase())}, al verwerkt in dit principe</span>`:`<button type="button" class="chip ${PS.ops.has(o)?'on':''}" data-op="${o}" aria-pressed="${PS.ops.has(o)}">+ ${esc(OPS[o].n)}</button>`).join('')}</div>`).join('')}</div>
-  <div class="card"><h3><span class="s">4</span>Context</h3><p class="hint">Wie is de lerende, en welke bronnen krijgt de AI mee?</p><input type="text" id="fDg" placeholder="Doelgroep en voorkennis, bijv. havo 3, kent het begrip dichtheid nog niet" value="${esc(PS.doelgroep)}"><textarea id="fBr" rows="3" style="margin-top:10px" placeholder="Bronnen: plak lesstof, criteria of een uitgewerkt voorbeeld">${esc(PS.bronnen)}</textarea></div>
-  <div class="card"><h3><span class="s">5</span>Zichtbaar leren</h3><p class="hint">Waaraan zie je dat er geleerd wordt, bij voorkeur zonder hulp, later of in een nieuwe situatie?</p><textarea id="fZl" rows="3">${esc(PS.zie)}</textarea></div>`;
+  <div class="card"><h3><span class="s">3</span>Principes en werkwijzen</h3><p class="hint">Vink uit wat niet past. Met <b>+</b> voeg je een ontwerpprincipe toe.</p>${(()=>{const seen=new Set();/* elke bouwsteen één keer tonen, bij het eerste principe dat hem gebruikt */return lpsOf(R).map(({p,l})=>`<label class="lpcheck"><input type="checkbox" data-l="${l}" ${PS.sel.has(l)?'checked':''}><div><b>${esc(p.n)}</b><span>${esc(p.ai)}</span></div></label><div class="opsel">${p.op.map(o=>(p.note&&p.note[o])||seen.has(o)?'':(seen.add(o),`<button type="button" class="chip ${PS.ops.has(o)?'on':''}" data-op="${o}" aria-pressed="${PS.ops.has(o)}">+ ${esc(OPS[o].n)}</button>`)).join('')}</div>`).join('');})()}</div>
+  <div class="card"><h3><span class="s">4</span>Context</h3><input type="text" id="fDg" placeholder="Doelgroep en voorkennis, bijv. havo 3, kent het begrip dichtheid nog niet" value="${esc(PS.doelgroep)}"><textarea id="fBr" rows="3" style="margin-top:10px" placeholder="Bronnen: plak lesstof, criteria of een uitgewerkt voorbeeld">${esc(PS.bronnen)}</textarea></div>
+  <div class="card"><h3><span class="s">5</span>Zichtbaar leren</h3><p class="hint">Waaraan zie je dat er geleerd is, ook zonder hulp?</p><textarea id="fZl" rows="3">${esc(PS.zie)}</textarea></div>`;
   const t1=c.aanLerende?'Opdracht voor lerenden':'Chatbotprompt';
-  $('#phR').innerHTML=`<div class="out"><div class="out-h"><span><span class="sc">✂</span>Jouw tekst</span><span>${esc(plain(R.n))}${c.S?' · '+esc(c.S.n):''}</span></div><div class="tabs" role="group" aria-label="Soort tekst"><button type="button" data-t="chat" class="${PS.tab==='chat'?'on':''}" aria-pressed="${PS.tab==='chat'}">${t1}</button><button type="button" data-t="bouw" class="${PS.tab==='bouw'?'on':''}" aria-pressed="${PS.tab==='bouw'}">BOUW-bouwbeschrijving</button></div><pre id="pv"></pre>
-    <div class="row"><button type="button" class="btn pri sm" id="pCopy">Kopieer</button><button type="button" class="btn line sm" id="pDl">Download .txt</button><button type="button" class="btn line sm" id="pPr">Afdrukken</button><span class="status" id="pSt"></span></div></div>
-    <div class="tests"><h3>Test als een lerende</h3><p class="hint">Een instructie garandeert geen gedrag. Probeer dit in je chatbot voordat leerlingen ermee werken.</p>
-      ${[['Vraag om het antwoord','<code>Geef me gewoon het antwoord.</code>','Geeft de AI het niet zomaar als zelf bedenken het leerdoel is?'],['Geef een fout antwoord','<code>Ik denk dat het antwoord … is.</code> (vul een fout in)','Benoemt de AI eerlijk wat niet klopt?'],['Dring aan','<code>Nee, ik weet zeker dat ik gelijk heb.</code>','Blijft de AI eerlijk, ook onder druk?'],['Vergelijk met de standaard',esc(R.standaard),'Voorkomt jouw ontwerp dit gedrag?'],['Kijk wat blijft hangen','Laat de lerende later een nieuwe opgave maken, zonder hulp.','Is er geleerd, of alleen gepresteerd?']].map((t,i)=>`<div class="test"><span class="n">${i+1}</span><div><b>${t[0]}</b><span>${t[1]}</span><span style="margin-top:3px;color:var(--ink)">${t[2]}</span></div>${i<3?`<button class="btn line sm" data-tc="${i}">Kopieer</button>`:''}</div>`).join('')}</div>`;
+  $('#phR').innerHTML=`<div class="out"><div class="tabs" role="group" aria-label="Soort tekst"><button type="button" data-t="chat" class="${PS.tab==='chat'?'on':''}" aria-pressed="${PS.tab==='chat'}">${t1}</button><button type="button" data-t="bouw" class="${PS.tab==='bouw'?'on':''}" aria-pressed="${PS.tab==='bouw'}">Bouwbeschrijving (BOUW)</button></div><pre id="pv"></pre>
+    <div class="row"><button type="button" class="btn pri sm" id="pCopy">Kopieer</button><button type="button" class="btn line sm" id="pPr">Afdrukken</button><span class="status" id="pSt"></span></div></div>
+    <div class="tests"><h3>Test als een lerende</h3><p class="hint">Probeer dit in je chatbot voordat leerlingen ermee werken.</p>
+      ${[['Geef me gewoon het antwoord.','Geeft de AI het niet zomaar als zelf bedenken het leerdoel is?'],['Ik denk dat het antwoord … is.','Benoemt de AI eerlijk wat niet klopt?'],['Nee, ik weet zeker dat ik gelijk heb.','Blijft de AI eerlijk, ook onder druk?']].map(t=>`<div class="test2"><q>${t[0]}</q><span>${t[1]}</span></div>`).join('')}</div>`;
   const upd=()=>{const t=PS.tab==='chat'?chatText():bouwText();$('#pv').innerHTML=hlText(t);};upd();
   $('#fLd').oninput=e=>{PS.leerdoel=e.target.value;upd();};$('#fDg').oninput=e=>{PS.doelgroep=e.target.value;upd();};$('#fBr').oninput=e=>{PS.bronnen=e.target.value;upd();};$('#fZl').oninput=e=>{PS.zie=e.target.value;PS.zieEdited=true;upd();};
   $$('.rpk').forEach(b=>b.onclick=()=>{PS.rol=b.dataset.r;PS.sub=0;PS.sel=null;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));if(!PS.zieEdited)PS.zie=cc.zie;drawPH();const f=$('.rpk[data-r="'+PS.rol+'"]');if(f)f.focus();});
@@ -1426,9 +1427,8 @@ function drawPH(){const c=ctx(),R=c.R;
   $$('.opsel [data-op]').forEach(b=>b.onclick=()=>{const o=b.dataset.op;if(PS.ops.has(o))PS.ops.delete(o);else PS.ops.add(o);$$('.opsel [data-op="'+o+'"]').forEach(x=>{x.classList.toggle('on',PS.ops.has(o));x.setAttribute('aria-pressed',PS.ops.has(o));});upd();});
   $$('.tabs button').forEach(b=>b.onclick=()=>{PS.tab=b.dataset.t;$$('.tabs button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b);});upd();});
   $('#pCopy').onclick=()=>copy(PS.tab==='chat'?chatText():bouwText(),'Tekst gekopieerd');
-  $('#pDl').onclick=()=>{const t=PS.tab==='chat'?chatText():bouwText();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download=(PS.tab==='chat'?'prompt-':'bouw-')+PS.rol+'.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);};
   $('#pPr').onclick=()=>window.print();
-  const TC=['Geef me gewoon het antwoord.','Ik denk dat het antwoord … is.','Nee, ik weet zeker dat ik gelijk heb.'];$$('[data-tc]').forEach(b=>b.onclick=()=>copy(TC[+b.dataset.tc],'Testzin gekopieerd'));}
+}
 
 
 
@@ -1490,24 +1490,22 @@ function curOp(s){const R=roleById(s.rol);return s.o||(R&&s.p!=null?R.lp[s.p].op
 function lpPos(R,s){if(!R||s.p==null)return 0;return subLps(R,R.lp[s.p].sub).findIndex(x=>x.l===s.p);}
 
 /* ---------- schil ---------- */
-function fz(R,i){const ticks=R.lp.map(p=>`<b class="${p.s==='principe'?'pr':''}"></b>`).join('');
-  return `<a class="fz" href="#/lv/${R.id}" data-r="${R.id}" data-k="fz-${R.id}" title="Rol ${i+1} · ${esc(plain(R.n))}" style="--d:${i}"><span class="fz-s"><i>${i+1}</i></span><span class="fz-n">${esc(R.n)}</span><span class="fz-l">${esc(LD[R.id]||R.kort)}</span><span class="fz-t" aria-hidden="true">${ticks}</span></a>`;}
+function fz(R,i){
+  return `<a class="fz" href="#/lv/${R.id}" data-r="${R.id}" data-k="fz-${R.id}" title="Rol ${i+1} · ${esc(plain(R.n))}" style="--d:${i}"><span class="fz-s"><i>${i+1}</i></span><span class="fz-n">${esc(R.n)}</span><span class="fz-l">${esc(LD[R.id]||R.kort)}</span></a>`;}
 function lvShell(){const big=store.get('avd-big')==='1';document.body.classList.toggle('lvbig',big);
   return `<section class="uv" id="uv" data-v="over" aria-label="Raamwerk Leerverrijking">
-  <header class="uv-h"><nav class="uv-crumb kick" id="uvCrumb" aria-label="Waar je bent"></nav><span class="uv-stamp" id="uvStamp"></span>
-    <button type="button" class="kmap" id="kmap" hidden aria-controls="kpanel" aria-expanded="false"><i id="kcount">0</i>Knipmap</button>
-    <div class="kpanel" id="kpanel" role="dialog" aria-label="Knipmap"></div></header>
+  <header class="uv-h"><nav class="uv-crumb kick" id="uvCrumb" aria-label="Waar je bent"></nav></header>
   <div class="uv-top" id="uvTop"></div>
   <nav class="fries" id="fries" aria-label="De zeven rollen">${ROLES.map((R,i)=>fz(R,i)).join('')}</nav>
   <div class="stage" id="stage"></div>
   <svg class="hair" id="hair" aria-hidden="true"></svg>
-  <footer class="uv-f"><span class="uv-docs"><a href="${DOCS.wp}" target="_blank" rel="noopener">Whitepaper</a><a href="${DOCS.ag}" target="_blank" rel="noopener">Achtergronddocument</a><a href="#/lv/over">Over het raamwerk</a><a href="ruimte.html#/lv">3D-maquette</a><a href="kolommen.html#/lv">Kolommen</a></span><button type="button" id="lvBig" class="${big?'on':''}" aria-pressed="${big}" title="Grotere tekst voor de beamer">A+</button></footer>
+  <footer class="uv-f"><span class="uv-docs"><a href="${DOCS.wp}" target="_blank" rel="noopener">Whitepaper</a><a href="${DOCS.ag}" target="_blank" rel="noopener">Achtergronddocument</a></span><button type="button" id="lvBig" class="${big?'on':''}" aria-pressed="${big}" title="Grotere tekst voor de beamer">A+</button></footer>
   <div class="lensf" id="lensf" aria-hidden="true"><span id="lensT"></span></div>
   <div class="sr-only" id="lvlive" aria-live="polite"></div></section>`;}
 
 /* ---------- knipkaart ---------- */
 function knip(label,text,key,opt){opt=opt||{};const id=kid(key);
-  return `<div class="knip" data-kid="${id}"><div class="kn-h"><span><span class="sc">✂</span>${esc(label)}</span><span class="kn-a"><button type="button" data-copyk="${id}">Kopieer</button><button type="button" data-addk="${id}" data-lab="${esc(label+(opt.ctx?' · '+opt.ctx:''))}">${LV.knip.some(k=>k.id===id)?'In knipmap ✓':'+ Knipmap'}</button></span></div><div class="kn-b ${opt.long?'long':''}" ${opt.hidden?'hidden':''}>${esc(text)}</div>${opt.extra?`<p class="kn-x">${esc(opt.extra)}</p>`:''}<span class="stamp">Gekopieerd</span></div>`;}
+  return `<div class="knip" data-kid="${id}"><div class="kn-h"><span><span class="sc">✂</span>${esc(label)}</span><span class="kn-a"><button type="button" data-copyk="${id}">Kopieer</button></span></div><div class="kn-b ${opt.long?'long':''}" ${opt.hidden?'hidden':''}>${esc(text)}</div>${opt.extra?`<p class="kn-x">${esc(opt.extra)}</p>`:''}<span class="stamp">Gekopieerd</span></div>`;}
 const KT={};
 function kid(key){return 'k'+Math.abs([...key].reduce((h,c)=>(h*31+c.charCodeAt(0))|0,7));}
 // opt.copy: de tekst die gekopieerd wordt, als die langer is dan wat de kaart toont
@@ -1524,91 +1522,85 @@ function saveKnip(){store.set('avd-knip',JSON.stringify(LV.knip));knipUI();
   $$('#stage [data-addk]').forEach(b=>{b.textContent=LV.knip.some(k=>k.id===b.dataset.addk)?'In knipmap ✓':'+ Knipmap';});}
 
 /* ---------- bouwstenen van de bladen ---------- */
-function evLine(x){const bar=(n,m)=>`<i class="${m?'m':''}">${[1,2,3].map(i=>`<s class="${i<=n?'f':''}"></s>`).join('')}</i>`;
-  return `<div class="ev3" title="${esc(AT[x.a]||'')} / ${esc(MT[x.m]||'')}"><span>${bar(A3[x.a])}aanpak <b>${esc(x.a)}</b></span><span>${bar(M3[x.m],1)}met AI <b>${esc(x.m)}</b></span></div>`;}
+// het bewijs in gewone woorden, zonder codering
+function evLine(x){return `<p class="evw">Onderzoek naar de aanpak: <b>${esc(x.a)}</b>. Onderzoek met AI: <b>${esc(x.m)}</b>.</p>`;}
 function seal(n,cls){return `<span class="hseal ${cls||''}">${n}</span>`;}
-function sideNav(prev,next,mid){const L=(x,k)=>x?`<a href="${x[0]}" data-k="nav-${k}" rel="${k==='p'?'prev':'next'}">${esc(x[1])}</a>`:'<span class="dis" aria-hidden="true"></span>';
-  return `<nav class="sidenav" aria-label="Bladeren">${L(prev,'p')}<span>${mid}</span>${L(next,'n')}</nav>`;}
+function sideNav(prev,next){const L=(x,k)=>x?`<a href="${x[0]}" data-k="nav-${k}" rel="${k==='p'?'prev':'next'}">${esc(x[1])}</a>`:'<span class="dis" aria-hidden="true"></span>';
+  return `<nav class="sidenav" aria-label="Bladeren">${L(prev,'p')}${L(next,'n')}</nav>`;}
 // de knipkaart toont de bouwsteen zonder de voorbeeldzinnen (die staan er al boven), maar kopieert ze wel mee
 function opCard(o,ls){const full=snippet(o,ls),vis=full.replace(/\n\nZO WEL:[\s\S]*$/,'');
-  return card(ls?'Tekst voor de opdracht':'Bouwsteen voor je prompt',vis,'op-'+o+'-'+(ls?1:0),{ctx:OPS[o].n,copy:full,extra:vis!==full?'Bij kopiëren komen de twee voorbeeldzinnen van hierboven mee.':''});}
+  return card(ls?'Tekst voor de opdracht':'Bouwsteen voor je prompt',vis,'op-'+o+'-'+(ls?1:0),{ctx:OPS[o].n,copy:full});}
 // link naar de prompthulp; een ontwerpprincipe met een variantnotitie gaat er niet als losse bouwsteen in
 function phLink(R,s,o,variant){const sel=s.p!=null?[{p:R.lp[s.p]}]:subLps(R,s.sub),noted=!!variant||sel.some(x=>x.p.op.includes(o)&&x.p.note&&x.p.note[o]),used=sel.some(x=>x.p.op.includes(o)),withOp=used&&!noted;
-  return `<p class="ph-l"><a class="lk" href="#/lv/prompthulp?rol=${R.id}${s.p!=null?'&lp='+s.p:(R.subs?'&sub='+s.sub:'')}${withOp?'&op='+o:''}">Zet in de prompthulp${withOp?', met deze bouwsteen':''} →</a></p>`;}
+  return `<p class="ph-l"><a class="lk" href="#/lv/prompthulp?rol=${R.id}${s.p!=null?'&lp='+s.p:(R.subs?'&sub='+s.sub:'')}${withOp?'&op='+o:''}">Zet in de prompthulp →</a></p>`;}
 // één ontwerpprincipe: hoe je het uitvoert. Met R en s.p als onderdeel van een principe, anders als losse plaat.
 function opBlock(o,R,s){const O=OPS[o],gi=O.g,S=STAPPEN[o],p=R&&s.p!=null?R.lp[s.p]:null,ls=R?!!R.lerendeStuurt:!O.pb,variant=p&&p.note&&p.note[o]?p.note[o]:null;
   const steps=S?`<p class="sl"><span>${esc(S.label)}</span></p><ol class="st3 ${o==='hd'?'stairs':''}">${S.s.map((x,i)=>`<li style="--i:${i}"><i>${i+1}</i><div><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div></li>`).join('')}</ol>${S.note?`<p class="src2">${esc(S.note)}</p>`:''}`:'';
   const quotes=O.zw?`<div class="qts"><div class="qt no"><i>✕</i><span>“${esc(O.zn)}”</span></div><div class="qt"><i>✓</i><span>“${esc(O.zw)}”</span></div></div>`:'';
-  const others=OPR[o].filter(r=>!R||r.id!==R.id);
-  const head=R?`<div class="op-h"><span class="dmk" style="--gc:${CLTXT(gi)}"></span><div><p class="kick" style="color:${CLTXT(gi)}">${esc(G[gi])}</p><h2 class="op-n">${esc(O.n)}</h2></div></div>`
-    :`<div class="op-h big"><span class="dmk" style="--gc:${CLTXT(gi)}"></span><div><p class="kick"><a href="#/lv/principes">De gedeelde laag</a> <span>›</span> <span style="color:${CLTXT(gi)}">${esc(G[gi])}</span></p><h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(O.n)}</h1></div></div>`;
+  // binnen een rol staat de naam al op het tabblad; alleen bij één ontwerpprincipe zetten we hem erboven
+  const head=R?(p&&p.op.length===1?`<h2 class="op-n">${esc(O.n)}</h2>`:''):`<h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(O.n)}</h1>`;
   return `${head}<p class="lsub">${esc(O.functie)}</p>
-  ${variant?`<div class="nota"><b>Bij dit principe: ${esc(variant.replace(/^(Hier|Variant):\s*/i,''))}</b>De promptregel van dit principe bevat deze variant al. Hieronder staat het algemene ontwerpprincipe ter achtergrond.</div><details class="ref"><summary>Het algemene ontwerpprincipe</summary>${steps}${quotes}</details>`
+  ${variant?`<div class="nota"><b>Bij dit principe: ${esc(variant.replace(/^(Hier|Variant):\s*/i,''))}</b></div><details class="ref"><summary>Het algemene ontwerpprincipe</summary>${steps}${quotes}</details>`
    :`${steps}${quotes}${opCard(o,ls)}`}
-  ${others.length?`<p class="sl"><span>${R?'Ook gebruikt door':sharedTxt(OPR[o].length)}</span></p><div class="seals">${others.map(r=>`<a href="${lvHash({rol:r.id,o})}" data-k="sh-${r.id}"><i>${rIdx(r)}</i>${esc(plain(r.n))}</a>`).join('')}</div>`:''}
+  ${!R?`<p class="sl"><span>Gebruikt door</span></p><div class="seals">${OPR[o].map(r=>`<a href="${lvHash({rol:r.id,o})}" data-k="sh-${r.id}"><i>${rIdx(r)}</i>${esc(plain(r.n))}</a>`).join('')}</div>`:''}
   ${R?phLink(R,s,o,variant):''}
-  <details class="ref"><summary>Waarom dit werkt, en valkuilen</summary>
-   <h5>Wanneer</h5><p>${esc(O.wanneer)}</p><h5>Zo zie je of het werkt</h5><p>${esc(O.beoordeel)}</p>${O.vb&&O.vb.replace(/^[“"]|[”"]$/g,'')!==O.zw?`<h5>Voorbeeld</h5><p>${esc(O.vb)}</p>`:''}
-   <h5>Let op</h5><ul>${O.fouten.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>${O.afdwing?`<h5>Afdwingen in plaats van vragen</h5><p>${esc(O.afdwing)}</p>`:''}
-   <h5>Onderzoek</h5><p>${esc(O.onderzoek)}</p><h5>Grens</h5><p>${esc(O.grens)}</p><h5>Onze vertaling · niet afzonderlijk getoetst</h5><p>${esc(O.vertaling)}</p></details>`;}
-function plinth(active,big){return `<ul class="plinth ${big?'big':''}" aria-label="Fundament: vijf uitgangspunten">${UP.map((u,i)=>`<li><a class="pb ${active===i+1?'on':''}" href="#/lv/fundament/${i+1}" data-k="pb-${i+1}" style="--d:${i}" ${active===i+1?'aria-current="page"':''}><i>${ROMAN[i]}</i><span>${esc(u.n)}</span></a></li>`).join('')}</ul>`;}
+  <details class="ref"><summary>Wanneer en waar je op let</summary>
+   <h5>Wanneer</h5><p>${esc(O.wanneer)}</p><h5>Zo zie je of het werkt</h5><p>${esc(O.beoordeel)}</p>
+   <h5>Let op</h5><ul>${O.fouten.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></details>`;}
+function plinth(active,big){return `<ul class="plinth ${big?'big':''}" aria-label="Fundament: vijf uitgangspunten">${UP.map((u,i)=>`<li><a class="pb ${active===i+1?'on':''}" href="#/lv/fundament/${i+1}" data-k="pb-${i+1}" style="--d:${i}" ${active===i+1?'aria-current="page"':''}><span>${esc(u.n)}</span></a></li>`).join('')}</ul>`;}
 
 /* ---------- de figuren ---------- */
 function figOver(){return {top:`<h1 class="uv-h1" id="lf-h" tabindex="-1">Elke chatbot heeft al een <em>didactiek</em>.</h1>
-  <p class="uv-lead">Snel, vloeiend, volledig en meegaand: dat voelt behulpzaam, maar kan precies het denkwerk overnemen dat de lerende moest doen. Kies een rol als <span class="mk">bewuste, onderbouwde keuze</span>. Klik, en de plaat vergroot uit.</p>`,
-  body:`<div class="sokkel"><p class="sk-lb"><span>Fundament</span><span>vijf uitgangspunten · gelden voor elke rol</span></p>${plinth(0)}</div>
-  <p class="uv-cap">Onder elke rol staat een streepje per principe (dik) of werkwijze (dun).</p>
-  <nav class="uv-links" aria-label="Verder"><a href="#/lv/zonder" data-k="i-zonder">Fig. 0 · Zonder ontwerp</a><a href="#/lv/principes" data-k="i-lib">Fig. IV · De gedeelde laag</a><a href="#/lv/bewijs" data-k="i-ev">Fig. VI · Eerlijk over bewijs</a></nav>`};}
+  <p class="uv-lead">Snel, vloeiend, volledig en meegaand: dat voelt behulpzaam, maar kan precies het denkwerk overnemen dat de lerende moest doen. Kies daarom bewust een rol.</p>`,
+  body:`<div class="sokkel"><p class="sk-lb"><span>Fundament · geldt voor elke rol</span></p>${plinth(0)}</div>  <nav class="uv-links" aria-label="Verder"><a href="#/lv/zonder" data-k="i-zonder">Zonder ontwerp</a><a href="#/lv/principes" data-k="i-lib">Alle ontwerpprincipes</a></nav>`};}
 function figRol(R,s){const i=rIdx(R),S=R.subs?R.subs[s.sub]:null,L=!!R.lerendeStuurt,lps=subLps(R,s.sub);
   const k=ROLES.indexOf(R),pv=ROLES[(k+6)%7],nx=ROLES[(k+1)%7];
   return {body:`<article class="panel pv-rol" id="panel"><div class="pn-grid">
   <div class="pn-l">
-    <div class="pn-id">${seal(i,'xl')}<div><p class="kick">Fig. II · rol ${i} van 7</p><h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(plain(R.n))}</h1></div></div>
+    <div class="pn-id">${seal(i,'xl')}<h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(plain(R.n))}</h1></div>
     ${R.subs?`<div class="seg" role="group" aria-label="Kies de variant">${R.subs.map((x,j)=>`<a href="${lvHash({rol:R.id,sub:j})}" class="${s.sub===j?'on':''}" ${s.sub===j?'aria-current="true"':''} data-k="sub-${j}">${esc(x.n)}</a>`).join('')}</div>`:''}
     <p class="lsub">${esc(S?SUBTXT[s.sub]:R.functie)}</p>
     <dl class="rfacts"><div><dt>Kies bij</dt><dd>${esc(R.leerdoel)}</dd></div><div><dt>Zichtbaar leren</dt><dd>${esc(S?S.zie:R.zie)}</dd></div><div class="no"><dt>Zonder ontwerp</dt><dd>${esc(R.standaard)}</dd></div></dl>
     ${card(L?'Opdracht voor lerenden':'Rolprompt',rolePrompt(R,s.sub||0),'rp-'+R.id+'-'+(s.sub||0),{long:true,hidden:!LV.rpv,ctx:rName(R,s.sub)})}
-    <p class="src2">${L?'Doel, voorwaarden en werkwijze voor de lerende.':'Doel, grens en de principes van deze rol.'} <button type="button" class="lnk" data-rpv>${LV.rpv?'Verberg tekst':'Toon tekst'}</button> · <a class="lk sm" href="#/lv/prompthulp?rol=${R.id}${R.subs?'&sub='+s.sub:''}">Pas aan in de prompthulp</a></p>
+    <p class="src2"><button type="button" class="lnk" data-rpv>${LV.rpv?'Verberg tekst':'Toon tekst'}</button> · <a class="lk sm" href="#/lv/prompthulp?rol=${R.id}${R.subs?'&sub='+s.sub:''}">Pas aan in de prompthulp</a></p>
   </div>
   <div class="pn-r">
-    <p class="sl"><span>${S?esc(S.n)+' · ':''}principes en werkwijzen</span><span>${lps.length}</span></p>
-    <ol class="plist">${lps.map(({p,l},j)=>`<li><a href="${lvHash({rol:R.id,p:l})}" data-k="p-${l}" data-zoom="${esc(p.n)}"><i>${ABC[j]}</i><span><b>${esc(p.n)}</b><em><span class="tg">${p.s==='principe'?'principe':'werkwijze'}</span>${esc(p.ai)}</em></span><span class="ar" aria-hidden="true">→</span></a></li>`).join('')}</ol>
-    <details class="ref"><summary>Waarom deze rol</summary><p>${esc(R.onderzoek)}</p>${(R.aandacht||[]).map(a=>`<p><b>${esc(a[0])}.</b> ${esc(a[1])}</p>`).join('')}<p class="src2">Herkomst: Mollick, ${esc(R.mollick)}. <a class="lk sm" href="#/lv/bewijs">Hoe we bewijs labelen →</a></p></details>
+    <p class="sl"><span>Principes en werkwijzen</span></p>
+    <ol class="plist">${lps.map(({p,l})=>`<li><a href="${lvHash({rol:R.id,p:l})}" data-k="p-${l}" data-zoom="${esc(p.n)}"><span><b>${esc(p.n)}</b><em>${esc(p.ai)}</em></span><span class="ar" aria-hidden="true">→</span></a></li>`).join('')}</ol>
+    <details class="ref"><summary>Waarom deze rol</summary><p>${esc(R.onderzoek)}</p>${(R.aandacht||[]).map(a=>`<p><b>${esc(a[0])}.</b> ${esc(a[1])}</p>`).join('')}</details>
   </div></div>
-  ${sideNav([lvHash({rol:pv.id}),'‹ '+plain(pv.n)],[lvHash({rol:nx.id}),plain(nx.n)+' ›'],`${i} / 7`)}</article>`};}
+  ${sideNav([lvHash({rol:pv.id}),'‹ '+plain(pv.n)],[lvHash({rol:nx.id}),plain(nx.n)+' ›'])}</article>`};}
 function figPr(R,s){const p=R.lp[s.p],j=lpPos(R,s),L=!!R.lerendeStuurt,lps=subLps(R,p.sub),o=curOp(s);
-  const prev=j>0?[lvHash({rol:R.id,p:lps[j-1].l}),'‹ '+ABC[j-1]+' · '+lps[j-1].p.n]:null,next=j<lps.length-1?[lvHash({rol:R.id,p:lps[j+1].l}),ABC[j+1]+' · '+lps[j+1].p.n+' ›']:null;
-  return {body:`<nav class="pstrip" aria-label="Principes van ${esc(rName(R,p.sub))}">${lps.map((x,k)=>`<a href="${lvHash({rol:R.id,p:x.l})}" class="${x.l===s.p?'on':''}" ${x.l===s.p?'aria-current="true"':''} data-k="ps-${x.l}" title="${ABC[k]} · ${esc(x.p.n)}"><i>${ABC[k]}</i><span>${esc(x.p.n)}</span></a>`).join('')}</nav>
+  const prev=j>0?[lvHash({rol:R.id,p:lps[j-1].l}),'‹ '+lps[j-1].p.n]:null,next=j<lps.length-1?[lvHash({rol:R.id,p:lps[j+1].l}),lps[j+1].p.n+' ›']:null;
+  return {body:`<nav class="pstrip" aria-label="Principes van ${esc(rName(R,p.sub))}">${lps.map(x=>`<a href="${lvHash({rol:R.id,p:x.l})}" class="${x.l===s.p?'on':''}" ${x.l===s.p?'aria-current="true"':''} data-k="ps-${x.l}" title="${esc(x.p.n)}"><span>${esc(x.p.n)}</span></a>`).join('')}</nav>
   <article class="panel pv-pr" id="panel"><div class="pn-grid">
   <div class="pn-l">
-    <p class="kick"><a href="${lvHash({rol:R.id,sub:p.sub||0})}">Rol ${rIdx(R)} · ${esc(rName(R,p.sub))}</a> <span>›</span> Fig. III · ${p.s==='principe'?'principe':'werkwijze'} ${ABC[j]}</p>
     <h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(p.n)}</h1>
     <div class="duo3"><div><h4>${L?'Wat de opdracht doet':'Wat AI doet'}</h4><p>${esc(p.ai)}</p></div><div><h4>Wat de lerende doet</h4><p>${esc(p.le)}</p></div></div>
     ${card(L?'Regel voor de opdracht':'Promptregel',p.p,'pr-'+R.id+'-'+s.p,{ctx:plain(R.n)+' · '+p.n})}
-    <details class="ref"><summary>Hoe stevig is dit onderbouwd</summary>${evLine(p)}<p class="src2">${esc(p.b)}${p.bm?' · met AI: '+esc(p.bm):''}</p></details>
+    <details class="ref"><summary>Bronnen</summary><p class="src2">${esc(p.b)}${p.bm?' · met AI: '+esc(p.bm):''}</p></details>
   </div>
   <div class="pn-r exec">
-    <p class="sl"><span>Zo voer je het uit</span><span>${p.op.length===1?'1 ontwerpprincipe':p.op.length+' ontwerpprincipes'}</span></p>
-    ${p.op.length>1?`<div class="optabs" role="group" aria-label="Ontwerpprincipes van dit principe">${p.op.map(x=>`<a href="${lvHash({rol:R.id,p:s.p,o:x})}" class="${x===o?'on':''}" ${x===o?'aria-current="true"':''} data-k="ot-${x}"><span class="dmk sm" style="--gc:${CLTXT(OPS[x].g)}"></span>${esc(OPS[x].n)}</a>`).join('')}</div>`:''}
+    <p class="sl"><span>Zo voer je het uit</span></p>
+    ${p.op.length>1?`<div class="optabs" role="group" aria-label="Ontwerpprincipes van dit principe">${p.op.map(x=>`<a href="${lvHash({rol:R.id,p:s.p,o:x})}" class="${x===o?'on':''}" ${x===o?'aria-current="true"':''} data-k="ot-${x}">${esc(OPS[x].n)}</a>`).join('')}</div>`:''}
     <div class="exec-b" id="execb">${opBlock(o,R,s)}</div>
   </div></div>
-  ${sideNav(prev,next,`${ABC[j]} / ${ABC[lps.length-1]}`)}</article>`};}
-function figLib(){return {body:`<article class="panel pv-lib" id="panel"><div class="pn-top"><p class="kick">Fig. IV · de gedeelde laag</p><h1 class="pn-h1" id="lf-h" tabindex="-1">Vijftien ontwerpprincipes</h1>
-  <p class="lsub">Bouwstenen om een aanpak zorgvuldig uit te voeren, gedeeld door de rollen. Wijs er een aan: bovenin lichten de rollen op die het gebruiken.</p></div>
-  <div class="reg">${GROUPS.map((g,gi)=>`<section style="--gc:${CLTXT(gi)}"><h2>${esc(G[gi])}<small>${g.length}</small></h2>${g.map(o=>`<a class="rg" href="#/lv/op/${o}" data-po="${o}" data-k="l-${o}"><span class="dmk sm"></span><b>${esc(OPS[o].n)}</b><em>${esc(OPS[o].functie)}</em><span class="rs" aria-label="${sharedTxt(OPR[o].length)}">${OPR[o].map(r=>`<i>${rIdx(r)}</i>`).join('')}</span></a>`).join('')}</section>`).join('')}</div></article>`};}
+  ${sideNav(prev,next)}</article>`};}
+function figLib(){return {body:`<article class="panel pv-lib" id="panel"><div class="pn-top"><h1 class="pn-h1" id="lf-h" tabindex="-1">Vijftien ontwerpprincipes</h1>
+  <p class="lsub">Bouwstenen om een aanpak zorgvuldig uit te voeren. De rollen delen ze.</p></div>
+  <div class="reg">${GROUPS.map((g,gi)=>`<section style="--gc:${CLTXT(gi)}"><h2>${esc(G[gi])}</h2>${g.map(o=>`<a class="rg" href="#/lv/op/${o}" data-po="${o}" data-k="l-${o}"><b>${esc(OPS[o].n)}</b><em>${esc(OPS[o].functie)}</em></a>`).join('')}</section>`).join('')}</div></article>`};}
 function figOpd(o){const i=OPORD.indexOf(o),pv=OPORD[i-1],nx=OPORD[i+1];
-  return {body:`<article class="panel pv-opd" id="panel"><div class="pn-one">${opBlock(o,null,{})}</div>${sideNav(pv?['#/lv/op/'+pv,'‹ '+OPS[pv].n]:null,nx?['#/lv/op/'+nx,OPS[nx].n+' ›']:null,`${i+1} / ${OPORD.length}`)}</article>`};}
-function figFund(s){if(!s.fund)return {body:`<article class="panel pv-fund" id="panel"><div class="pn-top"><p class="kick">Fig. V · onder alles</p><h1 class="pn-h1" id="lf-h" tabindex="-1">Het fundament</h1>
-  <p class="lsub">Vijf uitgangspunten over leren. Ze gelden voor elke rol en elke leeromgeving${EVC.ua.sterk===UP.length?', en hebben alle vijf het label sterk: meerdere meta-analyses, consistent':''}.</p></div>
-  ${plinth(0,true)}<ol class="idx fl">${UP.map((u,i)=>`<li><a href="#/lv/fundament/${i+1}" data-k="f-${i+1}"><span class="nr ab rm">${ROMAN[i]}</span><span><b>${esc(u.n)}</b><em>${esc(u.f)}</em></span><span class="ar" aria-hidden="true">→</span></a></li>`).join('')}</ol></article>`};
+  return {body:`<article class="panel pv-opd" id="panel"><div class="pn-one">${opBlock(o,null,{})}</div>${sideNav(pv?['#/lv/op/'+pv,'‹ '+OPS[pv].n]:null,nx?['#/lv/op/'+nx,OPS[nx].n+' ›']:null)}</article>`};}
+function figFund(s){if(!s.fund)return {body:`<article class="panel pv-fund" id="panel"><div class="pn-top"><h1 class="pn-h1" id="lf-h" tabindex="-1">Het fundament</h1>
+  <p class="lsub">Vijf uitgangspunten over leren. Ze gelden voor elke rol en elke leeromgeving.</p></div>
+  <ol class="idx fl">${UP.map((u,i)=>`<li><a href="#/lv/fundament/${i+1}" data-k="pb-${i+1}"><span><b>${esc(u.n)}</b><em>${esc(u.f)}</em></span><span class="ar" aria-hidden="true">→</span></a></li>`).join('')}</ol></article>`};
   const i=s.fund-1,u=UP[i];
-  return {body:`${plinth(s.fund)}<article class="panel pv-fund" id="panel"><div class="pn-grid">
-  <div class="pn-l"><p class="kick"><a href="#/lv/fundament">Fundament</a> <span>›</span> Uitgangspunt ${ROMAN[i]}</p><h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(u.n)}</h1><p class="lsub">${esc(u.f)}</p>
-    <div class="nota pu"><b>Wat het vraagt van AI</b>${esc(UPAI[i])}</div>${evLine(u)}</div>
-  <div class="pn-r"><p class="sl"><span>Onderzoek</span></p><p class="lt">${esc(u.o)}</p><p class="sl"><span>Onderzoek met AI</span></p><p class="lt">${esc(u.ai)}</p><p class="sl"><span>Onze vertaling</span></p><p class="lt">${esc(u.v)}</p></div></div>
-  ${sideNav(['#/lv/fundament/'+((i+4)%5+1),'‹ '+ROMAN[(i+4)%5]],['#/lv/fundament/'+((i+1)%5+1),ROMAN[(i+1)%5]+' ›'],`${ROMAN[i]} / V`)}</article>`};}
+  return {body:`${plinth(s.fund)}<article class="panel pv-fund" id="panel"><div class="pn-one">
+  <h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(u.n)}</h1><p class="lsub">${esc(u.f)}</p>
+    <div class="nota pu"><b>Wat het vraagt van AI</b>${esc(UPAI[i])}</div>
+  <details class="ref"><summary>Onderbouwing</summary><h5>Onderzoek</h5><p>${esc(u.o)}</p><h5>Onderzoek met AI</h5><p>${esc(u.ai)}</p><h5>Onze vertaling</h5><p>${esc(u.v)}</p></details></div></article>`};}
 function figZonder(){return {body:`<article class="panel pv-zonder" id="panel"><div class="pn-grid">
-  <div class="pn-l"><div class="pn-id">${seal('0','xl zd')}<div><p class="kick">Fig. 0 · de standaardchatbot</p><h1 class="pn-h1" id="lf-h" tabindex="-1">Zonder ontwerp</h1></div></div>
+  <div class="pn-l"><div class="pn-id">${seal('0','xl zd')}<h1 class="pn-h1" id="lf-h" tabindex="-1">Zonder ontwerp</h1></div>
     <p class="lsub">Snel, vloeiend, volledig en meegaand. Ook dat is een didactiek, alleen geen bewust gekozen.</p>
     <p class="lt">In een veldexperiment met bijna duizend scholieren scoorden leerlingen die vrij met GPT-4 hadden geoefend daarna lager op een toets zonder AI. Een versie die hints gaf in plaats van antwoorden, voorkwam dat nadeel (Bastani e.a., 2025).</p>
     <p class="sl"><span>Test het zelf, als een lerende</span></p>${['Geef me gewoon het antwoord.','Ik denk dat het antwoord … is.','Nee, ik weet zeker dat ik gelijk heb.'].map((t,i)=>card('Testzin '+(i+1),t,'test'+i)).join('')}</div>
@@ -1616,24 +1608,23 @@ function figZonder(){return {body:`<article class="panel pv-zonder" id="panel"><
     <ol class="idx">${ROLES.map((R,i)=>`<li><a href="#/lv/${R.id}" data-pr="${R.id}" data-k="z-${R.id}"><span class="nr ab">${i+1}</span><span><b>${esc(plain(R.n))}</b><em>${esc(R.standaard)}</em></span><span class="ar" aria-hidden="true">→</span></a></li>`).join('')}</ol></div></div></article>`};}
 function figEv(){const a=EVC.a,m=EVC.m,n=EVC.n;
   return {body:`<article class="panel pv-ev" id="panel"><div class="pn-grid">
-  <div class="pn-l"><p class="kick">Fig. VI · eerlijk over bewijs</p><h1 class="pn-h1" id="lf-h" tabindex="-1">De leerwetenschap staat. Onderzoek met AI is jong.</h1>
+  <div class="pn-l"><h1 class="pn-h1" id="lf-h" tabindex="-1">De leerwetenschap staat. Onderzoek met AI is jong.</h1>
   <div class="big3"><div><b>${a.sterk+a.stevig}<small> van ${n}</small></b><span>principes en werkwijzen: de aanpak is sterk of stevig onderzocht (${a.sterk} sterk, ${a.stevig} stevig, ${a.beperkt} beperkt).</span></div><div class="t"><b>${m.ontbreekt}<small> van ${n}</small></b><span>nog zonder onderzoek met AI (${m.experimenteel} experimenteel, ${m.verkennend} verkennend).</span></div></div></div>
   <div class="pn-r"><p class="sl"><span>Onderzoek naar de aanpak</span></p><div class="sc3"><div><b>Sterk</b><span>${AT.sterk}</span></div><div><b>Stevig</b><span>${AT.stevig}</span></div><div><b>Beperkt</b><span>${AT.beperkt}</span></div></div>
   <p class="sl"><span>Onderzoek met AI</span></p><div class="sc3"><div><b>Experimenteel</b><span>${MT.experimenteel}</span></div><div><b>Verkennend</b><span>${MT.verkennend}</span></div><div><b>Ontbreekt</b><span>${MT.ontbreekt}</span></div></div>
   <div class="nota"><b>Onze vertaling krijgt nooit een label</b>Een goed onderbouwd leerprincipe maakt een specifieke chatbotinstructie niet automatisch effectief. Testen in de eigen context blijft nodig.</div></div></div></article>`};}
 function figOf(s){const v=viewOf(s),R=s.rol&&s.rol!=='zonder'?roleById(s.rol):null;
   return v==='over'?figOver():v==='rol'?figRol(R,s):v==='pr'?figPr(R,s):v==='lib'?figLib():v==='opd'?figOpd(s.o):v==='fund'?figFund(s):v==='zonder'?figZonder():figEv();}
-function crumbOf(s){const v=viewOf(s),R=s.rol&&s.rol!=='zonder'?roleById(s.rol):null;const c=[v==='over'?'<span>Tabula didactica</span>':'<a href="#/lv">Tabula didactica</a>'];
-  if(R){c.push(s.p!=null?`<a href="${lvHash({rol:R.id,sub:s.sub})}">${esc(rName(R,s.sub))}</a>`:`<span>${esc(rName(R,s.sub))}</span>`);if(s.p!=null)c.push(`<span>${ABC[lpPos(R,s)]} · ${esc(R.lp[s.p].n)}</span>`);}
-  else if(v==='opd'){c.push('<a href="#/lv/principes">De gedeelde laag</a>',`<span>${esc(OPS[s.o].n)}</span>`);}
-  else if(v==='lib'){c.push('<span>De gedeelde laag</span>');}
-  else if(v==='fund'){c.push(s.fund?'<a href="#/lv/fundament">Fundament</a>':'<span>Fundament</span>');if(s.fund)c.push(`<span>${ROMAN[s.fund-1]}</span>`);}
+function crumbOf(s){const v=viewOf(s),R=s.rol&&s.rol!=='zonder'?roleById(s.rol):null;const c=[v==='over'?'<span>Leerverrijking</span>':'<a href="#/lv">Leerverrijking</a>'];
+  if(R){c.push(s.p!=null?`<a href="${lvHash({rol:R.id,sub:s.sub})}">${esc(rName(R,s.sub))}</a>`:`<span>${esc(rName(R,s.sub))}</span>`);if(s.p!=null)c.push(`<span>${esc(R.lp[s.p].n)}</span>`);}
+  else if(v==='opd'){c.push('<a href="#/lv/principes">Ontwerpprincipes</a>',`<span>${esc(OPS[s.o].n)}</span>`);}
+  else if(v==='lib'){c.push('<span>Ontwerpprincipes</span>');}
+  else if(v==='fund'){c.push(s.fund?'<a href="#/lv/fundament">Fundament</a>':'<span>Fundament</span>');if(s.fund)c.push(`<span>${esc(UP[s.fund-1].n)}</span>`);}
   else if(v==='zonder'){c.push('<span>Zonder ontwerp</span>');}
   else if(v==='ev'){c.push('<span>Bewijs</span>');}
   return c.join(' <span class="sep">›</span> ');}
 function stampOf(s){const v=viewOf(s),R=s.rol&&s.rol!=='zonder'?roleById(s.rol):null;
-  const np=ROLES.reduce((n,X)=>n+X.lp.filter(p=>p.s==='principe').length,0);
-  return v==='over'?`Fig. I · ${ROLES.length} rollen · ${np} principes · ${EVC.n-np} werkwijzen`:v==='rol'?`Fig. II · rol ${rIdx(R)}/7`:v==='pr'?`Fig. III · ${ABC[lpPos(R,s)]}/${ABC[subLps(R,R.lp[s.p].sub).length-1]}`:v==='lib'?'Fig. IV · 15 ontwerpprincipes':v==='opd'?`Fig. IV · ${OPORD.indexOf(s.o)+1}/15`:v==='fund'?'Fig. V · fundament':v==='zonder'?'Fig. 0':'Fig. VI · bewijs';}
+  return v==='over'?`Fig. I · ${ROLES.length} rollen`:v==='rol'?`Fig. II · rol ${rIdx(R)}/7`:v==='pr'?`Fig. III · ${ABC[lpPos(R,s)]}/${ABC[subLps(R,R.lp[s.p].sub).length-1]}`:v==='lib'?'Fig. IV · 15 ontwerpprincipes':v==='opd'?`Fig. IV · ${OPORD.indexOf(s.o)+1}/15`:v==='fund'?'Fig. V · fundament':v==='zonder'?'Fig. 0':'Fig. VI · bewijs';}
 
 /* ---------- toepassen ---------- */
 function lvRoute(parts,q){if(parts[1]==='rondleiding'){location.replace('ruimte.html'+location.hash);return;}
@@ -1658,7 +1649,7 @@ function lvApply(s,prev,fresh){LV.cur=s;const uv=$('#uv'),v=viewOf(s),ae=documen
   $$('#fries .fz').forEach(a=>{const id=a.dataset.r,on=!!R&&id===R.id;a.classList.toggle('on',on);a.classList.toggle('zd',v==='zonder');a.classList.toggle('uses',!!users&&users.has(id));
     a.classList.toggle('dim',(!!R&&!on)||(!!users&&!users.has(id))||v==='fund');if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');a.setAttribute('href',on?lvHash({rol:id,sub:s.sub}):'#/lv/'+id);});
   const f=figOf(s);$('#uvTop').innerHTML=f.top||'';$('#stage').innerHTML=f.body;
-  $('#uvCrumb').innerHTML=crumbOf(s);$('#uvStamp').textContent=stampOf(s);
+  $('#uvCrumb').innerHTML=crumbOf(s);
   uv.classList.toggle('intro',!!fresh&&v==='over'&&!reduce());if(fresh&&v==='over')setTimeout(()=>uv.classList.remove('intro'),1600);
   // focus: dezelfde knop alleen binnen hetzelfde soort figuur; anders de kop
   let el=fk&&prev&&viewOf(prev)===v?$(`#uv [data-k="${fk}"]`):null;if(inA&&(!el||el.offsetParent===null))el=$('#lf-h');if(inA&&el)el.focus({preventScroll:true});
@@ -1668,7 +1659,7 @@ function lvApply(s,prev,fresh){LV.cur=s;const uv=$('#uv'),v=viewOf(s),ae=documen
   knipUI();titleOf(s);centerOn($('#fries .fz.on'));centerOn($('#stage .pstrip a.on'));
   if(motion&&!same){flipFries(first);
     const panel=$('#panel');const label=s.rol&&R?(v==='pr'?ABC[lpPos(R,s)]+' · '+R.lp[s.p].n:rName(R,s.sub)):v==='opd'?OPS[s.o].n:v==='fund'&&s.fund?UP[s.fund-1].n:'';
-    if(lv1>lv0&&org&&panel)lensZoom(org.r,panel.getBoundingClientRect(),'Uitvergroting · '+(label||org.label||''));
+    if(lv1>lv0&&org&&panel)lensZoom(org.r,panel.getBoundingClientRect(),'');
     else if(lv1<lv0&&oldRect&&back)lensZoom(oldRect,back.getBoundingClientRect(),'',true);
     else if(lv1===lv0&&panel){const dir=org&&org.dir?org.dir:sideDir(prev,s);panel.animate([{opacity:0,transform:`translateX(${dir*36}px)`},{opacity:1,transform:'none'}],{duration:340,easing:'cubic-bezier(.2,.7,.2,1)'});}
     if(lv1>lv0&&panel)panel.animate([{opacity:0,transform:'scale(.985)'},{opacity:1,transform:'none'}],{duration:420,delay:140,easing:'cubic-bezier(.2,.7,.2,1)',fill:'backwards'});}
@@ -1677,7 +1668,7 @@ function lvApply(s,prev,fresh){LV.cur=s;const uv=$('#uv'),v=viewOf(s),ae=documen
 // zet het actieve item van een horizontaal scrollende strook (telefoon) in het midden
 function centerOn(el){if(!el)return;const p=el.parentElement;if(p.scrollWidth>p.clientWidth+1)p.scrollLeft=el.offsetLeft-(p.clientWidth-el.offsetWidth)/2;}
 function titleOf(s){const v=viewOf(s),R=s.rol&&s.rol!=='zonder'?roleById(s.rol):null;
-  const t={over:'Leerverrijking',lib:'De gedeelde laag',opd:s.o?OPS[s.o].n:'',zonder:'Zonder ontwerp',rol:R?rName(R,s.sub):'',pr:R&&s.p!=null?R.lp[s.p].n+' · '+plain(R.n):'',fund:s.fund?UP[s.fund-1].n:'Fundament',ev:'Bewijs'}[v];
+  const t={over:'Leerverrijking',lib:'Ontwerpprincipes',opd:s.o?OPS[s.o].n:'',zonder:'Zonder ontwerp',rol:R?rName(R,s.sub):'',pr:R&&s.p!=null?R.lp[s.p].n+' · '+plain(R.n):'',fund:s.fund?UP[s.fund-1].n:'Fundament',ev:'Bewijs'}[v];
   document.title=t+(v==='over'?'':' · Leerverrijking')+' · AVD-raamwerken';say(t);}
 // het element in de nieuwe weergave waar het vorige blad naartoe terugkrimpt
 function backTarget(prev,s){const v=viewOf(prev);return v==='pr'?(prev.rol===s.rol&&prev.sub===s.sub?$(`#stage [data-k="p-${prev.p}"]`):null):v==='rol'?$(`#fries .fz[data-r="${prev.rol}"] .fz-s`):v==='opd'?$(`#stage [data-k="l-${prev.o}"]`):v==='fund'&&prev.fund?$(`#stage [data-k="pb-${prev.fund}"]`):null;}
@@ -1714,9 +1705,9 @@ function bindAtlas(){const uv=$('#uv');
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>requestAnimationFrame(hair));
   uv.addEventListener('focusin',e=>{if(uv.dataset.v!=='lib')return;const po=e.target.closest('[data-po]');if(!po)return;const set=new Set(OPR[po.dataset.po].map(r=>r.id));$$('#fries .fz').forEach(a=>{a.classList.toggle('uses',set.has(a.dataset.r));a.classList.toggle('dim',!set.has(a.dataset.r));});});
   $('#lvBig').onclick=()=>{const on=!document.body.classList.contains('lvbig');document.body.classList.toggle('lvbig',on);store.set('avd-big',on?'1':'0');$('#lvBig').classList.toggle('on',on);$('#lvBig').setAttribute('aria-pressed',on);requestAnimationFrame(hair);};
-  $('#kmap').onclick=()=>{const p=$('#kpanel');if(p.classList.contains('on')){closeKnip(true);return;}p.classList.add('on');$('#kmap').setAttribute('aria-expanded','true');knipUI();const f=p.querySelector('button');if(f)f.focus();};}
+}
 function lvKeys(e){if(!document.body.classList.contains('atlas')||!$('#uv'))return;if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.target.closest&&e.target.closest('input,textarea,select'))return;const k=e.key;
-  if(k==='Escape'){if($('#kpanel').classList.contains('on')){closeKnip(true);return;}const s=LV.cur;if(!s)return;const v=viewOf(s);
+  if(k==='Escape'){const kp=$('#kpanel');if(kp&&kp.classList.contains('on')){closeKnip(true);return;}const s=LV.cur;if(!s)return;const v=viewOf(s);
     const up=v==='pr'?lvHash({rol:s.rol,sub:s.sub}):v==='opd'?'#/lv/principes':v==='fund'&&s.fund?'#/lv/fundament':'#/lv';
     if(location.hash!==up){LV.origin=null;location.hash=up;e.preventDefault();}return;}
   if(k==='Home'&&!(e.target.closest&&e.target.closest('details'))){if(location.hash!=='#/lv'){location.hash='#/lv';e.preventDefault();}return;}
@@ -1738,42 +1729,34 @@ function rolePrompt(R,sub){const keep={rol:PS.rol,sub:PS.sub,sel:PS.sel,ops:PS.o
 /* ---------- over het raamwerk ---------- */
 function lvOver(){const a=EVC.a,m=EVC.m,n=EVC.n;
   view.innerHTML=`<article class="over">
-  <p class="eyebrow">Raamwerk Leerverrijking · concept versie 2</p><h1>Over het raamwerk</h1>
-  <p class="lead">Het Raamwerk Leerverrijking helpt docenten AI een didactische rol te geven die het leren dient, onderbouwd met leerwetenschap. Het is het vierde raamwerk van AI voor Docenten, naast AI-geletterdheid, KIES en BOUW. Deze site is de interactieve variant; de documenten kun je hieronder downloaden.</p>
-  <div class="dl"><a class="dlc" href="${DOCS.wp}" target="_blank" rel="noopener"><span class="ic">PDF</span><span><b>Whitepaper</b><span>De verkorte versie · 7 pagina's · pdf</span></span></a><a class="dlc" href="${DOCS.ag}" target="_blank" rel="noopener"><span class="ic">PDF</span><span><b>Achtergronddocument</b><span>Alle principes, ontwerpprincipes, bewijslabels en bronnen · pdf</span></span></a></div>
+  <p class="eyebrow">Conceptversie 2</p><h1>Over het raamwerk</h1>
+  <p class="lead">Het Raamwerk Leerverrijking helpt docenten AI een didactische rol te geven die het leren dient, onderbouwd met leerwetenschap.</p>
+  <div class="dl"><a class="dlc" href="${DOCS.wp}" target="_blank" rel="noopener"><span class="ic">PDF</span><span><b>Whitepaper</b><span>Verkorte versie, 7 pagina's</span></span></a><a class="dlc" href="${DOCS.ag}" target="_blank" rel="noopener"><span class="ic">PDF</span><span><b>Achtergronddocument</b><span>Alle principes, onderbouwing en bronnen</span></span></a></div>
   <h2>In vijf punten</h2><ol class="five">
    <li><i>1</i><span><b>Elke chatbot heeft al een didactiek.</b> Zonder ontwerp geeft AI snel en volledig antwoord en kan het precies het denkwerk overnemen dat de lerende moest doen.</span></li>
    <li><i>2</i><span><b>Vijf uitgangspunten over leren vormen het fundament:</b> voorkennis, denkwerk, passende hulp, oefening en het verschil tussen presteren en leren.</span></li>
    <li><i>3</i><span><b>Zeven didactische rollen zijn de ingang:</b> tutor, leerling en Socratische gesprekspartner, procesbegeleider, simulator, mentor, coach en hulpmiddel. Elke rol heeft eigen principes en werkwijzen.</span></li>
-   <li><i>4</i><span><b>Vijftien ontwerpprincipes</b> beschrijven hoe je een aanpak zorgvuldig uitvoert. Ze worden gedeeld door meerdere rollen.</span></li>
-   <li><i>5</i><span><b>Ontwerp vanuit de lerende.</b> Elk principe verbindt wat AI doet met wat de lerende doet en waaraan je ziet dat er geleerd wordt. Wat onderzoek laat zien en wat onze vertaling is, houden we zichtbaar uit elkaar.</span></li></ol>
+   <li><i>4</i><span><b>Vijftien ontwerpprincipes</b> beschrijven hoe je een aanpak zorgvuldig uitvoert. Ze worden gedeeld door meerdere rollen. Het zijn bouwstenen: stapel ze niet automatisch.</span></li>
+   <li><i>5</i><span><b>Ontwerp vanuit de lerende.</b> Elk principe verbindt wat AI doet met wat de lerende doet en waaraan je ziet dat er geleerd wordt.</span></li></ol>
   <h2>Elke chatbot heeft al een didactiek</h2>
   <p>Wie een chatbot een vraag stelt, krijgt de didactiek van de standaardinstellingen: snel, vloeiend, volledig en meegaand. Dat voelt behulpzaam, maar leren vraagt iets anders. In een veldexperiment met bijna duizend scholieren scoorden leerlingen die vrij met GPT-4 hadden geoefend daarna lager op een toets zonder AI dan leerlingen zonder AI. Een versie die hints gaf in plaats van antwoorden, voorkwam dat nadeel (Bastani e.a., 2025). Studenten die AI de opgaven lieten maken, begrepen de stof minder diep dan studenten die om uitleg vroegen (Lehmann e.a., preprint 2025). En wie met AI werkt, overschat vaak de eigen prestatie (Fernandes e.a., 2026).</p>
   <p><b>De les daaruit:</b> het ontwerp van de toepassing en de manier van gebruik bepalen mede of AI het leren versterkt of ondermijnt. Docenten kunnen daar regie op nemen. Daarvoor is dit raamwerk.</p>
   <h2>Wat Mollick al gaf, en wat wij toevoegen</h2>
   <p>De zeven rollen komen uit <i>Assigning AI</i> van Ethan en Lilach Mollick (2023), dat al didactische aanwijzingen per rol bevat. Onze bijdrage is het systematiseren, verdiepen en verbinden: vaste uitgangspunten onder alle rollen, onderbouwing per principe, een gedeelde verzameling ontwerpprincipes, en de koppeling met onze andere raamwerken en de Nederlandse en Vlaamse onderwijspraktijk.</p>
-  <h2>Het raamwerk in één beeld</h2>
-  <p>Een fundament van vijf uitgangspunten, met daarboven drie niveaus. <b>Rollen</b> zijn de ingang: de functie die AI in de leersituatie vervult. <b>Principes en werkwijzen</b> per rol beschrijven wat AI doet en wat de lerende daarbij doet; ${n} in totaal. <b>Ontwerpprincipes</b> beschrijven hoe je een aanpak zorgvuldig uitvoert. Ze zijn bouwstenen, geen vaste procedures: stapel ze niet automatisch, de combinatie moet passen bij de taak en de lerende.</p>
-  <p><a class="btn pri sm" href="#/lv">Verken het raamwerk →</a></p>
   <h2>Instellingen, geen wetten</h2>
   <p>Regels als "één vraag per beurt" of "geef niet meteen het antwoord" zijn standaardinstellingen. Je stemt ze af op doel, taak en lerende. Een beginner die vastloopt, heeft bijvoorbeeld meer aan een uitgewerkt voorbeeld dan aan nog een vraag. Eén ding geldt wel altijd: AI blijft eerlijk over wat niet klopt, ook als de lerende aandringt.</p>
   <p>Een rol kan werken in een chatbot, een gebouwde app, een opdracht, een simulatie of samen met docent en medeleerlingen. Een prompt vraagt gedrag; een gebouwde toepassing kan het afdwingen, bijvoorbeeld door een hint pas te tonen na een eigen poging.</p>
   <h2>Voorbeeld: de faalangstcoach</h2>
   <div class="cardx"><p><b>Leerdoel:</b> de lerende herkent wat er gebeurt bij spanning rond een toets en kiest een eigen, haalbare aanpak.</p><p><b>Activiteit van de lerende:</b> een concrete situatie beschrijven, gedachten, gevoel en gedrag onderscheiden, een kleine stap kiezen en later evalueren.</p><p><b>Inrichting:</b> de coachprincipes met de ontwerpprincipes Zelfregulatie en Reflectie. Geen diagnose of behandeling; verwijzen bij ernstige klachten. Vakinhoudelijke hulp alleen als die bij de hulpvraag past.</p><p><b>Zichtbaar leren:</b> een plan in eigen woorden, uitgevoerd in de echte situatie, met een eigen evaluatie daarna.</p><p><a class="lnk" href="#/lv/coach">Bekijk de rol Coach →</a></p></div>
   <h2>Wat we wel en niet claimen</h2>
-  <p>De sterkste basis is de algemene leerwetenschap. Onderzoek naar leren met generatieve AI is jong: korte interventies, kleine groepen, vaak vergeleken met geen AI en gemeten op directe uitkomsten. Daarom maken we bij elk principe zichtbaar wat voor uitspraak het is: <b>onderzoek naar de aanpak</b> (sterk, stevig of beperkt), <b>onderzoek met AI</b> (experimenteel, verkennend of ontbreekt) en <b>onze vertaling</b>, die niet afzonderlijk getoetst is.</p>
-  <p>Bij ${a.sterk+a.stevig} van de ${n} principes is de aanpak sterk of stevig onderzocht. Bij ${m.ontbreekt} van de ${n} ontbreekt nog onderzoek met AI. Een goed onderbouwd leerprincipe maakt een specifieke chatbotinstructie dus niet automatisch effectief. Testen in de eigen context blijft nodig.</p>
+  <p>De sterkste basis is de algemene leerwetenschap. Onderzoek naar leren met generatieve AI is nog jong: korte interventies, kleine groepen, gemeten op directe uitkomsten. Een goed onderbouwd leerprincipe maakt een chatbotinstructie dus niet automatisch effectief. Test in je eigen context. Het achtergronddocument laat per principe zien hoe stevig het onderzoek is.</p>
   <h2>Aan de slag in vier stappen</h2><ol class="five">
    <li><i>1</i><span><b>Begin bij het leerdoel.</b> Wat moet de lerende straks kunnen, en wat moet de lerende daarvoor zelf doen?</span></li>
    <li><i>2</i><span><b>Kies de rol.</b> Eén rol per leeractiviteit; combineer rollen alleen als ze elkaar opvolgen.</span></li>
    <li><i>3</i><span><b>Vertaal naar een ontwerp.</b> Neem de rolprincipes op in de werkwijze van je prompt (doel, context en voorwaarden, bronnen, voorbeelden, werkwijze), of als ontwerpeisen in BOUW. <a class="lnk" href="#/lv/prompthulp">Naar de prompthulp →</a></span></li>
    <li><i>4</i><span><b>Test als een lerende.</b> Vraag om het antwoord, geef een fout antwoord, dring aan. En kijk na afloop wat er zonder hulp is blijven hangen.</span></li></ol>
-  <h2>Vier raamwerken, één samenhangend geheel</h2>
-  <table class="ovt"><thead><tr><th>Raamwerk</th><th>Handelen als</th><th>Wat Leerverrijking toevoegt</th></tr></thead><tbody>
-   <tr><td>AI-geletterdheid</td><td>Professional</td><td>Werkt domein D, AI-pedagogiek en -didactiek, concreet uit.</td></tr>
-   <tr><td>KIES</td><td>Lerende</td><td>De docentkant van dezelfde rollen; de rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.</td></tr>
-   <tr><td>BOUW</td><td>Maker</td><td>Levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.</td></tr>
-   <tr><td>Leerverrijking</td><td>Ontwerper</td><td>Welke rol geef ik AI, en hoe zorg ik dat die het leren dient?</td></tr></tbody></table>
+  <h2>Andere weergaven</h2>
+  <p>Hetzelfde raamwerk bestaat ook als <a class="lnk" href="kolommen.html#/lv">kolommen</a> en als <a class="lnk" href="ruimte.html#/lv">3D-maquette</a>. De samenhang met AI-geletterdheid, KIES en BOUW staat op de <a class="lnk" href="#/">startpagina</a>.</p>
   <h2>Bronnen (selectie)</h2><ul class="refs">
    <li>Bastani, H., e.a. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <i>PNAS, 122</i>(26).</li>
    <li>Belland, B. R., e.a. (2017). Synthesizing results from empirical research on computer-based scaffolding in STEM education. <i>Review of Educational Research, 87</i>(2).</li>
