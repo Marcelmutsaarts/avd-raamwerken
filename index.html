@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AVD-raamwerken · AI voor Docenten</title>
+<meta name="description" content="De onderwijskundige raamwerken van AI voor Docenten in één omgeving: AI-geletterdheid, KIES, BOUW en Leerverrijking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#080F17;--ink2:#121a26;--ink3:#1c2533;--text:#3d3f46;--muted:#6B6F74;--line:#e7e3ef;--line2:#d6cfe4;
+  --purple:#5F3792;--violet:#A25DF8;--lav:#ECDFFE;--lav2:#f6f1fe;--bg:#fbfaff;--white:#fff;
+  --c-geletterd:#7C5CFF;--c-kies:#E0559B;--c-bouw:#25A47E;--c-lv:#A25DF8;
+  --g0:#A25DF8;--g1:#F0A23B;--g2:#22A699;--g3:#E0559B;
+  --ok:#22a06b;--warn:#e08a1e;--bad:#e5484d;
+  --r:20px;--font:Poppins,'Segoe UI',system-ui,sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{color:var(--ink);margin:0;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 max(22px,env(safe-area-inset-left))}
+.eyebrow{font:600 12px/1.3 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--violet)}
+.dark .eyebrow{color:#c9a6ff}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;background:rgba(8,15,23,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff}
+.mark{display:grid;grid-template-columns:1fr 1fr;gap:3px;width:30px;height:30px}
+.mark i{border-radius:4px}
+.brand b{font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+.brand small{display:block;font-size:11px;color:#a9a3b8;font-weight:500;letter-spacing:.04em;margin-top:-2px}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{color:#d9d4e6;text-decoration:none;font-size:14px;font-weight:500;padding:8px 13px;border-radius:10px;white-space:nowrap}
+.nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav a.on{background:rgba(162,93,248,.18);color:#fff}
+.crumb{font-size:13px;color:#a9a3b8;margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap}
+.crumb a{text-decoration:none;color:#cbb7f5}
+.crumb a:hover{color:#fff}
+.light .crumb{color:var(--muted)}.light .crumb a{color:var(--purple)}
+
+/* heroes */
+.dark{background:var(--ink);color:#c9c5d3;position:relative;overflow:hidden}
+.dark h1,.dark h2,.dark h3{color:#fff}
+.glow::before{content:"";position:absolute;inset:-30% -10% auto auto;width:900px;height:900px;background:radial-gradient(closest-side,rgba(162,93,248,.35),transparent 70%);pointer-events:none}
+.glow::after{content:"";position:absolute;left:-200px;bottom:-400px;width:800px;height:800px;background:radial-gradient(closest-side,rgba(95,55,146,.45),transparent 70%);pointer-events:none}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 70% 30%,#000 30%,transparent 75%);pointer-events:none}
+.hero{padding:70px 0 80px;position:relative}
+.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.06;font-weight:800;margin:14px 0 18px;max-width:16ch}
+.hero .lead{font-size:clamp(17px,1.6vw,19px);max-width:56ch;color:#d4cfe0}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:12px 18px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid transparent;transition:transform .15s,background .15s,border-color .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.pri{background:var(--violet);color:#fff;box-shadow:0 10px 30px rgba(162,93,248,.35)}
+.btn.pri:hover{background:#8d45ef}
+.btn.ghost{border-color:rgba(255,255,255,.25);color:#fff;background:transparent}
+.btn.ghost:hover{background:rgba(255,255,255,.08)}
+.btn.line{border-color:var(--line2);color:var(--ink);background:#fff}
+.btn.line:hover{border-color:var(--violet);color:var(--purple)}
+.btn.sm{padding:8px 13px;font-size:13.5px;border-radius:10px}
+section.blk{padding:84px 0}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;flex-wrap:wrap;margin-bottom:34px}
+.sh h2{font-size:clamp(26px,3vw,38px);line-height:1.12;margin-top:8px;max-width:22ch}
+.sh p{max-width:52ch;color:var(--muted)}
+.light{background:var(--lav2)}
+
+/* hub */
+.fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-60px;position:relative;z-index:2}
+.fw{background:#fff;border-radius:24px;padding:24px 22px 22px;text-decoration:none;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 60px rgba(8,15,23,.12);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.fw:hover{transform:translateY(-4px);box-shadow:0 30px 70px rgba(8,15,23,.18)}
+.fw::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:var(--c)}
+.fw .as{font:600 11.5px/1.3 var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.fw h3{font-size:24px}
+.fw p{font-size:14.5px;line-height:1.55}
+.fw .keys{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.fw .keys span{font-size:12px;font-weight:600;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);border-radius:8px;padding:4px 8px}
+.fw .go{font-weight:600;font-size:14px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:12px}
+.fw .tag{align-self:flex-start;font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--lav);color:var(--purple);margin-bottom:-2px}
+.fw.feat{background:linear-gradient(160deg,#fff 60%,var(--lav2))}
+.fw.feat .tag{background:var(--violet);color:#fff}
+.rel{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.rel svg{width:100%;height:auto}
+.rel-list{display:grid;gap:12px}
+.rel-item{display:grid;grid-template-columns:12px 1fr;gap:14px;background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.rel-item i{width:12px;height:12px;border-radius:4px;margin-top:6px}
+.rel-item b{color:var(--ink);font-weight:600;display:block;font-size:15px}
+.rel-item span{font-size:14px;color:var(--muted)}
+
+/* wiel */
+.lv-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,620px);gap:30px;align-items:center}
+.wheelbox{position:relative}
+#wheel{width:100%;height:auto;display:block;overflow:visible}
+#wheel .lnk{fill:none;stroke-width:1.6;opacity:.14;transition:opacity .25s,stroke-width .25s}
+#wheel .lnk.on{opacity:.95;stroke-width:2.4}
+#wheel .lnk.off{opacity:.03}
+#wheel .rn{cursor:pointer}
+#wheel .rn circle.bg{transition:all .25s}
+#wheel .rn:hover circle.bg,#wheel .rn.on circle.bg{filter:drop-shadow(0 0 14px var(--rc))}
+#wheel .rn.dim{opacity:.28}
+#wheel .opd{cursor:pointer;transition:opacity .25s}
+#wheel .opd circle{transition:r .2s}
+#wheel .opd.on circle{r:12}
+#wheel .opd.dim{opacity:.22}
+#wheel .fseg{cursor:pointer;transition:opacity .2s}
+#wheel .fseg:hover{opacity:1!important}
+#wheel text{font-family:var(--font);pointer-events:none}
+.w-in .wl{opacity:0}
+.wl{transition:opacity .8s ease}
+.wheel-info{margin-top:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px 18px;min-height:112px}
+.wheel-info .k{font:600 11px/1.3 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#c9a6ff}
+.wheel-info b{display:block;color:#fff;font-size:18px;margin:4px 0 2px}
+.wheel-info p{font-size:14px;color:#c3bdd0;line-height:1.5}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:#a9a3b8}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%}
+
+/* bouwlagen / uitgangspunten */
+.layers{display:grid;gap:12px}
+.layer{display:grid;grid-template-columns:150px 1fr auto;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 20px}
+.layer .n{font:800 34px/1 var(--font);color:var(--violet)}
+.layer .n small{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.layer b{color:var(--ink);font-size:17px}
+.layer p{font-size:14.5px;color:var(--muted)}
+.up-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.up{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:left;transition:border-color .2s,transform .2s}
+.up:hover{border-color:var(--violet);transform:translateY(-2px)}
+.up .num{font:800 14px/1 var(--font);color:#fff;background:var(--purple);width:32px;height:32px;border-radius:10px;display:grid;place-items:center}
+.up h3{font-size:17px;line-height:1.3}
+.up p{font-size:14px;line-height:1.5}
+.ev{display:flex;flex-direction:column;gap:5px;margin-top:auto;padding-top:10px;border-top:1px dashed var(--line2)}
+.evr{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);white-space:nowrap}
+.evr .bars{display:flex;gap:3px}
+.evr .bars i{width:14px;height:6px;border-radius:3px;background:var(--line)}
+.evr .bars i.f{background:var(--purple)}
+.evr .bars.ai i.f{background:var(--g2)}
+.evr em{font-style:normal;font-weight:600;color:var(--ink)}
+
+/* rollen grid */
+.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.role{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 20px;text-decoration:none;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.role:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(95,55,146,.14);border-color:var(--rc)}
+.role .ri{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--rc) 13%,#fff);color:var(--rc)}
+.role .ri svg{width:34px;height:34px;--ic-bg:color-mix(in srgb,var(--rc) 13%,#fff)}
+.role h3{font-size:19px}
+.role .k{font-size:14px;color:var(--muted)}
+.role .meta{margin-top:auto;font-size:12.5px;font-weight:600;color:var(--rc)}
+.role.wide{background:linear-gradient(135deg,var(--ink),#2a1550);color:#d4cfe0;border:0}
+.role.wide h3{color:#fff}
+svg .t,svg .b{fill:var(--ic-bg,#fff)}
+
+/* keten */
+.chain{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:10px}
+.ch{background:#fff;border:1px solid var(--line);padding:22px 20px;position:relative}
+.ch:first-child{border-radius:20px 0 0 20px}.ch:last-child{border-radius:0 20px 20px 0}
+.ch+.ch{border-left:0}
+.ch .s{font:800 13px/1 var(--font);color:#fff;background:var(--violet);width:30px;height:30px;border-radius:9px;display:grid;place-items:center;margin-bottom:12px}
+.ch b{color:var(--ink);font-size:16.5px;display:block}
+.ch p{font-size:14px;color:var(--muted);margin-top:4px}
+.ch:not(:last-child)::after{content:"";position:absolute;right:-11px;top:34px;width:20px;height:20px;background:#fff;border-top:1px solid var(--line);border-right:1px solid var(--line);transform:rotate(45deg);z-index:1}
+.loop{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:16px;color:var(--muted);font-size:14px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.s4{background:var(--ink);color:#c9c5d3;border-radius:20px;padding:22px}
+.s4 .n{font:800 40px/1 var(--font);background:linear-gradient(135deg,#c9a6ff,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.s4 b{color:#fff;display:block;margin:8px 0 4px;font-size:16.5px}
+.s4 p{font-size:14px}
+
+/* claims */
+.claims{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.claim{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.claim h3{font-size:17px;margin-bottom:6px}
+.claim p{font-size:14px;color:var(--muted)}
+.scale{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.scale div{display:flex;gap:10px;font-size:13.5px;align-items:flex-start}
+.scale div b{min-width:132px;color:var(--ink);font-weight:600;white-space:nowrap}
+
+/* rolpagina */
+.rp-hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.rp-icon{width:120px;height:120px;border-radius:34px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--rc);box-shadow:0 0 60px color-mix(in srgb,var(--rc) 40%,transparent)}
+.rp-icon svg{width:74px;height:74px;--ic-bg:#0f1622}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+.fact{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px}
+.fact span{font:600 11px/1.3 var(--font);letter-spacing:.12em;text-transform:uppercase;color:#c9a6ff}
+.fact p{color:#e8e4f0;font-size:14.5px;margin-top:5px;line-height:1.5}
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.phone{border-radius:26px;padding:18px;background:#fff;border:1px solid var(--line);box-shadow:0 20px 50px rgba(8,15,23,.08)}
+.phone.no{background:#fff7f7;border-color:#f6d6d6}
+.phone.yes{background:#f7fff9;border-color:#cfeedd}
+.phone .ph{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.phone .ph i{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-style:normal;font-weight:800;color:#fff}
+.phone.no .ph i{background:var(--bad)}.phone.yes .ph i{background:var(--ok)}
+.phone .ph b{color:var(--ink);display:block;font-size:15.5px}
+.phone .ph span{font-size:12.5px;color:var(--muted)}
+.bub{border-radius:18px 18px 18px 4px;padding:13px 16px;font-size:15px;line-height:1.55;color:var(--ink);background:#fff;border:1px solid var(--line);position:relative;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.phone .note{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line2);background:#fff;border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:500;color:var(--text);text-decoration:none}
+.chip:hover{border-color:var(--violet);color:var(--purple)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.lps{display:grid;gap:14px}
+.lp{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 24px;display:grid;grid-template-columns:44px 1fr 210px;gap:18px 22px}
+.lp .no{font:800 15px/1 var(--font);color:#fff;background:var(--rc,var(--purple));width:44px;height:44px;border-radius:13px;display:grid;place-items:center}
+.lp h3{font-size:19px;line-height:1.3}
+.lp .type{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:8px;vertical-align:2px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.duo>div{background:var(--lav2);border-radius:14px;padding:12px 14px}
+.duo span,.lab{font:600 11px/1.3 var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--purple)}
+.duo p{font-size:14.5px;color:var(--ink);margin-top:4px;line-height:1.5}
+.lp .side{display:flex;flex-direction:column;gap:10px}
+.lp .src{font-size:12px;color:var(--muted);line-height:1.45}
+.lp .opl{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.opchip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;text-decoration:none;background:#fff;border:1.5px solid var(--line2);border-radius:10px;padding:6px 10px;color:var(--ink)}
+.opchip i{width:9px;height:9px;border-radius:50%}
+.opchip:hover{border-color:var(--violet)}
+.subh{font:700 13px/1.3 var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin:18px 0 2px}
+.prose p+p{margin-top:12px}
+.prose b{color:var(--ink)}
+.aside{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px}
+.two{display:grid;grid-template-columns:1.3fr .7fr;gap:24px}
+.rnav{display:flex;justify-content:space-between;gap:12px;margin-top:40px}
+
+/* bibliotheek */
+.clusters{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}
+.cl h3{font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:12px;color:var(--ink)}
+.cl h3 i{width:12px;height:12px;border-radius:4px}
+.opc{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;text-decoration:none;margin-bottom:12px;transition:transform .2s,border-color .2s;border-left:4px solid var(--gc)}
+.opc:hover{transform:translateY(-2px);border-color:var(--gc)}
+.opc b{color:var(--ink);font-size:16px;display:block}
+.opc p{font-size:13.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.opc .m{display:flex;gap:10px;margin-top:10px;font-size:12px;font-weight:600;color:var(--gc)}
+.opc.dim{opacity:.35}
+.stepper{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:0;position:relative;margin-top:8px}
+.st{position:relative;padding:0 10px 0 0}
+.st .d{width:42px;height:42px;border-radius:13px;background:var(--gc);color:#fff;font:800 16px/1 var(--font);display:grid;place-items:center;position:relative;z-index:1}
+.st:not(:last-child)::before{content:"";position:absolute;left:42px;right:0;top:20px;height:2px;background:color-mix(in srgb,var(--gc) 35%,#fff)}
+.st b{display:block;color:var(--ink);font-size:15px;margin-top:12px;line-height:1.35}
+.st span{display:block;font-size:13.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+.stepper.stairs .st{transform:translateY(calc(var(--i)*-10px))}
+.stairs-wrap{padding-top:50px}
+.evid{display:grid;gap:12px}
+.evb{border-radius:16px;padding:14px 16px;font-size:14.5px;line-height:1.6}
+.evb .lab{display:block;margin-bottom:4px}
+.evb.o{background:#fff;border:1px solid var(--line)}
+.evb.g{background:#fff8ec;border:1px solid #f5dfb8}.evb.g .lab{color:#a8650c}
+.evb.v{background:var(--lav2);border:1px dashed var(--line2)}
+.fails{margin:0;padding-left:18px}
+.fails li{margin:4px 0}
+.fails li::marker{color:var(--bad)}
+.copybox{background:var(--ink);border-radius:18px;padding:16px;color:#e8e4f0}
+.copybox pre{margin:0 0 12px;white-space:pre-wrap;font:13px/1.6 var(--mono);color:#e8e4f0;max-height:340px;overflow:auto}
+
+/* prompthulp */
+.ph-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:26px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 24px;margin-bottom:16px}
+.card h3{font-size:18px;display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.card h3 .s{font:800 13px/1 var(--font);color:#fff;background:var(--violet);width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none}
+.card .hint{font-size:13.5px;color:var(--muted);margin-bottom:12px}
+textarea,input[type=text]{width:100%;border:1.5px solid var(--line2);border-radius:13px;padding:11px 13px;font:15px/1.5 var(--font);color:var(--ink);background:#fff;outline:0;resize:vertical}
+textarea:focus,input[type=text]:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(162,93,248,.12)}
+.rolepick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rpk{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink);text-align:center;line-height:1.25}
+.rpk svg{width:28px;height:28px;color:var(--rc);--ic-bg:#fff}
+.rpk:hover{border-color:var(--rc)}
+.rpk.on{border-color:var(--rc);background:color-mix(in srgb,var(--rc) 10%,#fff)}
+.rpk.on svg{--ic-bg:color-mix(in srgb,var(--rc) 10%,#fff)}
+.lpcheck{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+.lpcheck:first-of-type{border-top:0}
+.lpcheck input{width:20px;height:20px;accent-color:var(--violet);margin-top:2px}
+.lpcheck b{color:var(--ink);font-size:15px;font-weight:600}
+.lpcheck span{display:block;font-size:13px;color:var(--muted);line-height:1.45}
+.lpcheck .evr{margin-top:4px}
+.sticky{position:sticky;top:84px}
+.out{background:var(--ink);border-radius:24px;padding:18px;color:#e8e4f0;box-shadow:0 30px 60px rgba(8,15,23,.25)}
+.tabs{display:flex;gap:6px;background:rgba(255,255,255,.06);border-radius:12px;padding:4px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:none;color:#a9a3b8;border-radius:9px;padding:8px;font-weight:600;font-size:14px}
+.tabs button.on{background:var(--violet);color:#fff}
+.out pre{margin:0;white-space:pre-wrap;font:12.8px/1.62 var(--mono);color:#ece8f4;max-height:52vh;overflow:auto;background:rgba(255,255,255,.03);border-radius:14px;padding:14px}
+.out pre .hl{color:#c9a6ff;font-weight:700}
+.out pre .ph{background:rgba(240,162,59,.18);color:#ffd08a;border-radius:4px}
+.out .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.out .btn.ghost{border-color:rgba(255,255,255,.2)}
+.status{font-size:13px;color:#9fe0c0}
+.tests{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 20px}
+.tests h3{font-size:17px;margin-bottom:4px}
+.test{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.test .n{width:30px;height:30px;border-radius:9px;background:var(--lav);color:var(--purple);font-weight:800;display:grid;place-items:center;font-size:13px}
+.test b{color:var(--ink);font-size:14.5px;display:block}
+.test span{font-size:13px;color:var(--muted);line-height:1.45;display:block}
+.test code{font:12.5px var(--mono);background:var(--lav2);color:var(--purple);border-radius:6px;padding:1px 6px}
+.subtog{display:flex;gap:6px;margin-top:12px}
+
+footer{background:var(--ink);color:#8f8a9e;font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 30px;flex-wrap:wrap;padding-top:28px;padding-bottom:34px}
+footer b{color:#e8e4f0;font-weight:600}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;border-radius:14px;padding:11px 18px;font-weight:600;font-size:14px;opacity:0;transition:all .3s;pointer-events:none;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#toast.on{opacity:1;transform:translateX(-50%)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1080px){
+  .fw-grid{grid-template-columns:repeat(2,1fr)}
+  .lv-hero,.rel,.ph-grid,.two{grid-template-columns:1fr}
+  .up-grid{grid-template-columns:repeat(2,1fr)}
+  .roles,.clusters{grid-template-columns:repeat(2,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .lp{grid-template-columns:44px 1fr}.lp .side{grid-column:1/-1}
+  .sticky{position:static}
+  .steps4,.chain{grid-template-columns:repeat(2,1fr)}
+  .ch{border-radius:0!important;border-left:1px solid var(--line)!important}.ch::after{display:none}
+  .claims{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .top .wrap{gap:10px}.brand small{display:none}.brand b{white-space:nowrap;font-size:15px}.nav{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}.nav::-webkit-scrollbar{display:none}.nav a{padding:7px 10px;font-size:13px}
+  .fw-grid,.up-grid,.roles,.clusters,.steps4,.chain,.versus,.duo,.facts{grid-template-columns:1fr}
+  .role.wide{grid-column:auto}
+  .rolepick{grid-template-columns:repeat(2,1fr)}
+  .layer{grid-template-columns:1fr}
+  .rp-hero{grid-template-columns:1fr}
+  .stepper{grid-auto-flow:row}
+  .st:not(:last-child)::before{display:none}
+  .stepper.stairs .st{transform:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+@media print{.top,footer,.tabs,.row,.btns,.tests,#toast{display:none!important}.ph-grid{grid-template-columns:1fr}.out{background:#fff;color:#000;box-shadow:none}.out pre{color:#000;max-height:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#/"><span class="mark" aria-hidden="true"><i style="background:var(--c-geletterd)"></i><i style="background:var(--c-kies)"></i><i style="background:var(--c-bouw)"></i><i style="background:var(--c-lv)"></i></span><span><b>AVD-raamwerken</b><small>AI voor Docenten</small></span></a>
+  <nav class="nav" aria-label="Hoofdnavigatie">
+    <a href="#/" data-n="home">Raamwerken</a>
+    <a href="#/lv" data-n="lv">Leerverrijking</a>
+    <a href="#/lv/rollen" data-n="rollen">Rollen</a>
+    <a href="#/lv/principes" data-n="principes">Ontwerpprincipes</a>
+    <a href="#/lv/prompthulp" data-n="prompt">Prompthulp</a>
+  </nav>
+</div></header>
+<main id="view"></main>
+<footer><div class="wrap"><span><b>AVD-raamwerken</b> · AI voor Docenten · door docenten, voor het onderwijs</span><span>Raamwerk Leerverrijking · concept versie 2 · november 2026</span></div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================= DATA (uit de Verkenner Leerverrijking, ongewijzigd) ================= */
+const SV = inner => '<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">' + inner + '</svg>';
+const ICON = {
+  tutor: SV('<rect class="t" x="6" y="7" width="36" height="25" rx="3.5"/><path d="M13 15h12M13 21h18M13 26h8"/><path d="M17 32l-4 9M31 32l4 9M24 32v4"/>'),
+  ls: SV('<path d="M11 7h13a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6h-8l-5.5 4.5v-4.9A6 6 0 0 1 5 18v-5a6 6 0 0 1 6-6z"/><circle cx="11.5" cy="15.5" r="1.4" fill="currentColor" stroke="none"/><circle cx="17" cy="15.5" r="1.4" fill="currentColor" stroke="none"/><circle cx="22.5" cy="15.5" r="1.4" fill="currentColor" stroke="none"/><path class="b" d="M24 20h13a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6v5l-6-5h-7a6 6 0 0 1-6-6v-5a6 6 0 0 1 6-6z"/><path class="t" stroke="none" d="M24 20h13a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6v5l-6-5h-7a6 6 0 0 1-6-6v-5a6 6 0 0 1 6-6z"/><path d="M24 20h13a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6v5l-6-5h-7a6 6 0 0 1-6-6v-5a6 6 0 0 1 6-6z"/><path d="M28 26.2a2.7 2.7 0 1 1 3.9 2.4c-.8.4-1.4 1-1.4 1.9v.6"/><circle cx="30.5" cy="34" r="1.4" fill="currentColor" stroke="none"/>'),
+  proces: SV('<path d="M9 39c9 0 9-13 16-13s7-12 14-12" stroke-dasharray="2.5 4.5"/><circle class="t" cx="9" cy="39" r="4"/><circle class="t" cx="25" cy="26" r="4"/><path d="M39 23V6"/><path class="t" d="M39 6h7l-2.4 3.5L46 13h-7"/>'),
+  sim: SV('<path class="t" d="M8 11c5.3-2.2 10.6-3.3 16-3.3s10.7 1.1 16 3.3v9.5c0 9.6-6.6 16.8-16 19.2-9.4-2.4-16-9.6-16-19.2z"/><path d="M14.5 19.5c1.4-1.5 3.6-1.5 5 0M28.5 19.5c1.4-1.5 3.6-1.5 5 0"/><path d="M17 27c4 4 10 4 14 0"/>'),
+  mentor: SV('<path class="t" d="M13 5h14.5L36 13.5V39a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/><path d="M27 5v9h9"/><path d="M15.5 21h13M15.5 27h9M15.5 33h6"/><circle class="b" cx="35" cy="36" r="7.5"/><circle cx="35" cy="36" r="7.5"/><path d="M31.6 36.2l2.5 2.5 4.6-4.9"/>'),
+  coach: SV('<path class="t" d="M16 43v-7.2C11.6 33 9 28.4 9 23 9 14.7 15.7 8 24 8c7.4 0 13.5 5.4 14.8 12.4l3 5.6c.5.9-.2 2-1.2 2H38v5a3 3 0 0 1-3 3h-4v7"/><path d="M29.5 21.5a6 6 0 1 1-1.76-4.24"/><path d="M27.4 13.8l.34 3.46-3.5-.3"/>'),
+  tool: SV('<g transform="translate(3 5) scale(1.7)"><path stroke-width="1.41" d="M7 10h3v-3l-3.5-3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1-3 3l-6-6a6 6 0 0 1-8-8l3.5 3.5"/></g><path class="t" d="M40 3.5l1.6 3.9 3.9 1.6-3.9 1.6L40 14.5l-1.6-3.9L34.5 9l3.9-1.6z"/>')
+};
+const G = ['Begrip opbouwen','Oefenen en feedback','Denken en regie','Werken met AI'];
+const GROUPS = [['vk','an','hd','uv','zv'],['ot','fg','fv','nb'],['sd','pr','zr','rf'],['bu','uc']];
+
+const OPS = {
+vk:{n:'Voorkennis onderzoeken',g:0,functie:'Het vertrekpunt bepalen en misvattingen opsporen voordat er nieuwe uitleg komt.',
+ onderzoek:'Geactiveerde, relevante voorkennis helpt; misvattingen kunnen nieuw leren hinderen (Simonsmeier e.a., 2022). Formatief toetsen werkt als de informatie het vervolg stuurt (Black & Wiliam, 1998).',
+ grens:'Dit onderzoek gaat over docenten en toetsen, niet over peilingen door AI.',
+ vertaling:'Peil met een korte taak in plaats van met een zelfinschatting, en gebruik de uitkomst echt in het vervolg.',
+ wanneer:'Bij een nieuw onderwerp of als een fout op een misvatting wijst. Bij vertrouwde stof kort houden of overslaan.',
+ ai:'Stelt één of twee diagnostische vragen of geeft een korte opgave, benoemt wat al klopt en kiest het vertrekpunt.',
+ le:'Legt uit of lost op wat hij al weet.',
+ beoordeel:'Vergelijk de peiling met een opgave aan het eind: is de misvatting verdwenen?',
+ vb:'“Voordat we beginnen: leg in je eigen woorden uit waarom een ijsblokje in water drijft.”',
+ fouten:['“Wat weet je al?” vragen levert vage antwoorden op.','Een lange instaptoets blokkeert het gesprek.','De peiling wordt in het vervolg genegeerd.'],
+ pb:['Stel aan het begin één of twee diagnostische vragen of geef een korte opgave, in plaats van te vragen wat de lerende al weet.','Benoem wat al klopt en kies daarna het vertrekpunt.','Gebruik wat je ziet echt in het vervolg. Bij vertrouwde stof houd je de peiling kort.'],
+ zw:'Voordat we beginnen: leg in je eigen woorden uit waarom een ijsblokje in water drijft.',zn:'Wat weet je al over drijven en zinken?'},
+an:{n:'Analogieën',g:0,functie:'Een nieuw of abstract begrip verbinden met iets bekends, zodat de structuur zichtbaar wordt.',
+ onderzoek:'Leren door vergelijken werkt (d = 0,50). Het algemene principe ná het vergelijken noemen werkte beter dan ervoor, en alleen overeenkomsten zoeken leverde meer op dan overeenkomsten en verschillen tegelijk (Alfieri e.a., 2013).',
+ grens:'Een analogie kan nieuwe misvattingen veroorzaken als de grenzen niet benoemd worden (Harrison & Treagust, 2006). Het meeste onderzoek komt uit het natuurwetenschappelijk onderwijs.',
+ vertaling:'Bouwstenen, gebaseerd op het Teaching With Analogies-model van Glynn (1994): begin bij het begrip, check of de vergelijking bekend is, maak overeenkomende relaties expliciet, benoem waar de vergelijking ophoudt, laat actief vergelijken en noem het principe daarna, keer terug naar het begrip en pas het toe.',
+ wanneer:'Bij abstracte of onzichtbare begrippen. Bij een lastig begrip kunnen twee analogieën elkaars zwakke plekken afdekken.',
+ ai:'Kiest een vergelijking uit de leefwereld van de doelgroep en vraagt of die bekend is.',
+ le:'Zoekt overeenkomsten en benoemt waar de vergelijking niet klopt.',
+ beoordeel:'De lerende legt het begrip uit zonder de analogie en past het toe in een nieuwe situatie.',
+ vb:'Elektrische spanning als waterdruk in een leiding en stroom als de hoeveelheid water die doorstroomt. Grens: bij een breuk lekt water weg, elektrische lading niet.',
+ fouten:['Een vergelijking die de lerende niet kent.','Alleen oppervlakkige gelijkenis.','De analogie als eindpunt in plaats van als brug.'],
+ pb:['Kies een vergelijking uit de leefwereld van de doelgroep en check of die bekend is.','Maak de overeenkomende relaties expliciet en benoem waar de vergelijking ophoudt.','Laat de lerende zelf overeenkomsten zoeken, noem het principe daarna en keer terug naar het begrip.'],
+ zw:'Spanning lijkt op waterdruk in een leiding, stroom op de hoeveelheid water die doorstroomt. Waar klopt die vergelijking volgens jou niet meer?',zn:'Stroom is eigenlijk gewoon water.'},
+hd:{n:'Hulp doseren en afbouwen',g:0,functie:'Precies genoeg hulp geven om verder te kunnen, zonder het denkwerk over te nemen.',
+ onderzoek:'Steun die meebeweegt met wat de lerende aankan, werkt (van de Pol e.a., 2010; Belland e.a., 2017). Met AI voorkwam een tutor die hints gaf in plaats van antwoorden het leerverlies van vrije toegang (Bastani e.a., 2025).',
+ grens:'Die tutor leverde geen winst op boven de controlegroep, en een optimale volgorde van hulpsoorten is niet aangetoond.',
+ vertaling:'Hulpsoorten van licht naar zwaar: terugvragen wat de lerende probeerde, een algemene hint, een gerichte hint, een voorgedane stap, een uitgewerkt voorbeeld. Kies op basis van waar de lerende vastloopt. Niet iedereen hoeft alle treden te doorlopen.',
+ wanneer:'Beginners met een nieuwe probleemsoort mogen sneller een voorbeeld krijgen. Gevorderden hebben meestal genoeg aan een lichte hint.',
+ ai:'Vraagt eerst wat de lerende probeerde, geeft passende hulp en vermindert die bij succes. Een toepassing kan afdwingen dat een hint pas verschijnt na een eigen poging.',
+ le:'Probeert, benoemt waar het vastloopt en zet de volgende stap zelf.',
+ beoordeel:'De benodigde hulp neemt af over opeenvolgende opgaven, en een opgave zonder hulp lukt.',
+ fouten:['Alle treden verplicht stellen, wat frustreert.','Een hint die het antwoord verraadt.','Te snel de volledige oplossing geven.'],
+ afdwing:'Een toepassing kan afdwingen dat een hint pas verschijnt na een eigen poging.',
+ pb:['Vraag eerst wat de lerende al probeerde.','Geef hulp van licht naar zwaar: een algemene hint, een gerichte hint, een voorgedane stap, een uitgewerkt voorbeeld. Kies op basis van waar de lerende vastloopt.','Geef minder hulp zodra het lukt. Niet iedereen hoeft alle stappen te doorlopen.'],
+ zw:'Wat heb je tot nu toe geprobeerd? Kijk nog eens naar de tweede regel: welke bewerking staat daar?',zn:'Het antwoord is 12, want je doet eerst 3 keer 4.'},
+uv:{n:'Uitgewerkte voorbeelden',g:0,functie:'Laten zien hoe een oplossing of een goed product eruitziet, zodat een beginner het principe ziet zonder overbelast te raken.',
+ onderzoek:'Uitgewerkte voorbeelden verbeteren wiskundeprestaties (g = 0,48); correcte voorbeelden werken beter dan foute, en extra zelfverklaarvragen leverden in die meta-analyse geen voordeel op (Barbieri e.a., 2023). Geleidelijk meer stappen laten aanvullen helpt de overgang naar zelf oplossen (Renkl & Atkinson, 2003).',
+ grens:'Voor gevorderden werkt zelf oplossen beter (Kalyuga, 2007); het meeste onderzoek gaat over wiskunde en natuurwetenschap.',
+ vertaling:'Volledig voordoen bij een nieuwe probleemsoort, daarna stappen laten aanvullen, daarna zelf laten oplossen. Begin waar de lerende staat; dit is geen verplichte ladder.',
+ wanneer:'Bij beginners en nieuwe probleemsoorten. Bij schrijftaken: voorbeeldteksten bij de criteria. Foute voorbeelden pas als de basis staat.',
+ ai:'Geeft een voorbeeld van een vergelijkbare, niet dezelfde opgave en laat daarna ontbrekende stappen invullen.',
+ le:'Bestudeert het voorbeeld, vult stappen aan en lost daarna zelf op.',
+ beoordeel:'Een nieuwe opgave van hetzelfde type lukt zelfstandig.',
+ fouten:['Een voorbeeld van precies dezelfde opgave.','Aan elk voorbeeld standaard een uitlegvraag koppelen.','Foute voorbeelden bij beginners.'],
+ pb:['Geef bij een nieuwe probleemsoort een uitgewerkt voorbeeld van een vergelijkbare, niet dezelfde opgave.','Laat daarna steeds meer stappen zelf aanvullen, en daarna zelf oplossen.','Gebruik foute voorbeelden pas als de basis staat.'],
+ zw:'Hier is een vergelijkbare som, helemaal uitgewerkt. Bij de volgende vul jij stap 3 en 4 zelf in.',zn:'Ik maak jouw opgave even voor je, dan zie je hoe het moet.'},
+zv:{n:'Zelfverklaren',g:0,functie:'De lerende maakt verbanden en redenen expliciet en ontdekt zo eigen hiaten.',
+ onderzoek:'Zelfverklaren verbetert begrip in veel vakken en bij verschillende leeftijden (g = 0,55; Bisra e.a., 2018; Chi e.a., 1994). Uitleggen aan een ander na voorbereiding helpt ook, vooral met interactie (Kobayashi, 2019).',
+ grens:'Het kost tijd en inspanning, en bij uitgewerkte voorbeelden in wiskunde gaf het geen extra effect (Barbieri e.a., 2023).',
+ vertaling:'Vraag naar waarom en hoe, niet naar herhalen. Twee varianten: jezelf iets uitleggen (tutor) en het aan een ander uitleggen, zoals aan een AI-leerling.',
+ wanneer:'Bij kernbegrippen en lastige stappen, niet na elke stap.',
+ ai:'Vraagt “waarom klopt deze stap?” of “hoe hangt A samen met B?” en reageert op een hiaat met een gerichte vraag of correctie, niet met de volledige uitleg.',
+ le:'Verwoordt het in eigen woorden.',
+ beoordeel:'Is de uitleg juist, volledig en samenhangend? Een korte checklist helpt.',
+ fouten:['Na elke stap een uitleg eisen.','Een uitleg accepteren die alleen herhaalt.','AI die de uitleg zelf afmaakt.'],
+ pb:['Vraag bij kernbegrippen en lastige stappen naar het waarom en hoe, niet naar herhaling.','Reageer op een hiaat met een gerichte vraag of correctie, niet met de volledige uitleg.','Accepteer geen uitleg die alleen herhaalt en maak de uitleg niet zelf af.'],
+ pl:['Leg in eigen woorden uit waarom de uitkomst klopt en past bij je opdracht.','Herhaal niet wat AI schreef, maar laat zien hoe het samenhangt met wat je al weet.'],
+ zw:'Waarom klopt deze stap? Hoe hangt dat samen met wat je net over druk zei?',zn:'Goed zo! Ik leg het voor de zekerheid nog even helemaal uit.'},
+ot:{n:'Oefenen en transfer',g:1,functie:'Kennis en vaardigheden duurzaam maken en bruikbaar in nieuwe situaties.',
+ onderzoek:'Ophalen levert meer op dan opnieuw lezen (Adesope e.a., 2017) en gespreid oefenen meer dan alles in één keer (Cepeda e.a., 2006). Afwisselen van probleemsoorten helpt vooral als die op elkaar lijken en de lerende ze moet leren onderscheiden (Brunmair & Richter, 2019).',
+ grens:'Transfer naar ver afliggende situaties gaat niet vanzelf (Barnett & Ceci, 2002), en onderzoek met AI ontbreekt.',
+ vertaling:'Laat eerst ophalen en daarna pas uitleggen. Varieer de context. Kom gespreid terug en toets transfer met een nieuwe situatie.',
+ wanneer:'Na een eerste begrip, en bij vaardigheden na feedback.',
+ ai:'Stelt ophaalvragen voor nieuwe uitleg en varieert opgaven en contexten. Een gebouwde toepassing kan herhaalmomenten plannen; een chatbot kent eerdere gesprekken niet altijd.',
+ le:'Haalt op zonder hulp en past toe in een andere context.',
+ beoordeel:'Later en in een nieuwe situatie, zonder hulp.',
+ fouten:['Steeds dezelfde opgave herhalen.','Alles in één sessie.','Oefenen met hulp aan en dat als beheersing zien.'],
+ afdwing:'Een gebouwde toepassing kan herhaalmomenten plannen; een chatbot kent eerdere gesprekken niet altijd.',
+ pb:['Stel eerst ophaalvragen voordat je iets opnieuw uitlegt.','Varieer opgaven en contexten.','Sluit af met een opgave in een nieuwe situatie, zonder hulp. Vraag de lerende later terug te komen, omdat je eerdere gesprekken niet altijd kent.'],
+ zw:'Zonder terug te kijken: welke drie stappen gebruikte je vorige keer? Probeer ze nu op deze nieuwe situatie.',zn:'Hier is dezelfde som nog een keer.'},
+fg:{n:'Feedback geven',g:1,functie:'Het verschil tussen het huidige en het gewenste niveau helpen verkleinen.',
+ onderzoek:'Feedback werkt gemiddeld goed (d = 0,48) met grote verschillen; feedback met veel informatie werkt het best (Wisniewski e.a., 2020). Feedback op taak, aanpak en zelfregulatie werkt beter dan feedback op de persoon (Hattie & Timperley, 2007). Ruim een derde van de feedbackinterventies verslechtert prestaties (Kluger & DeNisi, 1996).',
+ grens:'Studies naar AI-feedback vergelijken meestal met geen feedback, en taalmodellen prijzen snel te veel.',
+ vertaling:'Beantwoord drie vragen: waar werkt de lerende naartoe, hoe staat het werk ervoor en wat is de volgende stap? Koppel elk punt aan de criteria en aan een plek in het werk. Prijs alleen wat echt goed is.',
+ wanneer:'Stem hoeveelheid en timing af op de lerende: beginners krijgen concrete punten, gevorderden meer ruimte om zelf te zoeken.',
+ ai:'Laat eerst zelf beoordelen, citeert het werk en geeft standaard maximaal twee verbeterpunten.',
+ le:'Vergelijkt de feedback met de eigen beoordeling.',
+ beoordeel:'Komt de feedback terug in de herziening? Zie het ontwerpprincipe Feedback verwerken.',
+ fouten:['Lange lijsten met punten.','Algemene lof.','Feedback op de persoon.','AI die het werk herschrijft.'],
+ pb:['Laat de lerende eerst het eigen werk beoordelen aan de criteria.','Beantwoord drie vragen: waar werkt de lerende naartoe, hoe staat het werk ervoor en wat is de volgende stap?','Citeer het werk en geef standaard maximaal twee verbeterpunten. Prijs alleen wat echt goed is.'],
+ zw:'In je tweede alinea staat je standpunt, maar het argument daarna sluit er niet op aan. Wat wil je lezer daar weten?',zn:'Goed geschreven! Hier zijn tien tips om het nog beter te maken.'},
+fv:{n:'Feedback verwerken',g:1,functie:'Zorgen dat feedback leidt tot begrip en handelen. Goede feedback formuleren en zorgen dat de lerende er iets mee doet, zijn twee verschillende ontwerpopgaven.',
+ onderzoek:'Lerenden gebruiken feedback vaak niet vanzelf; verwerken vraagt eigen inzet en ondersteuning (Winstone e.a., 2017). Feedbackgeletterdheid omvat feedback waarderen, zelf oordelen, emoties hanteren en actie ondernemen (Carless & Boud, 2018).',
+ grens:'Het onderzoek komt vooral uit het hoger onderwijs en er is weinig experimenteel onderzoek naar specifieke werkvormen.',
+ vertaling:'Maak verwerken een opdracht: de feedback in eigen woorden samenvatten, wegen, een aanpassing kiezen, herzien en die keuze onderbouwen. Gemotiveerd een punt verwerpen mag ook.',
+ wanneer:'Altijd als er een herziening mogelijk is. Zonder herzienmoment levert feedback weinig op.',
+ ai:'Vraagt de lerende de feedback samen te vatten, vraagt welke aanpassing en waarom, herschrijft niet zelf en bekijkt daarna de herziening.',
+ le:'Interpreteert, weegt, herziet en onderbouwt.',
+ beoordeel:'Vergelijk de versies en de onderbouwing van de keuzes.',
+ fouten:['Feedback zonder herzienmoment.','AI die de herziening uitvoert.','Geen ruimte om feedback gemotiveerd te verwerpen.'],
+ pb:['Vraag de lerende de feedback in eigen woorden samen te vatten.','Vraag welke aanpassing de lerende kiest en waarom. Een punt gemotiveerd verwerpen mag ook.','Herschrijf niet zelf en bekijk daarna de herziening.'],
+ zw:'Welk van de twee punten pak je als eerste aan, en hoe ga je dat doen?',zn:'Ik heb je tekst alvast herschreven met de feedback erin.'},
+nb:{n:'Nabespreken',g:1,functie:'Een ervaring omzetten in inzicht en een verbeterpunt.',
+ onderzoek:'Nabesprekingen verbeteren prestaties met gemiddeld d = 0,67, bij individuen en teams (Tannenbaum & Cerasoli, 2013). Reflectiefasen helpen vooral gevorderden (Chernikova e.a., 2020).',
+ grens:'Niet al het leren gebeurt in de nabespreking; feedback tijdens het oefenen kan ook passend zijn.',
+ vertaling:'Bouwstenen naar het PEARLS-model (Eppich & Cheng, 2015): reacties, beschrijving, analyse en leerpunt, gevolgd door een nieuwe poging. Een korte variant mag.',
+ wanneer:'Uitgebreid na een volledig scenario, kort na een deeloefening.',
+ ai:'Stapt uit de rol, vraagt eerst de lerende, vult aan met eigen observaties, spreekt één verbeterpunt af en biedt een nieuwe poging aan.',
+ le:'Reconstrueert wat er gebeurde, analyseert keuzes en gevolgen en kiest een verbeterpunt.',
+ beoordeel:'De tweede poging is beter op het afgesproken punt.',
+ fouten:['AI die een lijst tips geeft.','Geen nieuwe poging.','Een nabespreking zonder concrete momenten uit het gesprek.'],
+ pb:['Stap na afloop uit de rol en vraag eerst hoe de lerende het ervoer.','Laat reconstrueren wat er gebeurde en keuzes en gevolgen analyseren. Vul daarna aan met je eigen observaties.','Spreek één verbeterpunt af en bied een nieuwe poging aan.'],
+ zw:'Ik stap even uit mijn rol. Hoe ging het volgens jou? Op welk moment veranderde het gesprek?',zn:'Hier zijn acht tips voor de volgende keer.'},
+sd:{n:'Socratisch doorvragen',g:2,functie:'De lerende helpen de eigen redenering te onderzoeken en aan te scherpen.',
+ onderzoek:'Vragen waarmee lerenden hun denken expliciet maken, stimuleren productief denken (Chin, 2007). Dialoog met tegenargumenten ontwikkelde in een meerjarig programma de argumentatievaardigheid van jongeren (Kuhn & Crowell, 2011). Met AI steeg de betrokkenheid, maar een gerandomiseerde studie vond geen hogere leeropbrengst (Blasco & Charisi, 2024).',
+ grens:'Doorvragen werkt slecht zonder voldoende kennis en kan frustreren.',
+ vertaling:'Zes vraagsoorten als gereedschap, naar Paul en Elder (2006): verhelderen, aannames, redenen en bewijs, perspectieven, gevolgen en de vraag zelf. Kies de vraagsoort die het antwoord het verst brengt; er is geen vaste volgorde.',
+ wanneer:'Bij een standpunt, conclusie, ontwerp of redenering die de lerende al heeft. Bij nieuwe stof zonder basis past de tutor beter.',
+ ai:'Stelt standaard één vraag per beurt en bouwt voort op het antwoord. Geeft bij vastlopen of een feitelijke misvatting informatie of een tegenvoorbeeld. Blijft eerlijk als de lerende aandringt.',
+ le:'Verwoordt, onderbouwt, weegt en herziet.',
+ beoordeel:'Een herziene conclusie met onderbouwing en een gewogen tegenargument.',
+ fouten:['Vraag op vraag zonder richting.','Steeds alleen “waarom?”.','Meebuigen.','Nooit iets inhoudelijks zeggen.'],
+ pb:['Stel standaard één vraag per beurt en bouw voort op het antwoord.','Kies de vraagsoort die het verst brengt: verhelderen, aannames, redenen en bewijs, perspectieven, gevolgen of de vraag zelf.','Geef bij vastlopen of een feitelijke misvatting informatie of een tegenvoorbeeld. Blijf eerlijk als de lerende aandringt.'],
+ zw:'Je zegt dat sociale media jongeren eenzamer maken. Welk bewijs heb je daarvoor, en kun je een tegenvoorbeeld bedenken?',zn:'Waarom? En waarom denk je dat? En waarom dan?'},
+pr:{n:'Procesregie overdragen',g:2,functie:'De lerende leert een proces zelf te plannen, te bewaken en bij te sturen.',
+ onderzoek:'Ondersteuning van zelfregulatie in digitale leeromgevingen verbetert prestaties (Zheng, 2016). Steun hoort af te nemen naarmate de lerende meer aankan (Wood e.a., 1976; van de Pol e.a., 2010). Bij schrijven met ChatGPT waren er aanwijzingen voor minder plannen en evalueren (Fan e.a., 2025).',
+ grens:'Hoe snel afbouwen het best werkt, is onbekend.',
+ vertaling:'Maak doel en route zichtbaar, laat de volgende stap zelf plannen, bewaak met korte vragen, laat terugkijken op de aanpak en geef per ronde minder structuur.',
+ wanneer:'Bij langere of terugkerende opdrachten. Niet afbouwen als de lerende overbelast raakt.',
+ ai:'Toont de route, vraagt de lerende om te plannen, checkt de voortgang en laat structuur geleidelijk los. Een gebouwde toepassing kan stappen eerst vastzetten en later vrijgeven.',
+ le:'Plant, bewaakt en stuurt bij.',
+ beoordeel:'Kan de lerende bij een volgende opdracht zelf een plan maken en volgen?',
+ fouten:['Altijd volledige structuur bieden.','Afbouwen zonder te kijken of het lukt.','Vergeten dat plannen soms zelf het leerdoel is.'],
+ afdwing:'Een gebouwde toepassing kan stappen eerst vastzetten en later vrijgeven.',
+ pb:['Maak het doel en de route zichtbaar.','Laat de lerende de volgende stap zelf plannen en bewaak de voortgang met korte vragen.','Geef per ronde minder structuur, maar niet als de lerende overbelast raakt.'],
+ zw:'Je hebt je onderzoeksvraag. Wat is volgens jou de volgende stap, en wanneer wil je die af hebben?',zn:'Ik heb een complete planning voor je gemaakt. Volg die maar.'},
+zr:{n:'Zelfregulatie',g:2,functie:'Zelf een doel kiezen, een aanpak proberen, volgen wat er gebeurt en bijstellen. Dit omvat zelfobservatie, eigenaarschap en omgaan met gedachten, gevoelens en motivatie.',
+ onderzoek:'Zelfregulatie verloopt als een cyclus van voorbereiden, uitvoeren en terugkijken (Zimmerman, 2002). Training in zelfregulatie verbetert prestaties in po en vo (Dignath & Büttner, 2008). Autonomie-ondersteuning verhoogt betrokkenheid (Reeve & Cheon, 2021). Bij toetsangst zijn gedragsmatige en cognitieve aanpakken effectief (Huntley e.a., 2019).',
+ grens:'Onderzoek met AI ontbreekt, en korte technieken zoals zorgen opschrijven of spanning anders bekijken berusten op enkele studies (Ramirez & Beilock, 2011; Jamieson e.a., 2010).',
+ vertaling:'Een cyclus in kleine stappen: een concrete situatie, wat de lerende daarbij merkt, een doel, een kleine aanpak, uitproberen, terugkijken en bijstellen.',
+ wanneer:'Bij studievaardigheden, uitstelgedrag, spanning en keuzes.',
+ ai:'Vraagt naar een concrete situatie en wat de lerende merkte, helpt een doel en een kleine aanpak kiezen en plant een moment om terug te kijken. Geeft opties als de lerende vastloopt en laat de keuze bij de lerende. Stelt geen diagnose en verwijst bij ernstige klachten naar menselijke begeleiding.',
+ le:'Observeert, kiest, probeert en evalueert.',
+ beoordeel:'Het plan is uitgevoerd en de lerende evalueert het zelf. Op termijn doorloopt de lerende de cyclus met minder hulp.',
+ fouten:['Algemene tips geven.','AI die de aanpak kiest.','Geen moment om terug te kijken.','Vakinhoud die het coachingdoel ongemerkt overneemt.'],
+ pb:['Vraag naar een concrete situatie en wat de lerende daarbij merkte.','Help een doel en een kleine aanpak kiezen en plan een moment om terug te kijken.','Geef opties als de lerende vastloopt en laat de keuze bij de lerende. Stel geen diagnose en verwijs bij ernstige klachten naar menselijke begeleiding.'],
+ zw:'Wat wil je bij de volgende toets anders doen? Welke van deze drie aanpakken past daar het best bij jou?',zn:'Je moet gewoon eerder beginnen met leren.'},
+rf:{n:'Reflectie',g:2,functie:'Van een ervaring leren door die te onderzoeken en te verbinden met een vervolgactie.',
+ onderzoek:'Het ALACT-model beschrijft reflectie als cyclus van handelen, terugblikken, de kern bewust maken, alternatieven zoeken en uitproberen (Korthagen e.a., 2001; Korthagen & Vasalos, 2005). Reflectie wordt breed gewaardeerd, maar bewijs voor effect op handelen is vooral kwalitatief (Mann e.a., 2009).',
+ grens:'Alleen reflectievragen doorlopen leidt niet vanzelf tot inzicht of ander handelen.',
+ vertaling:'Volg de ALACT-cyclus. Onderscheid wat er gebeurde van interpretaties. Eindig altijd met een concrete actie.',
+ wanneer:'Na een stage, een project of een lastige situatie.',
+ ai:'Vraagt eerst naar wat er gebeurde, daarna naar gedachten, gevoelens en het perspectief van anderen. Vult geen interpretaties in. Eindigt met een actie en een moment om terug te kijken.',
+ le:'Reconstrueert, ontdekt de kern en kiest een alternatief.',
+ beoordeel:'Een herkenbare kern en een concrete actie; later de vraag of die actie is uitgevoerd.',
+ fouten:['Een vragenlijst afwerken.','Reflectie zonder actie.','AI die interpretaties invult of meteen advies geeft.'],
+ pb:['Vraag eerst wat er gebeurde, daarna naar gedachten, gevoelens en het perspectief van anderen.','Vul geen interpretaties in en geef niet meteen advies.','Eindig met een concrete actie en een moment om terug te kijken.'],
+ zw:'Wat gebeurde er precies, voordat we kijken naar wat je ervan vond?',zn:'Je was waarschijnlijk zenuwachtig. Probeer de volgende keer rustiger te blijven.'},
+bu:{n:'Bewust uitbesteden',g:3,functie:'Per deeltaak bepalen wat AI mag overnemen en welk denken de lerende zelf moet oefenen.',
+ onderzoek:'Taken uitbesteden verhoogt de directe prestatie, maar kan onthouden en begrip verzwakken (Risko & Gilbert, 2016). Vrije AI-toegang tijdens het oefenen ging samen met lagere prestaties zonder AI (Bastani e.a., 2025).',
+ grens:'Welke deeltaken veilig uit te besteden zijn, hangt af van het leerdoel en is niet algemeen te onderzoeken.',
+ vertaling:'Ons model cognitive offloading onderscheidt helpend uitbesteden (ontlasten, verplaatsen, verdiepen) van schadelijk uitbesteden (vermijden, overgave, waarden afstaan). Toets elke deeltaak met de KIES-vraag: leer ik hierdoor minder, hetzelfde of meer?',
+ wanneer:'Bij elke opdracht waarin AI is toegestaan, en als zelfstandig met AI werken het leerdoel is.',
+ ai:'De opdracht benoemt per deeltaak wat de lerende zelf doet. Een gebouwde toepassing kan deeltaken afschermen.',
+ le:'Kiest wat AI doet en onderbouwt die keuze vanuit het leerdoel.',
+ beoordeel:'De lerende legt uit wat hij uitbesteedde en waarom, en kan het eigen deel zonder AI.',
+ fouten:['Een algemeen verbod of een vrijbrief zonder keuze per deeltaak.','Uitbesteden van precies het denkwerk dat getoetst wordt.'],
+ afdwing:'Een gebouwde toepassing kan deeltaken afschermen.',
+ pb:['Neem geen denkwerk over dat bij het leerdoel hoort. Lever geen tekst, analyse of conclusie aan.','Maak per deeltaak duidelijk wat de lerende zelf doet en waarbij jij mag ondersteunen.','Vraag de lerende bij twijfel: leer je hierdoor minder, hetzelfde of meer?'],
+ pl:['Bepaal per deeltaak wat AI doet en welk denkwerk je zelf doet.','Toets elke deeltaak met de vraag: leer ik hierdoor minder, hetzelfde of meer?','Besteed geen denkwerk uit dat getoetst wordt.'],
+ zw:'Deze conclusie is jouw denkwerk, want daar gaat de beoordeling over. Ik kan je wel helpen je bronnen te ordenen.',zn:'Ik schrijf de conclusie wel even voor je.'},
+uc:{n:'Uitkomsten controleren',g:3,functie:'Belangrijke beweringen, bronnen, redeneringen en bruikbaarheid van AI-uitvoer beoordelen.',
+ onderzoek:'Lateraal lezen, het controleren van een bron via andere bronnen zoals factcheckers doen, is aantoonbaar te leren; in een veldstudie verbeterden scholieren na zes lessen (Wineburg e.a., 2022; Wineburg & McGrew, 2019). AI-gebruikers overschatten hun eigen prestatie (Fernandes e.a., 2026).',
+ grens:'Dit onderzoek gaat over webbronnen, niet specifiek over AI-uitvoer.',
+ vertaling:'Haal de twee of drie belangrijkste beweringen eruit, controleer ze buiten de AI, check of genoemde bronnen bestaan en dit echt zeggen, leg de uitkomst naast je vakkennis en leg vast wat je overnam, aanpaste of verwierp.',
+ wanneer:'Altijd als AI-uitvoer in eigen werk terechtkomt. Hoe zwaarder de beslissing, hoe grondiger.',
+ ai:'De opdracht vraagt om controle buiten de AI. Een toepassing kan bronnen laten tonen en de lerende laten aangeven wat gecontroleerd is.',
+ le:'Controleert en legt vast.',
+ beoordeel:'De lerende vindt een geplaatste fout in AI-uitvoer en onderbouwt het oordeel.',
+ fouten:['De AI vragen of de AI klopt.','Alleen controleren of een bron bestaat, niet wat erin staat.'],
+ afdwing:'Een toepassing kan bronnen laten tonen en de lerende laten aangeven wat gecontroleerd is.',
+ pl:['Haal de twee of drie belangrijkste beweringen uit de AI-uitvoer en controleer ze buiten de AI.','Check of genoemde bronnen bestaan en echt zeggen wat er staat.','Leg de uitkomst naast je vakkennis en leg vast wat je overnam, aanpaste of verwierp.']}
+};
+
+const ROLES = [
+{id:'tutor',n:'Tutor',icon:'tutor',kort:'Legt uit, stap voor stap',mollick:'AI-tutor',kies:'Uitlegger, en soms Oefenmaatje',
+ functie:'AI legt uit en begeleidt stap voor stap, zodat de lerende begrip opbouwt.',
+ leerdoel:'Nieuwe stof begrijpen.',lerende:'Bouwt begrip op, legt zelf uit, past toe.',
+ standaard:'Geeft meteen een volledig en vloeiend antwoord, peilt zelden voorkennis en checkt niet of de lerende het zonder hulp kan.',
+ zie:'De lerende lost een nieuwe opgave zonder hulp op en legt uit waarom de aanpak klopt, ook een tijd later.',
+ onderzoek:'In een gerandomiseerde studie in een inleidend natuurkundevak aan Harvard leerden 194 studenten met een AI-tutor thuis meer dan in een actieve les, in minder tijd (Kestin e.a., 2025). Het ging om directe leeruitkomsten, en het ontwerp omvatte ook vooraf uitgewerkte inhoud en sturing via de toepassing. Het resultaat is dus niet alleen aan een goede prompt toe te schrijven. Een zesweeks naschools programma in Nigeria met een AI-tutor en begeleidende docenten leverde 0,31 standaarddeviatie op (De Simone e.a., 2025).',
+ doel:'Je bent een AI-tutor. Je legt uit en begeleidt stap voor stap, zodat de lerende zelf begrip opbouwt.',
+ grens:'Geef niet meteen het volledige antwoord als zelf bedenken het leerdoel is. Stem de stapgrootte af op wat de lerende laat zien.',
+ lp:[
+ {n:'Sluit aan en bouw op',s:'principe',ai:'Peilt voorkennis met een korte vraag of opgave en kiest het vertrekpunt.',le:'Laat zien wat hij al weet of kan.',op:['vk'],a:'sterk',m:'ontbreekt',b:'Simonsmeier e.a. 2022; Rey e.a. 2019; Kalyuga 2007',bm:'',p:'Peil eerst met een korte vraag of opgave wat de lerende al weet en kies op basis daarvan het vertrekpunt.'},
+ {n:'Gebruik passende analogieën',s:'werkwijze',ai:'Verbindt met iets bekends en maakt overeenkomsten en grenzen expliciet.',le:'Vergelijkt actief en keert terug naar het begrip.',op:['an'],a:'stevig',m:'ontbreekt',b:'Alfieri e.a. 2013; Richland & Simms 2015; Glynn 1994',bm:'',p:'Verbind een nieuw begrip met iets bekends uit de leefwereld van de lerende en maak overeenkomsten en grenzen van de vergelijking expliciet.'},
+ {n:'Doseer de hulp',s:'principe',ai:'Bepaalt waar de lerende vastloopt en kiest een hint, een voorgedane stap of een uitgewerkt voorbeeld.',le:'Probeert eerst zelf en zet daarna zelf de volgende stap.',op:['hd','uv'],a:'sterk',m:'experimenteel',b:'van de Pol e.a. 2010; Belland e.a. 2017; Barbieri e.a. 2023',bm:'Bastani e.a. 2025',p:'Ga na waar de lerende vastloopt en kies dan de lichtste hulp die waarschijnlijk werkt: een hint, een voorgedane stap of een uitgewerkt voorbeeld.'},
+ {n:'Laat zelf uitleggen',s:'werkwijze',ai:'Vraagt waarom een stap klopt en hoe begrippen samenhangen; reageert op hiaten.',le:'Verwoordt verbanden in eigen woorden.',op:['zv'],a:'sterk',m:'ontbreekt',b:'Chi e.a. 1994; Bisra e.a. 2018',bm:'',p:'Vraag bij kernbegrippen en lastige stappen waarom een stap klopt en hoe begrippen samenhangen. Reageer op een hiaat met een gerichte vraag.'},
+ {n:'Laat zelfstandig toepassen',s:'werkwijze',ai:'Biedt een nieuwe, gevarieerde opgave zonder hulp.',le:'Haalt op en past toe in een nieuwe situatie.',op:['ot'],a:'sterk',m:'ontbreekt',b:'Adesope e.a. 2017; Cepeda e.a. 2006',bm:'',p:'Sluit af met een nieuwe, gevarieerde opgave die de lerende zonder hulp maakt.'}
+ ]},
+{id:'leerling-socratisch',n:'Leerling / Socratisch',icon:'ls',kort:'Leren door uitleggen en doorvragen',mollick:'AI-student, met de Socratische gesprekspartner als eigen toevoeging',kies:'Brainstormer (bij de Socratische gesprekspartner)',
+ functie:'Twee functies die via dialoog werken, elk met een eigen opdracht. Bij de leerling leert de lerende door iets uit te leggen aan een AI die een beginner speelt. Bij de Socratische gesprekspartner onderzoekt de lerende de eigen redenering en aannames.',
+ leerdoel:'Begrip laten zien en gaten in eigen kennis vinden (leerling). Kritisch denken en argumenteren (Socratisch).',
+ lerende:'Legt uit, ordent en corrigeert (leerling). Onderzoekt de eigen redenering en aannames (Socratisch).',
+ standaard:'Weet alles al, verbetert zichzelf direct en geeft de juiste uitleg voordat de lerende heeft nagedacht. Gaat vaak mee met wat de lerende vindt (Sharma e.a., 2024).',
+ zie:'Bij de leerling: een juiste, samenhangende uitleg en zelf gevonden fouten, gevolgd door een opgave zonder AI. Bij de Socratische gesprekspartner: een herziene conclusie met onderbouwing en een gewogen tegenargument.',
+ onderzoek:'Een AI-leerling met bewust beperkte kennis die zelf waarom-vragen stelde, leidde tot gesprekken met meer kennisopbouw. Dat is een procesmaat in een kleine studie (Jin e.a., 2024). Socratische chatbots verhoogden de betrokkenheid, maar een gerandomiseerde studie vond geen hogere leeropbrengst (Blasco & Charisi, 2024).',
+ aandacht:[['Aandachtspunten','Foute voorbeelden helpen vooral lerenden met voldoende voorkennis; beginners leren meer van correcte voorbeelden (Große & Renkl, 2007; Barbieri e.a., 2023). Socratisch betekent niet dat AI nooit iets zegt: bij vastlopen of een feitelijke misvatting mag AI informatie of een tegenvoorbeeld geven.']],
+ subs:[
+  {n:'AI als leerling',kort:'leren door uitleggen',doel:'Je speelt een AI-leerling: een beginner met bewust beperkte kennis die uitleg nodig heeft. De lerende leert door jou iets uit te leggen.',grens:'Je weet bewust weinig. Verbeter jezelf niet uit jezelf en geef geen uitleg voordat de lerende heeft nagedacht.',zie:'Een juiste, samenhangende uitleg en zelf gevonden fouten, gevolgd door een opgave zonder AI.'},
+  {n:'Socratische gesprekspartner',kort:'leren door onderzoeken',doel:'Je bent een Socratische gesprekspartner. Je helpt de lerende de eigen redenering en aannames te onderzoeken en aan te scherpen.',grens:'Stel standaard één vraag per beurt. Geef bij vastlopen of een feitelijke misvatting wel informatie of een tegenvoorbeeld.',zie:'Een herziene conclusie met onderbouwing en een gewogen tegenargument.'}],
+ lp:[
+ {sub:0,n:'Laat de lerende uitleggen',s:'werkwijze',ai:'Speelt een beginner met bewust beperkte kennis en vraagt om uitleg.',le:'Structureert de uitleg, maakt relaties expliciet en stemt af op wat de ontvanger begrijpt.',op:['zv'],note:{zv:'Variant: uitleggen aan een ander'},a:'stevig',m:'verkennend',b:'Kobayashi 2019; Roscoe & Chi 2007',bm:'Jin e.a. 2024',p:'Speel een beginner met bewust beperkte kennis en vraag de lerende om uitleg.'},
+ {sub:0,n:'Vraag naar ontbrekende stappen',s:'werkwijze',ai:'Vraagt gericht naar sprongen in de redenering en impliciete voorkennis.',le:'Vult het ontbrekende verband aan.',op:['zv'],a:'stevig',m:'ontbreekt',b:'Roscoe & Chi 2007, 2008',bm:'',p:'Vraag gericht door op sprongen in de redenering en op voorkennis die de lerende als vanzelfsprekend aanneemt.'},
+ {sub:0,n:'Laat de lerende corrigeren',s:'werkwijze',ai:'Doet iets na met een aannemelijke denkfout, zodra de basis staat; benoemt de fout zelf als de lerende die niet ontdekt.',le:'Herkent, verklaart en herstelt de fout.',op:['uv'],note:{uv:'Hier: foute voorbeelden'},a:'beperkt',m:'ontbreekt',b:'Große & Renkl 2007; Barbieri e.a. 2023',bm:'',p:'Doe zodra de basis staat iets na met een aannemelijke denkfout. Ontdekt de lerende de fout niet, benoem die dan zelf.'},
+ {sub:1,n:'Verhelder begrippen en aannames',s:'werkwijze',ai:'Vraagt naar betekenissen, voorbeelden, tegenvoorbeelden en impliciete aannames.',le:'Maakt eigen begrippen en aannames expliciet.',op:['sd'],a:'stevig',m:'verkennend',b:'Chin 2007; Paul & Elder 2006',bm:'Blasco & Charisi 2024; Degen & Asanov 2025',p:'Vraag naar betekenissen, voorbeelden, tegenvoorbeelden en aannames die de lerende niet uitspreekt.'},
+ {sub:1,n:'Onderzoek redenen en bewijs',s:'werkwijze',ai:'Laat bewering, onderbouwing en redenering onderscheiden.',le:'Beoordeelt of het bewijs de conclusie draagt.',op:['sd'],a:'stevig',m:'verkennend',b:'Chin 2007; Kuhn & Crowell 2011',bm:'Blasco & Charisi 2024',p:'Laat de lerende bewering, onderbouwing en redenering onderscheiden en beoordelen of het bewijs de conclusie draagt.'},
+ {sub:1,n:'Laat een ander perspectief wegen',s:'werkwijze',ai:'Vraagt een alternatief standpunt zorgvuldig te reconstrueren.',le:'Vergelijkt standpunten op argumenten en bewijs.',op:['sd'],a:'stevig',m:'verkennend',b:'Kuhn & Crowell 2011',bm:'Blasco & Charisi 2024',p:'Vraag de lerende een ander standpunt zorgvuldig te reconstrueren en de standpunten te vergelijken op argumenten en bewijs.'},
+ {sub:1,n:'Toets en scherp de conclusie aan',s:'werkwijze',ai:'Vraagt naar tegenvoorbeelden, geldigheidsvoorwaarden en onzekerheid.',le:'Herziet de conclusie waar nodig.',op:['sd'],a:'stevig',m:'verkennend',b:'Kuhn & Crowell 2011; Chin 2007',bm:'Blasco & Charisi 2024',p:'Vraag naar tegenvoorbeelden, naar de voorwaarden waaronder de conclusie geldt en naar onzekerheid, zodat de lerende de conclusie zo nodig herziet.'}
+ ]},
+{id:'procesbegeleider',n:'Proces­begeleider',icon:'proces',kort:'Bewaakt het proces',mollick:'AI-teamgenoot, door ons anders ingevuld',
+ functie:'AI ondersteunt het verloop van een complexe taak, zodat de lerende aandacht heeft voor de inhoud.',
+ leerdoel:'Een complexe opdracht of onderzoek doorlopen.',lerende:'Neemt de inhoudelijke beslissingen, plant steeds meer zelf.',
+ standaard:'Levert het eindproduct in één keer en neemt daarmee het denkwerk over waar de opdracht om draaide.',
+ zie:'De kwaliteit van tussenproducten en eindproduct, en of de lerende het proces een volgende keer met minder steun zelf kan plannen.',
+ onderzoek:'Er is nog geen onderzoek naar precies deze rol; de onderbouwing is indirect. Samenwerkingsscripts hebben een groot effect op samenwerkingsvaardigheden (d = 0,95) en een klein effect op vakkennis (d = 0,20). Voor vakkennis werken ze beter met inhoudelijke steun en als lerenden op elkaars redeneringen voortbouwen (Vogel e.a., 2017). Ondersteuning van zelfregulatie in digitale leeromgevingen verbetert prestaties (Zheng, 2016). Studenten die met ChatGPT schreven, lieten aanwijzingen zien voor minder plannen, bewaken en evalueren (Fan e.a., 2025).',
+ aandacht:[['Aandachtspunt','Als leren plannen zelf het leerdoel is, moet de ondersteuning juist gelegenheid geven om dat te oefenen. Een gebouwde toepassing kan de volgorde afdwingen, bijvoorbeeld door een stap pas te openen na een tussenproduct.']],
+ doel:'Je bent een procesbegeleider. Je ondersteunt het verloop van een complexe opdracht, zodat de lerende aandacht heeft voor de inhoud en de inhoudelijke beslissingen zelf neemt.',
+ grens:'Neem geen inhoudelijke beslissingen over en lever geen eindproduct.',
+ waarborg:'Als leren plannen zelf het leerdoel is, moet de ondersteuning juist gelegenheid geven om dat te oefenen.',
+ lp:[
+ {n:'Ondersteun de organisatie',s:'principe',ai:'Bewaakt stappen, voortgang en tussenresultaten, voor zover plannen niet zelf het leerdoel is.',le:'Richt de aandacht op de inhoud.',op:['pr'],a:'stevig',m:'ontbreekt',b:'Sweller e.a. 2019; Vogel e.a. 2017',bm:'',p:'Bewaak de stappen, de voortgang en de tussenresultaten, zodat de lerende zich op de inhoud kan richten. Is plannen zelf het leerdoel, laat dat dan aan de lerende.'},
+ {n:'Bied overzichtelijke stappen',s:'werkwijze',ai:'Deelt de taak op in betekenisvolle onderdelen en maakt tussenresultaten en afhankelijkheden zichtbaar.',le:'Werkt per onderdeel en houdt zicht op het geheel.',op:['pr'],a:'stevig',m:'ontbreekt',b:'Rey e.a. 2019; Nadolski e.a. 2005',bm:'',p:'Deel de taak op in betekenisvolle onderdelen en maak tussenresultaten en afhankelijkheden zichtbaar.'},
+ {n:'Vraag inhoudelijk door',s:'werkwijze',ai:'Laat tussenresultaten toetsen aan doel en criteria en laat keuzes onderbouwen.',le:'Onderbouwt en verbetert.',op:['sd','fg'],a:'stevig',m:'ontbreekt',b:'Vogel e.a. 2017; Chi & Wylie 2014',bm:'',p:'Laat de lerende tussenresultaten toetsen aan doel en criteria en keuzes onderbouwen.'},
+ {n:'Laat de lerende uitwerken',s:'principe',ai:'Neemt geen inhoudelijke beslissingen over.',le:'Neemt de relevante beslissingen en werkt ze uit.',op:['bu'],a:'stevig',m:'verkennend',b:'Chi & Wylie 2014; Risko & Gilbert 2016',bm:'Lehmann e.a. 2025 (preprint); Fan e.a. 2025',p:'Neem geen inhoudelijke beslissingen over. De lerende beslist en werkt uit.'},
+ {n:'Bouw de procesregie af',s:'principe',ai:'Laat steeds meer plannen, bewaken en bijsturen door de lerende, passend bij wat die al aankan.',le:'Plant, bewaakt en stuurt bij.',op:['pr','zr'],a:'stevig',m:'ontbreekt',b:'Zheng 2016; Zimmerman 2002',bm:'',p:'Laat de lerende steeds meer zelf plannen, bewaken en bijsturen, passend bij wat die al aankan.'}
+ ]},
+{id:'simulator',n:'Simulator',icon:'sim',kort:'Speelt een situatie',mollick:'AI-simulator',kies:'Oefenmaatje',
+ functie:'AI speelt een herkenbare situatie waarin de lerende een vaardigheid oefent en leert van de gevolgen van eigen keuzes.',
+ leerdoel:'Een vaardigheid oefenen in een herkenbare situatie.',lerende:'Oefent een vaardigheid en bespreekt na.',
+ standaard:'Valt snel uit de rol, wordt te meegaand of te makkelijk en geeft ongevraagd tips.',
+ zie:'Een verbeterde tweede poging, daarna toepassing in een gevarieerde situatie en uiteindelijk in de praktijk, zoals op stage.',
+ onderzoek:'Simulaties hebben in het hoger onderwijs een groot effect op complexe vaardigheden (g = 0,85). Beginners profiteren vooral van voorbeelden, gevorderden van reflectiemomenten (Chernikova e.a., 2020). Nabesprekingen verbeteren prestaties met gemiddeld d = 0,67 (Tannenbaum & Cerasoli, 2013). In een AI-studie met 40 deelnemers gebruikten mensen die conflicten oefenden met een gesimuleerde gesprekspartner, in een vervolggesprek met een acteur minder escalerende strategieën dan een groep die lesmateriaal bestudeerde (Shaikh e.a., 2024). Dat zegt nog niets over dagelijkse conflicten. Die toepassing gaf zelf ook feedback tijdens het oefenen.',
+ doel:'Je speelt een herkenbare situatie waarin de lerende een vaardigheid oefent en leert van de gevolgen van eigen keuzes.',
+ grens:'Blijf in je rol tijdens het oefenen. Stap pas uit de rol voor de nabespreking, of als de lerende daarom vraagt.',
+ lp:[
+ {n:'Baken de oefening af',s:'werkwijze',ai:'Maakt vaardigheid, situatie, rollen en succescriteria duidelijk en beperkt onnodige complexiteit.',le:'Weet wat hij oefent en waaraan succes te zien is.',op:['vk'],a:'stevig',m:'ontbreekt',b:'Issenberg e.a. 2005',bm:'',p:'Maak vooraf duidelijk welke vaardigheid wordt geoefend, wat de situatie en de rollen zijn en waaraan succes te zien is. Houd de situatie zo eenvoudig als het doel toelaat.'},
+ {n:'Houd de situatie geloofwaardig',s:'werkwijze',ai:'Laat reacties en gevolgen aansluiten bij de vaardigheid en de werkelijkheid.',le:'Ervaart de gevolgen van eigen keuzes.',op:['nb'],a:'stevig',m:'verkennend',b:'Issenberg e.a. 2005',bm:'Shaikh e.a. 2024',p:'Laat reacties en gevolgen aansluiten bij de vaardigheid en de werkelijkheid. Word niet te meegaand of te makkelijk.'},
+ {n:'Kies het feedbackmoment bewust',s:'principe',ai:'Geeft feedback tijdens, tussen of na oefenmomenten, afhankelijk van doel en benodigde steun.',le:'Verwerkt feedback zonder dat de oefening stukgaat.',op:['fg'],a:'stevig',m:'verkennend',b:'Chernikova e.a. 2020; Eppich & Cheng 2015',bm:'Shaikh e.a. 2024',p:'Kies bewust of je feedback geeft tijdens, tussen of na het oefenen, afhankelijk van het doel en de steun die de lerende nodig heeft.'},
+ {n:'Stem uitdaging en steun af',s:'principe',ai:'Varieert complexiteit, beschikbare informatie, voorbeelden en begeleiding op basis van het handelen van de lerende.',le:'Werkt aan de rand van wat hij kan.',op:['hd','uv'],a:'sterk',m:'ontbreekt',b:'Chernikova e.a. 2020',bm:'',p:'Varieer complexiteit, beschikbare informatie, voorbeelden en begeleiding op basis van hoe de lerende handelt.'},
+ {n:'Bespreek na en oefen opnieuw',s:'werkwijze',ai:'Laat reconstrueren wat er gebeurde, keuzes en gevolgen onderzoeken, een verbeterpunt kiezen en opnieuw oefenen; varieert later de situatie.',le:'Analyseert, kiest een verbeterpunt en probeert opnieuw.',op:['nb','ot'],a:'sterk',m:'ontbreekt',b:'Tannenbaum & Cerasoli 2013; Ericsson e.a. 1993',bm:'',p:'Stap na afloop uit de rol, laat de lerende reconstrueren wat er gebeurde, kies samen één verbeterpunt en bied een nieuwe poging aan. Varieer later de situatie.'}
+ ]},
+{id:'mentor',n:'Mentor',icon:'mentor',kort:'Feedback op het werk',mollick:'AI-mentor',kies:'Feedbackgever',
+ functie:'AI geeft doorlopende, evenwichtige feedback om een product of vaardigheid te verbeteren aan de hand van criteria. Het referentiekader ligt buiten de lerende: de criteria van de taak.',
+ leerdoel:'Een product of vaardigheid verbeteren.',lerende:'Beoordeelt eigen werk, verwerkt feedback, herziet.',
+ standaard:'Prijst te veel, geeft tien punten tegelijk of herschrijft het werk meteen zelf.',
+ zie:'Een betere herziening, een nauwkeuriger zelfbeoordeling en dezelfde deelvaardigheid beter in de volgende taak.',
+ onderzoek:'Feedback werkt gemiddeld goed, vooral als die veel informatie bevat (Wisniewski e.a., 2020). Ruim een derde van de feedbackinterventies verslechtert prestaties, vaak als de aandacht naar de persoon gaat (Kluger & DeNisi, 1996). In een gerandomiseerde studie met 459 scholieren verbeterde AI-feedback de herziening van een betoog (d = 0,19) en de motivatie (d = 0,36), vergeleken met herzien zonder feedback (Meyer e.a., 2024). De vergelijking was met geen feedback, niet met feedback van een docent.',
+ aandacht:[['Mentor of coach','Gaat het gesprek over het werk, dan past de mentor. Gaat het over hoe de lerende leert, dan past de coach. Beide laten de lerende eerst zelf beoordelen.']],
+ doel:'Je bent een AI-mentor. Je geeft doorlopende, evenwichtige feedback op het werk aan de hand van criteria, zodat de lerende het werk zelf verbetert.',
+ grens:'Herschrijf het werk niet zelf. Geef standaard maximaal twee verbeterpunten.',
+ lp:[
+ {n:'Maak kwaliteit concreet',s:'werkwijze',ai:'Verheldert doel en criteria, toont voorbeelden en laat eerst zelf beoordelen.',le:'Beoordeelt eigen werk aan de criteria.',op:['fg','uv'],a:'stevig',m:'ontbreekt',b:'Panadero e.a. 2017; Panadero e.a. 2023',bm:'',p:'Verhelder doel en criteria, laat een voorbeeld zien en laat de lerende eerst het eigen werk beoordelen.'},
+ {n:'Geef gerichte feedback',s:'principe',ai:'Verbindt feedback aan waarneembaar werk, taak en aanpak; stemt hoeveelheid, timing en concreetheid af op wat de lerende ermee kan.',le:'Ontvangt een paar bruikbare punten.',op:['fg'],a:'sterk',m:'experimenteel',b:'Wisniewski e.a. 2020; Hattie & Timperley 2007; Kluger & DeNisi 1996',bm:'Meyer e.a. 2024',p:'Koppel feedback aan concrete plekken in het werk, aan de taak en aan de aanpak. Stem hoeveelheid, timing en concreetheid af op wat de lerende ermee kan.'},
+ {n:'Laat feedback verwerken',s:'werkwijze',ai:'Laat feedback begrijpen, wegen en verwerken; vraagt welke aanpassing de lerende kiest en waarom; herschrijft niet zelf.',le:'Kiest en onderbouwt aanpassingen en herziet.',op:['fv'],a:'stevig',m:'experimenteel',b:'Carless & Boud 2018; Winstone e.a. 2017',bm:'Meyer e.a. 2024',p:'Vraag de lerende de feedback in eigen woorden samen te vatten, een aanpassing te kiezen en die keuze te onderbouwen. Herschrijf niet zelf.'},
+ {n:'Oefen gericht opnieuw',s:'werkwijze',ai:'Kiest een relevante deelvaardigheid en laat die oefenen en toepassen in een volgende taak.',le:'Past de deelvaardigheid toe in een nieuwe taak.',op:['ot'],a:'stevig',m:'ontbreekt',b:'Ericsson e.a. 1993; Barnett & Ceci 2002',bm:'',p:'Kies een relevante deelvaardigheid en laat die oefenen en toepassen in een volgende taak.'}
+ ]},
+{id:'coach',n:'Coach',icon:'coach',kort:'Hoe leer ik?',mollick:'AI-coach',
+ functie:'AI helpt de lerende nadenken over het eigen leren: hoe leer ik, wat werkt voor mij, wat speelt mee en wat probeer ik de volgende keer? Denk aan aanpak en planning, studiegewoonten, motivatie en omgaan met spanning rond toetsen. De coach werkt naast de menselijke begeleider.',
+ leerdoel:'Leren leren: aanpak, planning, motivatie, omgaan met spanning.',lerende:'Kijkt naar de eigen aanpak, kiest een leerstrategie, kijkt terug en stelt bij.',
+ standaard:'Geeft meteen advies en bevestigt hoe de lerende het zelf ziet. Bij persoonlijk advies bevestigen taalmodellen gebruikers bijna de helft vaker dan mensen doen (Cheng e.a., 2026). Een chatbot glijdt ook snel af naar vakinhoudelijke hulp.',
+ zie:'De lerende beschrijft hoe hij leert en wat werkt, kiest een eigen aanpak en vertelt later wat die opleverde. Op termijn doorloopt de lerende die cyclus met minder hulp.',
+ onderzoek:'Training in zelfregulatie en metacognitie verbetert schoolprestaties (Dignath & Büttner, 2008). Autonomie-ondersteunende begeleiding is goed te leren en verhoogt betrokkenheid (Reeve & Cheon, 2021). Reflectie op ervaringen is vooral theoretisch en kwalitatief onderzocht (Mann e.a., 2009). Bij toetsangst zijn er effectieve, onderzochte aanpakken (Huntley e.a., 2019). Mollick en Mollick geven voor deze rol onder meer een reflectieprompt en een pre-mortem: vooraf bedenken wat er mis kan gaan. AI-onderzoek naar deze rol ontbreekt nog.',
+ aandacht:[['Grenzen','Dit is onderwijsgerichte ondersteuning, geen behandeling. De coach stelt geen diagnose en verwijst bij signalen van ernstige of langdurige klachten naar menselijke begeleiding. Vakinhoudelijke hulp komt alleen aan bod als die bij de gekozen hulpvraag past.'],['Mentor of coach','Gaat het gesprek over het werk, dan past de mentor. Gaat het over hoe de lerende leert, dan past de coach.']],
+ doel:'Je bent een AI-coach. Je helpt de lerende nadenken over het eigen leren: hoe leer ik, wat werkt voor mij, wat speelt mee en wat probeer ik de volgende keer.',
+ grens:'Je bent onderwijsgerichte ondersteuning, geen behandeling. Je stelt geen diagnose en verwijst bij signalen van ernstige of langdurige klachten naar [mentor, vertrouwenspersoon of huisarts]. Vakinhoudelijke hulp geef je alleen als die bij de gekozen hulpvraag past.',
+ waarborg:'Onderwijsgerichte ondersteuning, geen behandeling: geen diagnose, verwijzen bij signalen van ernstige of langdurige klachten, en vakinhoud alleen als die bij de hulpvraag past.',
+ lp:[
+ {n:'Vertrek vanuit een concrete leerervaring',s:'werkwijze',ai:'Laat een recente toets, opdracht of studieweek reconstrueren en onderscheidt wat er gebeurde van interpretaties.',le:'Beschrijft hoe hij te werk ging (zelfobservatie).',op:['rf'],a:'beperkt',m:'ontbreekt',b:'Korthagen & Vasalos 2005; Mann e.a. 2009',bm:'',p:'Laat de lerende een recente toets, opdracht of studieweek reconstrueren en onderscheid wat er gebeurde van interpretaties.'},
+ {n:'Breng het eigen leren in kaart',s:'werkwijze',ai:'Onderzoekt aanpak, planning, gedachten, gevoelens, motivatie en omstandigheden.',le:'Herkent wat het eigen leren helpt of hindert.',op:['rf','zr'],a:'stevig',m:'ontbreekt',b:'Dignath & Büttner 2008; Zimmerman 2002',bm:'',p:'Onderzoek samen aanpak, planning, gedachten, gevoelens, motivatie en omstandigheden, zodat de lerende herkent wat het leren helpt of hindert.'},
+ {n:'Laat zelf een aanpak kiezen',s:'principe',ai:'Helpt doelen en mogelijke leerstrategieën verkennen; geeft opties of informatie als de lerende vastloopt; laat de keuze bij de lerende.',le:'Kiest een eigen aanpak (eigenaarschap).',op:['zr'],a:'stevig',m:'ontbreekt',b:'Reeve & Cheon 2021; Ryan & Deci 2020',bm:'',p:'Verken doelen en mogelijke leerstrategieën. Geef opties of informatie als de lerende vastloopt, maar laat de keuze bij de lerende.'},
+ {n:'Plan een kleine stap en kijk vooruit',s:'werkwijze',ai:'Vertaalt inzicht naar een haalbare actie en een moment om terug te kijken; vraagt wat er mis kan gaan en wat de lerende dan doet.',le:'Maakt een concreet plan en bereidt zich voor op obstakels.',op:['zr'],a:'stevig',m:'ontbreekt',b:'Zimmerman 2002; Dignath & Büttner 2008',bm:'',p:'Vertaal inzicht naar een haalbare actie en een moment om terug te kijken. Vraag wat er mis kan gaan en wat de lerende dan doet.'},
+ {n:'Kijk terug en stel bij',s:'werkwijze',ai:'Bespreekt later wat de aanpak opleverde en wat de volgende stap is.',le:'Evalueert en stelt de aanpak bij.',op:['zr','nb'],a:'stevig',m:'ontbreekt',b:'Zimmerman 2002; Tannenbaum & Cerasoli 2013',bm:'',p:'Bespreek later wat de aanpak opleverde en wat de volgende stap is.'}
+ ]},
+{id:'hulpmiddel',n:'Hulpmiddel',icon:'tool',kort:'Voert een deeltaak uit',mollick:'AI-tool',kies:'Samenvatter, Schrijver, Vertaler, Verbeteraar',lerendeStuurt:true,
+ functie:'AI voert een deeltaak uit die de lerende zelf aanstuurt, zoals samenvatten, opzoeken of een eerste opzet maken. Zelfstandig en verantwoord met AI werken kan ook zelf het leerdoel zijn; dan sluit deze rol direct aan op KIES.',
+ leerdoel:'Productief werken waar het denkwerk niet het leerdoel is, of AI-vaardigheid zelf.',lerende:'Kiest wat AI doet, controleert en verantwoordt.',
+ standaard:'Doet alles wat gevraagd wordt, ook het denkwerk dat bij het leerdoel hoort. Brengt fouten even stellig als feiten.',
+ zie:'De lerende legt uit wat hij uitbesteedde en waarom, vindt fouten in AI-uitvoer en verantwoordt zijn keuzes inhoudelijk.',
+ onderzoek:'Taken uitbesteden verhoogt de directe prestatie, maar kan onthouden en begrip verzwakken (Risko & Gilbert, 2016). Controleren buiten de bron, zoals factcheckers doen, is aantoonbaar te leren (Wineburg e.a., 2022). AI-gebruikers overschatten hun eigen prestatie (Fernandes e.a., 2026).',
+ aandacht:[['Ontwerp de opdracht','Bij deze rol stuurt de lerende de AI aan. De docent ontwerpt dus vooral de opdracht en de afspraken. AI-gebruik zichtbaar maken is een afspraak over integriteit; die hoort bij de Spelregels van KIES.']],
+ waarborg:'AI-gebruik zichtbaar maken is een afspraak over integriteit en hoort bij de Spelregels van KIES.',
+ lp:[
+ {n:'Kies bewust wat je uitbesteedt',s:'principe',ai:'De opdracht of toepassing maakt per deeltaak de relatie met het leerdoel zichtbaar.',le:'Bepaalt wat AI overneemt en welk denken hij zelf oefent.',op:['bu'],a:'stevig',m:'experimenteel',b:'Risko & Gilbert 2016',bm:'Bastani e.a. 2025; Lehmann e.a. 2025 (preprint)',p:'Bepaal per deeltaak wat AI voor je doet en welk denkwerk je zelf oefent. Kijk daarbij naar het leerdoel.'},
+ {n:'Beoordeel de uitkomst',s:'werkwijze',ai:'De opdracht vraagt om controle buiten de AI.',le:'Controleert beweringen, bronnen, redeneringen en bruikbaarheid.',op:['uc'],a:'stevig',m:'verkennend',b:'Wineburg e.a. 2022',bm:'Fernandes e.a. 2026 (laat de behoefte zien, toetst geen aanpak)',p:'Controleer belangrijke beweringen, bronnen, redeneringen en bruikbaarheid buiten de AI.'},
+ {n:'Gebruik en verantwoord',s:'werkwijze',ai:'De opdracht vraagt om een korte verantwoording.',le:'Selecteert, past aan of verwerpt en legt uit waarom de uitkomst klopt en past.',op:['zv'],a:'beperkt',m:'ontbreekt',b:'Chi & Wylie 2014',bm:'',p:'Selecteer, pas aan of verwerp de uitkomst en leg kort uit waarom die klopt en past.'}
+ ]}
+];
+
+const UP = [
+ {n:'Voorkennis stuurt leren',f:'Je leert vanuit wat je al weet, in behapbare stappen.',a:'sterk',m:'ontbreekt',o:'Voorkennis voorspelt sterk wat iemand na afloop weet, maar nauwelijks hoeveel iemand erbij leert (Simonsmeier e.a., 2022). Het gaat erom dat relevante kennis wordt geactiveerd en misvattingen worden herkend. Leerstof in betekenisvolle delen helpt, omdat het werkgeheugen beperkt is (Rey e.a., 2019). Wat beginners helpt, kan gevorderden hinderen (Kalyuga, 2007).',ai:'Nog geen studies gevonden naar voorkennis bij leren met generatieve AI.',v:'Peil voorkennis met een korte taak in plaats van met “snap je het?”. Stem de stapgrootte af op wat je ziet. “Eén nieuw element per beurt” is onze vertaling voor beginners, geen directe onderzoeksuitkomst.'},
+ {n:'Leren vraagt denkwerk',f:'Zelf nadenken, verwerken en begrijpen.',a:'sterk',m:'experimenteel',o:'Actieve, constructieve en interactieve activiteiten leveren meer op dan passief ontvangen (Chi & Wylie, 2014). Lerenden die zichzelf iets uitleggen, leren aantoonbaar meer (g = 0,55; Bisra e.a., 2018).',ai:'Studenten die met ChatGPT informatie zochten, ervoeren minder denklast maar onderbouwden hun advies zwakker dan studenten met een zoekmachine (Stadler e.a., 2024). Wie AI de opgaven liet maken, begreep de stof minder diep dan wie om uitleg vroeg (Lehmann e.a., preprint 2025).',v:'Laat de lerende eerst zelf denken of formuleren voordat AI aanvult, wanneer dat denken het leerdoel is.'},
+ {n:'Hulp moet passen',f:'Ondersteun waar nodig, bouw af waar mogelijk.',a:'sterk',m:'experimenteel',o:'Steun werkt het best als die meebeweegt met wat de lerende aankan (van de Pol e.a., 2010). Computerondersteunde scaffolding heeft gemiddeld een effect van g = 0,46 (Belland e.a., 2017).',ai:'In Bastani e.a. (2025) scoorden scholieren met vrije GPT-4-toegang daarna 17% lager op een toets zonder AI dan de controlegroep. Een beschermde versie die hints gaf in plaats van antwoorden, voorkwam dat nadeel. Die versie leverde geen aantoonbare winst op boven de controlegroep.',v:'Begin met de lichtste hulp die waarschijnlijk werkt. Geef meer als het niet lukt en minder zodra het wel lukt.'},
+ {n:'Leren vraagt oefening',f:'Ophalen, gespreid herhalen, toepassen en feedback gebruiken.',a:'sterk',m:'ontbreekt',o:'Oefentoetsen leveren meer op dan opnieuw bestuderen (Adesope e.a., 2017). Gespreid oefenen werkt beter dan alles in één keer (Cepeda e.a., 2006; Dunlosky e.a., 2013). Feedback werkt gemiddeld goed (d = 0,48), met grote verschillen tussen soorten feedback (Wisniewski e.a., 2020).',ai:'Nog geen studies gevonden naar AI die ophalen en spreiden organiseert. Chatbots doen het niet uit zichzelf.',v:'Laat eerst ophalen en daarna pas uitleggen. Plan terugkeermomenten in de leeromgeving, omdat een chatbot eerdere gesprekken niet altijd kent.'},
+ {n:'Presteren is niet hetzelfde als leren',f:'Een goed antwoord, of het gevoel het te snappen, betekent nog geen blijvend begrip.',a:'sterk',m:'experimenteel',o:'Prestaties tijdens het oefenen voorspellen slecht wat blijft hangen (Soderstrom & Bjork, 2015).',ai:'Bij Bastani scoorden scholieren met vrije GPT-4-toegang 48% beter op de oefenopgaven en daarna lager op de toets zonder AI. Deelnemers die met ChatGPT redeneertaken maakten, overschatten hun prestatie, en wie meer van AI wist deed dat sterker (Fernandes e.a., 2026). Studenten die met ChatGPT schreven, haalden een hoger essaycijfer zonder verschil in kennisoverdracht, met aanwijzingen voor minder zelfregulatie (Fan e.a., 2025).',v:'Beoordeel leren zonder hulp, later of in een nieuwe situatie. Vraag hoe zeker de lerende is en vergelijk dat met het resultaat.'}
+];
+
+const STAPPEN = {
+vk:{kort:'4 stappen',label:'In vier stappen',s:[
+ ['Peil met een korte taak','Stel één of twee diagnostische vragen of geef een korte opgave, in plaats van te vragen wat de lerende al weet.'],
+ ['Benoem wat al klopt','Maak zichtbaar welke kennis er al is.'],
+ ['Spoor misvattingen op','Let op fouten die op een misvatting wijzen, voordat er nieuwe uitleg komt.'],
+ ['Kies het vertrekpunt','Gebruik de uitkomst echt in het vervolg. Bij vertrouwde stof houd je de peiling kort of sla je die over.']]},
+an:{kort:'6 stappen',label:'In zes stappen, naar Glynn (1994)',s:[
+ ['Begin bij het begrip','Introduceer eerst het nieuwe of abstracte begrip dat de lerende moet leren.'],
+ ['Check of de vergelijking bekend is','Kies iets uit de leefwereld van de doelgroep en vraag of de lerende het kent.'],
+ ['Maak overeenkomende relaties expliciet','Laat zien welke onderdelen en verbanden in beide overeenkomen.'],
+ ['Benoem waar de vergelijking ophoudt','Zo voorkom je dat de analogie een nieuwe misvatting veroorzaakt.'],
+ ['Laat actief vergelijken, noem daarna het principe','De lerende zoekt zelf overeenkomsten. Het algemene principe volgt na het vergelijken.'],
+ ['Keer terug naar het begrip en pas toe','De lerende legt het begrip uit zonder de analogie en past het toe in een nieuwe situatie.']],
+ note:'Bij een lastig begrip kunnen twee analogieën elkaars zwakke plekken afdekken.'},
+hd:{kort:'5 treden',label:'Vijf soorten hulp, van licht naar zwaar',s:[
+ ['Vraag terug wat de lerende probeerde','Waar loopt het vast?'],
+ ['Geef een algemene hint','Een richting, zonder het antwoord te verraden.'],
+ ['Geef een gerichte hint','Wijs op de plek of het begrip waar het misgaat.'],
+ ['Doe een stap voor','De lerende zet daarna zelf de volgende stap.'],
+ ['Geef een uitgewerkt voorbeeld','Van een vergelijkbare opgave, niet dezelfde.']],
+ note:'Kies op basis van waar de lerende vastloopt. Niet iedereen hoeft alle treden te doorlopen. Geef minder hulp zodra het lukt.'},
+uv:{kort:'3 stappen',label:'In drie stappen',s:[
+ ['Doe volledig voor','Bij een nieuwe probleemsoort: een uitgewerkt voorbeeld van een vergelijkbare, niet dezelfde opgave.'],
+ ['Laat stappen aanvullen','Laat steeds meer ontbrekende stappen zelf invullen.'],
+ ['Laat zelf oplossen','Een nieuwe opgave van hetzelfde type, zonder voorbeeld.']],
+ note:'Begin waar de lerende staat; dit is geen verplichte ladder. Foute voorbeelden pas als de basis staat.'},
+zv:{kort:'4 stappen',label:'In vier stappen',s:[
+ ['Kies een kernmoment','Bij kernbegrippen en lastige stappen, niet na elke stap.'],
+ ['Vraag naar waarom en hoe','“Waarom klopt deze stap?” of “Hoe hangt A samen met B?”'],
+ ['Laat het in eigen woorden zeggen','Een uitleg die alleen herhaalt, telt niet.'],
+ ['Reageer op hiaten','Met een gerichte vraag of correctie, niet met de volledige uitleg.']],
+ note:'Twee varianten: jezelf iets uitleggen (tutor) of het aan een ander uitleggen, zoals aan een AI-leerling.'},
+ot:{kort:'4 stappen',label:'In vier stappen',s:[
+ ['Laat eerst ophalen','Ophaalvragen voordat er nieuwe uitleg komt.'],
+ ['Varieer de context','Andere opgaven en situaties, zodat de lerende leert onderscheiden.'],
+ ['Kom gespreid terug','Plan herhaalmomenten. Een chatbot kent eerdere gesprekken niet altijd.'],
+ ['Toets transfer','Een nieuwe situatie, later en zonder hulp.']]},
+fg:{kort:'4 stappen',label:'In vier stappen',s:[
+ ['Laat eerst zelf beoordelen','De lerende beoordeelt het eigen werk aan de criteria.'],
+ ['Waar werkt de lerende naartoe?','Maak doel en criteria helder.'],
+ ['Hoe staat het werk ervoor?','Citeer het werk en koppel elk punt aan een criterium. Prijs alleen wat echt goed is.'],
+ ['Wat is de volgende stap?','Standaard maximaal twee verbeterpunten.']]},
+fv:{kort:'5 stappen',label:'In vijf stappen',s:[
+ ['Vat samen in eigen woorden','Wat zegt de feedback precies?'],
+ ['Weeg de feedback','Gemotiveerd een punt verwerpen mag ook.'],
+ ['Kies een aanpassing','De lerende kiest, AI kiest niet.'],
+ ['Herzie het werk','De lerende herziet. AI herschrijft niet.'],
+ ['Onderbouw de keuze','Waarom deze aanpassing? Vergelijk daarna de versies.']]},
+nb:{kort:'6 stappen',label:'In zes stappen, naar PEARLS (Eppich & Cheng, 2015)',s:[
+ ['Stap uit de rol','Maak duidelijk dat het oefenen voorbij is.'],
+ ['Reacties','Vraag eerst hoe de lerende het ervoer.'],
+ ['Beschrijving','Laat reconstrueren wat er gebeurde.'],
+ ['Analyse','Onderzoek keuzes en gevolgen bij concrete momenten. Vul daarna aan met eigen observaties.'],
+ ['Leerpunt','Spreek één verbeterpunt af.'],
+ ['Nieuwe poging','Oefen opnieuw op dat punt. Varieer later de situatie.']],
+ note:'Uitgebreid na een volledig scenario, kort na een deeloefening.'},
+sd:{kort:'6 vraagsoorten',label:'Zes vraagsoorten, naar Paul en Elder (2006)',s:[
+ ['Verhelderen','Wat bedoel je precies? Kun je een voorbeeld geven?'],
+ ['Aannames','Wat neem je aan zonder het uit te spreken?'],
+ ['Redenen en bewijs','Waarop baseer je dat? Draagt het bewijs de conclusie?'],
+ ['Perspectieven','Hoe zou iemand met een ander standpunt dit zien?'],
+ ['Gevolgen','Wat volgt eruit als dit klopt?'],
+ ['De vraag zelf','Is dit de goede vraag?']],
+ note:'Geen vaste volgorde. Kies de vraagsoort die het antwoord het verst brengt en stel standaard één vraag per beurt.'},
+pr:{kort:'5 stappen',label:'In vijf stappen',s:[
+ ['Maak doel en route zichtbaar','Welke stappen en tussenproducten zijn er?'],
+ ['Laat de volgende stap zelf plannen','De lerende bepaalt wat en wanneer.'],
+ ['Bewaak met korte vragen','Check de voortgang zonder het werk over te nemen.'],
+ ['Laat terugkijken op de aanpak','Wat werkte en wat doe je de volgende keer anders?'],
+ ['Geef per ronde minder structuur','Niet afbouwen als de lerende overbelast raakt.']]},
+zr:{kort:'6 stappen',label:'Een cyclus in zes stappen',s:[
+ ['Concrete situatie','Een toets, opdracht of studieweek die echt speelde of komt.'],
+ ['Wat merk je?','Gedachten, gevoelens en gedrag rond die situatie.'],
+ ['Doel','Wat wil de lerende anders?'],
+ ['Kleine aanpak','De lerende kiest. AI geeft opties als de lerende vastloopt.'],
+ ['Uitproberen','In de echte situatie.'],
+ ['Terugkijken en bijstellen','Wat leverde het op, en wat is de volgende stap?']],
+ note:'Geen diagnose. Bij signalen van ernstige klachten verwijst de AI naar menselijke begeleiding.'},
+rf:{kort:'5 stappen',label:'De ALACT-cyclus in vijf stappen (Korthagen)',s:[
+ ['Handelen','Een concrete ervaring, zoals een stage, project of lastige situatie.'],
+ ['Terugblikken','Eerst wat er gebeurde, daarna gedachten, gevoelens en het perspectief van anderen.'],
+ ['De kern bewust maken','Wat was het eigenlijke punt? AI vult geen interpretaties in.'],
+ ['Alternatieven zoeken','Wat zou je anders kunnen doen?'],
+ ['Uitproberen','Een concrete actie en een moment om terug te kijken.']]},
+bu:{kort:'4 stappen',label:'In vier stappen',s:[
+ ['Deel de opdracht op in deeltaken','Per deeltaak kies je apart.'],
+ ['Bepaal het eigen denkwerk','Welk denken moet de lerende zelf oefenen, en wat wordt getoetst?'],
+ ['Stel de KIES-vraag','Leer ik hierdoor minder, hetzelfde of meer?'],
+ ['Kies helpend uitbesteden','Ontlasten, verplaatsen of verdiepen helpt. Vermijden, overgave en waarden afstaan schaden.']]},
+uc:{kort:'5 stappen',label:'In vijf stappen',s:[
+ ['Haal de kernbeweringen eruit','De twee of drie belangrijkste.'],
+ ['Controleer buiten de AI','Via andere bronnen, zoals factcheckers doen.'],
+ ['Check de bronnen','Bestaan ze, en zeggen ze dit echt?'],
+ ['Leg het naast je vakkennis','Klopt het met wat je al weet?'],
+ ['Leg vast wat je deed','Overgenomen, aangepast of verworpen, en waarom.']],
+ note:'Hoe zwaarder de beslissing, hoe grondiger je controleert.'}
+};
+const USE = {};
+ROLES.forEach((R,r)=>R.lp.forEach((p,l)=>p.op.forEach(o=>{(USE[o]=USE[o]||[]).push({r,l});})));
+</script>
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const plain=s=>String(s).replace(/­/g,'');
+const reduce=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const view=$('#view');
+const GC=['var(--g0)','var(--g1)','var(--g2)','var(--g3)'];
+const GH=['#A25DF8','#F0A23B','#22A699','#E0559B'];
+const RC={tutor:'#A25DF8','leerling-socratisch':'#7C5CFF',procesbegeleider:'#3E8BF0',simulator:'#22A699',mentor:'#F0A23B',coach:'#E0559B',hulpmiddel:'#9b7ad8'};
+const OPKEYS=Object.keys(OPS);
+const A3={sterk:3,stevig:2,beperkt:1},M3={experimenteel:3,verkennend:2,ontbreekt:0};
+const AT={sterk:'meerdere meta-analyses, consistent',stevig:'een meta-analyse of meerdere experimenten, met duidelijke randvoorwaarden',beperkt:'vooral theorie, kwalitatief onderzoek of enkele studies'};
+const MT={experimenteel:'gecontroleerde studies met leeruitkomsten',verkennend:'kleine studies, procesmaten of preprints',ontbreekt:'nog geen studies gevonden'};
+const lower1=s=>s.replace(/\.$/,'').replace(/^./,m=>m.toLowerCase());
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>e.classList.remove('on'),2200);}
+function copy(text,ok){const done=()=>toast(ok||'Gekopieerd');try{navigator.clipboard.writeText(text).then(done,fallback);}catch(e){fallback();}
+  function fallback(){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){toast('Kopiëren lukte niet');}ta.remove();}}
+function evRow(a,m){return `<div class="evr" title="Onderzoek naar de aanpak: ${esc(a)} (${esc(AT[a]||'')})"><span class="bars">${[1,2,3].map(i=>`<i class="${i<=A3[a]?'f':''}"></i>`).join('')}</span>Aanpak: <em>${esc(a)}</em></div>
+  <div class="evr" title="Onderzoek met AI: ${esc(m)} (${esc(MT[m]||'')})"><span class="bars ai">${[1,2,3].map(i=>`<i class="${i<=M3[m]?'f':''}"></i>`).join('')}</span>Met AI: <em>${esc(m)}</em></div>`;}
+function roleOps(R,sub){const set=[];R.lp.forEach(p=>{if(sub!=null&&R.subs&&p.sub!==sub)return;p.op.forEach(o=>{if(!set.includes(o))set.push(o);});});return set;}
+function rolesOfOp(o){return ROLES.map((R,i)=>({R,i})).filter(x=>x.R.lp.some(p=>p.op.includes(o)));}
+function icon(R){return ICON[R.icon];}
+let io=null;
+function reveal(){if(io)io.disconnect();if(reduce()||!('IntersectionObserver' in window)){$$('.reveal').forEach(e=>e.classList.add('in'));return;}
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});$$('.reveal').forEach(e=>io.observe(e));}
+
+/* ================= HUB ================= */
+const FW=[
+ {id:'geletterd',n:'AI-geletterdheid',as:'Handelen als professional',c:'var(--c-geletterd)',p:'Raamwerk voor docenten en onderwijsprofessionals: wat moet je weten, kunnen en vinden om AI verantwoord in te zetten?',keys:['A · Mindset','B · Ethiek','C · Kennis','D · Didactiek','E · Agency'],url:'https://aivoordocenten.nl/raamwerk-ai-geletterdheid/'},
+ {id:'kies',n:'KIES',as:'Handelen als lerende',c:'var(--c-kies)',p:'Raamwerk voor de AI-vaardigheid van leerlingen en studenten: bewust kiezen bij iedere deeltaak.',keys:['Kiezen','Instrueren','Evalueren','Spelregels'],url:'https://aivoordocenten.nl/kies/'},
+ {id:'bouw',n:'BOUW',as:'Handelen als maker',c:'var(--c-bouw)',p:'Raamwerk voor het ontwerpen en bouwen van AI-leeromgevingen: van app-idee naar een onderbouwde bouwbeschrijving.',keys:['Bedoeling','Ontwerp','Uitvoering','Waarborgen'],url:'https://aivoordocenten.nl/bouw-raamwerk/'},
+ {id:'lv',n:'Leerverrijking',as:'Handelen als ontwerper',c:'var(--c-lv)',p:'Welke rol geef je AI, en hoe zorg je dat die het leren dient? Zeven didactische rollen, onderbouwd met leerwetenschap.',keys:['5 uitgangspunten','7 rollen','34 principes','15 ontwerpprincipes'],url:'#/lv',feat:true}];
+function relSvg(){
+  const N={geletterd:[120,90],kies:[480,90],bouw:[480,300],lv:[120,300]};
+  const col={geletterd:'#7C5CFF',kies:'#E0559B',bouw:'#25A47E',lv:'#A25DF8'};
+  const E=[['lv','bouw','levert de bedoeling'],['lv','kies','docentkant van dezelfde rollen'],['geletterd','lv','werkt domein D uit']];
+  let s=`<svg viewBox="0 0 600 400" role="img" aria-label="Samenhang tussen de vier raamwerken"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b9a6dc"/></marker></defs>`;
+  s+=`<rect x="20" y="20" width="250" height="360" rx="28" fill="#f3ecff" stroke="#e2d5fb"/><text x="145" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#5F3792" letter-spacing="2">DE DOCENT</text>`;
+  s+=`<rect x="330" y="20" width="250" height="140" rx="28" fill="#fdeaf3" stroke="#f6cfe2"/><text x="455" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#b0306f" letter-spacing="2">DE LERENDE</text>`;
+  s+=`<rect x="330" y="200" width="250" height="180" rx="28" fill="#e6f6f0" stroke="#c8ebdc"/><text x="455" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#1b7a5d" letter-spacing="2">DE DOCENT ALS MAKER</text>`;
+  E.forEach(([a,b,l],i)=>{const [x1,y1]=N[a],[x2,y2]=N[b];const mx=(x1+x2)/2,my=(y1+y2)/2+(i===1?-20:0);
+    s+=`<path d="M${x1+(x2>x1?70:0)} ${y1+(y2>y1?36:y2<y1?-36:0)} Q ${mx} ${my} ${x2-(x2>x1?72:0)} ${y2+(y2>y1?-36:y2<y1?36:0)}" fill="none" stroke="#b9a6dc" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#ar)"/>`;
+    s+=`<text x="${mx}" y="${my-8}" text-anchor="middle" font-size="12" fill="#6B6F74" font-weight="500">${l}</text>`;});
+  Object.entries(N).forEach(([k,[x,y]])=>{const f=FW.find(z=>z.id===k);s+=`<g><rect x="${x-80}" y="${y-30}" width="160" height="60" rx="18" fill="#fff" stroke="${col[k]}" stroke-width="2"/><text x="${x}" y="${y-4}" text-anchor="middle" font-size="16" font-weight="700" fill="#080F17">${f.n}</text><text x="${x}" y="${y+16}" text-anchor="middle" font-size="11.5" fill="${col[k]}" font-weight="600">${f.as.replace('Handelen als ','als ')}</text></g>`;});
+  return s+'</svg>';}
+function hub(){
+  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:130px">
+    <p class="eyebrow">AI voor Docenten · onderwijskundige onderbouwing</p>
+    <h1>Vier raamwerken, één samenhangend geheel</h1>
+    <p class="lead">AI begint niet bij tools, maar bij goed onderwijs. Onze raamwerken geven docenten taal en houvast: als professional, als ontwerper, als maker, en voor de lerende zelf. Praktisch genoeg voor maandag, doordacht genoeg voor schoolbeleid.</p>
+    <div class="btns"><a class="btn pri" href="#/lv">Ontdek Leerverrijking →</a><a class="btn ghost" href="#samenhang">Hoe ze samenhangen</a></div></div></section>
+  <div class="wrap"><div class="fw-grid">${FW.map(f=>`<a class="fw ${f.feat?'feat':''}" href="${f.url}" ${f.feat?'':'target="_blank" rel="noopener"'} style="--c:${f.c}"><span class="tag">${f.feat?'Nieuw · concept v2':'op aivoordocenten.nl'}</span><span class="as">${f.as}</span><h3>${f.n}</h3><p>${f.p}</p><div class="keys">${f.keys.map(k=>`<span>${k}</span>`).join('')}</div><span class="go">${f.feat?'Verken het raamwerk':'Bekijk het raamwerk'}<span>${f.feat?'→':'↗'}</span></span></a>`).join('')}</div></div>
+  <section class="blk" id="samenhang"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Samenhang</p><h2>Goed bouwen veronderstelt een onderwijskundige basis</h2></div><p>Elk raamwerk kijkt vanuit een andere rol naar leren met AI. Samen vormen ze één verhaal: van professionele houding tot een werkende leeromgeving.</p></div>
+    <div class="rel reveal">${relSvg()}<div class="rel-list">
+      <div class="rel-item"><i style="background:var(--c-geletterd)"></i><div><b>AI-geletterdheid · de professional</b><span>Leerverrijking werkt het domein AI-pedagogiek en didactiek concreet uit.</span></div></div>
+      <div class="rel-item"><i style="background:var(--c-kies)"></i><div><b>KIES · de lerende</b><span>Leerverrijking is de docentkant van dezelfde rollen. De rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.</span></div></div>
+      <div class="rel-item"><i style="background:var(--c-bouw)"></i><div><b>BOUW · de maker</b><span>Leerverrijking levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.</span></div></div>
+      <div class="rel-item"><i style="background:var(--c-lv)"></i><div><b>Leerverrijking · de ontwerper</b><span>Welke rol geef ik AI, en hoe zorg ik dat die het leren dient?</span></div></div></div></div></div></section>`;
+  reveal();}
+
+/* ================= WIEL ================= */
+function wheelSvg(){
+  const R1=[66,104],R2=184,R3=300;let s=`<svg id="wheel" viewBox="-370 -370 740 740" role="img" aria-label="Het raamwerk in één beeld: rollen, ontwerpprincipes en uitgangspunten">`;
+  s+=`<defs><radialGradient id="cg"><stop offset="0" stop-color="#5F3792"/><stop offset="1" stop-color="#2a1550"/></radialGradient></defs>`;
+  s+=`<circle r="${R3}" fill="none" stroke="rgba(255,255,255,.07)" stroke-dasharray="2 6"/><circle r="${R2}" fill="none" stroke="rgba(255,255,255,.09)"/>`;
+  // posities ontwerpprincipes: 4 clusters met tussenruimte
+  const total=OPKEYS.length+4;let k=0;const OPP={};
+  GROUPS.forEach((g,gi)=>{g.forEach(o=>{const a=(k/total)*Math.PI*2-Math.PI/2+.12;OPP[o]=[Math.cos(a)*R2,Math.sin(a)*R2,a];k++;});k++;});
+  const RP={};ROLES.forEach((R,i)=>{const a=(i/ROLES.length)*Math.PI*2-Math.PI/2;RP[R.id]=[Math.cos(a)*R3,Math.sin(a)*R3,a];});
+  // links
+  s+=`<g class="wl" style="transition-delay:.9s">`;
+  ROLES.forEach(R=>{roleOps(R).forEach(o=>{const [x1,y1]=RP[R.id],[x2,y2]=OPP[o];const cx=(x1+x2)*.28,cy=(y1+y2)*.28;s+=`<path class="lnk" data-r="${R.id}" data-o="${o}" d="M${x1.toFixed(1)} ${y1.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}" stroke="${RC[R.id]}"/>`;});});
+  s+=`</g>`;
+  // fundament
+  s+=`<g class="wl" style="transition-delay:.1s"><circle r="${R1[0]-6}" fill="url(#cg)"/>`;
+  UP.forEach((u,i)=>{const a0=(i/5)*Math.PI*2-Math.PI/2+.04,a1=((i+1)/5)*Math.PI*2-Math.PI/2-.04;const p=(r,a)=>`${(Math.cos(a)*r).toFixed(1)} ${(Math.sin(a)*r).toFixed(1)}`;
+    s+=`<path class="fseg" data-u="${i}" d="M${p(R1[0],a0)} A${R1[0]} ${R1[0]} 0 0 1 ${p(R1[0],a1)} L${p(R1[1],a1)} A${R1[1]} ${R1[1]} 0 0 0 ${p(R1[1],a0)}Z" fill="#c9a6ff" opacity="${.35+i*.1}"/>`;
+    const am=(a0+a1)/2;s+=`<text x="${(Math.cos(am)*85).toFixed(1)}" y="${(Math.sin(am)*85+4).toFixed(1)}" text-anchor="middle" font-size="12" font-weight="800" fill="#1d0f3a">${i+1}</text>`;});
+  s+=`<text y="-4" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" letter-spacing="1.5">FUNDAMENT</text><text y="13" text-anchor="middle" font-size="10" fill="#c9a6ff">5 uitgangspunten</text></g>`;
+  // clusterlabels
+  s+=`<g class="wl" style="transition-delay:.4s">`;
+  GROUPS.forEach((g,gi)=>{const a=(OPP[g[0]][2]+OPP[g[g.length-1]][2])/2;const r=R2-38;s+=`<text x="${(Math.cos(a)*r).toFixed(1)}" y="${(Math.sin(a)*r+4).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="700" fill="${GH[gi]}" letter-spacing=".5">${G[gi].toUpperCase()}</text>`;});
+  OPKEYS.forEach(o=>{const [x,y]=OPP[o];const gi=OPS[o].g;s+=`<g class="opd" data-o="${o}" tabindex="0" role="button" aria-label="${esc(OPS[o].n)}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="${GH[gi]}" stroke="#080F17" stroke-width="3"/></g>`;});
+  s+=`</g>`;
+  // rollen
+  s+=`<g class="wl" style="transition-delay:.6s">`;
+  ROLES.forEach(R=>{const [x,y,a]=RP[R.id];const lab=plain(R.n).replace(' / ','/');const ly=y+(Math.sin(a)>.3?56:-50)*(Math.sin(a)>.3?1:1);
+    s+=`<g class="rn" data-r="${R.id}" tabindex="0" role="link" aria-label="Rol ${esc(plain(R.n))}" style="--rc:${RC[R.id]}"><circle class="bg" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="36" fill="#121a26" stroke="${RC[R.id]}" stroke-width="2.5"/>
+      <g transform="translate(${(x-18).toFixed(1)} ${(y-18).toFixed(1)}) scale(.75)" style="color:${RC[R.id]};--ic-bg:#121a26">${ICON[R.icon].replace('<svg ','<svg width="48" height="48" ')}</g>
+      <text x="${x.toFixed(1)}" y="${(y+(y>40?56:-46)).toFixed(1)}" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">${esc(lab)}</text>
+      <text x="${x.toFixed(1)}" y="${(y+(y>40?72:-30)).toFixed(1)}" text-anchor="middle" font-size="10.5" fill="#a9a3b8">${R.lp.length} principes</text></g>`;});
+  s+=`</g></svg>`;
+  return s;}
+function bindWheel(){const w=$('#wheel');if(!w)return;const info=$('#winfo');
+  const clear=()=>{$$('#wheel .lnk').forEach(l=>l.classList.remove('on','off'));$$('#wheel .rn').forEach(n=>n.classList.remove('on','dim'));$$('#wheel .opd').forEach(n=>n.classList.remove('on','dim'));};
+  const def=info.innerHTML;
+  const showRole=id=>{clear();const R=ROLES.find(x=>x.id===id);const ops=roleOps(R);$$('#wheel .lnk').forEach(l=>l.classList.add(l.dataset.r===id?'on':'off'));$$('#wheel .rn').forEach(n=>n.classList.toggle('dim',n.dataset.r!==id));$$('#wheel .opd').forEach(n=>{n.classList.toggle('on',ops.includes(n.dataset.o));n.classList.toggle('dim',!ops.includes(n.dataset.o));});
+    info.innerHTML=`<span class="k">Rol · ${R.lp.length} principes · ${ops.length} ontwerpprincipes</span><b>${esc(plain(R.n))}</b><p>${esc(R.functie)}</p>`;};
+  const showOp=o=>{clear();const us=rolesOfOp(o).map(x=>x.R.id);$$('#wheel .lnk').forEach(l=>l.classList.add(l.dataset.o===o?'on':'off'));$$('#wheel .rn').forEach(n=>n.classList.toggle('dim',!us.includes(n.dataset.r)));$$('#wheel .opd').forEach(n=>{n.classList.toggle('on',n.dataset.o===o);n.classList.toggle('dim',n.dataset.o!==o);});
+    const O=OPS[o];info.innerHTML=`<span class="k" style="color:${GH[O.g]}">Ontwerpprincipe · ${G[O.g]}</span><b>${esc(O.n)}</b><p>${esc(O.functie)} <br><span style="color:#a9a3b8">Gedeeld door ${us.length} ${us.length===1?'rol':'rollen'}: ${rolesOfOp(o).map(x=>plain(x.R.n)).join(', ')}</span></p>`;};
+  const showUp=i=>{clear();const u=UP[i];info.innerHTML=`<span class="k">Fundament · uitgangspunt ${i+1}</span><b>${esc(u.n)}</b><p>${esc(u.f)} Geldt voor elke rol.</p>`;};
+  $$('#wheel .rn').forEach(n=>{n.addEventListener('mouseenter',()=>showRole(n.dataset.r));n.addEventListener('focus',()=>showRole(n.dataset.r));n.addEventListener('click',()=>location.hash='#/lv/rol/'+n.dataset.r);n.addEventListener('keydown',e=>{if(e.key==='Enter')location.hash='#/lv/rol/'+n.dataset.r;});});
+  $$('#wheel .opd').forEach(n=>{n.addEventListener('mouseenter',()=>showOp(n.dataset.o));n.addEventListener('focus',()=>showOp(n.dataset.o));n.addEventListener('click',()=>location.hash='#/lv/op/'+n.dataset.o);n.addEventListener('keydown',e=>{if(e.key==='Enter')location.hash='#/lv/op/'+n.dataset.o;});});
+  $$('#wheel .fseg').forEach(n=>{n.addEventListener('mouseenter',()=>showUp(+n.dataset.u));n.addEventListener('click',()=>{const t=$('#up');if(t)t.scrollIntoView({behavior:'smooth'});});});
+  w.addEventListener('mouseleave',()=>{clear();info.innerHTML=def;});
+  const box=$('.wheelbox');box.classList.add('w-in');void box.offsetWidth;setTimeout(()=>box.classList.remove('w-in'),40);}
+
+/* ================= LEERVERRIJKING OVERZICHT ================= */
+function lv(){
+  const nLp=ROLES.reduce((a,R)=>a+R.lp.length,0);
+  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero"><div class="lv-hero">
+    <div><div class="crumb"><a href="#/">Raamwerken</a><span>›</span><span>Leerverrijking</span></div>
+      <p class="eyebrow">Raamwerk Leerverrijking · het vierde raamwerk</p>
+      <h1>Welke rol geef je AI, en hoe dient die het leren?</h1>
+      <p class="lead">Elke chatbot heeft al een didactiek: snel, vloeiend, volledig en meegaand. Dat voelt behulpzaam, maar kan precies het denkwerk overnemen dat de lerende moest doen. Dit raamwerk helpt je daar een bewuste, onderbouwde keuze tegenover te zetten.</p>
+      <div class="btns"><a class="btn pri" href="#/lv/rollen">Kies een rol →</a><a class="btn ghost" href="#/lv/prompthulp">Maak een prompt</a></div>
+      <div class="legend" style="margin-top:34px"><span><i style="background:#c9a6ff"></i>Fundament: 5 uitgangspunten</span><span><i style="background:#F0A23B"></i>15 ontwerpprincipes in 4 clusters</span><span><i style="background:#A25DF8;outline:2px solid #fff3"></i>7 rollen · ${nLp} principes</span></div></div>
+    <div class="wheelbox">${wheelSvg()}<div class="wheel-info" id="winfo"><span class="k">Het raamwerk in één beeld</span><b>Lees van buiten naar binnen</b><p>De rollen zijn de ingang. Daarbinnen liggen de ontwerpprincipes, die door meerdere rollen worden gedeeld. In het hart: het fundament dat voor elke rol geldt. Beweeg over het wiel.</p></div></div>
+  </div></div></section>
+  <section class="blk"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Opbouw</p><h2>Een fundament en drie niveaus</h2></div><p>Rollen zijn herkenbare ingangen, geen hokjes. Werkwijzen als feedback, zelfverklaren en hulp afbouwen passen bij meerdere rollen. Daarom staat elk ontwerpprincipe één keer beschreven.</p></div>
+    <div class="layers reveal">
+      <div class="layer"><div class="n">7<small>Niveau 1</small></div><div><b>Didactische rollen</b><p>De functie die AI in de leersituatie vervult, zoals tutor, simulator of coach. Gebaseerd op Mollick en Mollick (2023).</p></div><a class="btn line sm" href="#/lv/rollen">Rollen →</a></div>
+      <div class="layer"><div class="n">${nLp}<small>Niveau 2</small></div><div><b>Principes en werkwijzen per rol</b><p>Wat AI of de toepassing doet, wat de lerende daarbij doet en waaraan je het leren ziet. Met twee bewijslabels per principe.</p></div><a class="btn line sm" href="#/lv/rol/tutor">Voorbeeld →</a></div>
+      <div class="layer"><div class="n">15<small>Niveau 3</small></div><div><b>Verdiepende ontwerpprincipes</b><p>Hoe je een aanpak zorgvuldig uitvoert, zoals analogieën gebruiken, hulp doseren of feedback laten verwerken. Bouwstenen, geen vaste procedures.</p></div><a class="btn line sm" href="#/lv/principes">Bibliotheek →</a></div>
+      <div class="layer" style="background:var(--ink);border:0"><div class="n" style="color:#c9a6ff">5<small style="color:#a9a3b8">Fundament</small></div><div><b style="color:#fff">Overkoepelende uitgangspunten</b><p style="color:#c3bdd0">Inzichten over leren die voor elke rol gelden. Ze berusten op stevig onderzoek in de leerwetenschappen.</p></div><a class="btn ghost sm" href="#up">Bekijk →</a></div>
+    </div></div></section>
+  <section class="blk light" id="up"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Fundament</p><h2>Vijf uitgangspunten over leren</h2></div><p>Klik op een uitgangspunt voor het onderzoek, wat studies met AI laten zien, en onze vertaling naar ontwerp.</p></div>
+    <div class="up-grid reveal">${UP.map((u,i)=>`<button class="up" data-u="${i}"><span class="num">${i+1}</span><h3>${esc(u.n)}</h3><p>${esc(u.f)}</p><div class="ev">${evRow(u.a,u.m)}</div></button>`).join('')}</div>
+    <div id="updetail" style="margin-top:18px"></div></div></section>
+  <section class="blk"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Niveau 1</p><h2>Zeven rollen</h2></div><p>Kies een rol vanuit het leerdoel en de activiteit van de lerende, niet vanuit de tool.</p></div>${rolesGrid()}</div></section>
+  <section class="blk light"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">De ontwerpketen</p><h2>Van principe naar ontwerp</h2></div><p>We ontwerpen het gedrag van AI om activiteiten bij de lerende uit te lokken. Een instructie aan AI garandeert die activiteit niet, en ook geen leerresultaat.</p></div>
+    <div class="chain reveal">${[['Leerdoel','Wat moet de lerende straks begrijpen of kunnen?'],['Activiteit van de lerende','Wat moet de lerende daarvoor zelf doen? Uitleggen, ophalen, oefenen, beslissen of terugkijken.'],['Inrichting','Hoe ondersteunen AI en de rest van de leeromgeving die activiteit?'],['Zichtbaar leren','Waaraan zien we of de bedoelde ontwikkeling optreedt?']].map((c,i)=>`<div class="ch"><span class="s">${i+1}</span><b>${c[0]}</b><p>${c[1]}</p></div>`).join('')}</div>
+    <div class="loop reveal">↺ Wat je ziet bij zichtbaar leren, stuurt je ontwerp weer bij.</div>
+    <div class="steps4 reveal" style="margin-top:40px">${[['Begin bij het leerdoel','Wat moet de lerende straks kunnen, en wat moet de lerende daarvoor zelf doen?'],['Kies de rol','Eén rol per leeractiviteit. Combineer rollen alleen als ze elkaar opvolgen.'],['Vertaal naar een ontwerp','Neem de rolprincipes op in je prompt, of als ontwerpeisen in BOUW.'],['Test als een lerende','Vraag om het antwoord, geef een fout antwoord, dring aan. Kijk wat zonder hulp is blijven hangen.']].map((c,i)=>`<div class="s4"><span class="n">0${i+1}</span><b>${c[0]}</b><p>${c[1]}</p></div>`).join('')}</div>
+    <div class="btns reveal" style="justify-content:center"><a class="btn pri" href="#/lv/prompthulp">Ga naar de prompthulp →</a></div></div></section>
+  <section class="blk"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Eerlijk over bewijs</p><h2>Wat we wel en niet claimen</h2></div><p>De sterkste basis is de algemene leerwetenschap. Onderzoek naar leren met generatieve AI is jong. Daarom maken we bij elk principe zichtbaar wat voor uitspraak het is.</p></div>
+    <div class="claims reveal">
+      <div class="claim"><h3>Onderzoek naar de aanpak</h3><p>Wat studies over de didactische aanpak laten zien, los van AI.</p><div class="scale"><div><b>${evMini(3)} Sterk</b><span>${AT.sterk}</span></div><div><b>${evMini(2)} Stevig</b><span>${AT.stevig}</span></div><div><b>${evMini(1)} Beperkt</b><span>${AT.beperkt}</span></div></div></div>
+      <div class="claim"><h3>Onderzoek met AI</h3><p>Wat studies met generatieve AI laten zien.</p><div class="scale"><div><b>${evMini(3,1)} Experimenteel</b><span>${MT.experimenteel}</span></div><div><b>${evMini(2,1)} Verkennend</b><span>${MT.verkennend}</span></div><div><b>${evMini(0,1)} Ontbreekt</b><span>${MT.ontbreekt}</span></div></div></div>
+      <div class="claim"><h3>Onze vertaling</h3><p>De ontwerpkeuze die wij uit het onderzoek afleiden. Die is niet afzonderlijk getoetst en krijgt dus nooit een bewijslabel.</p><p style="margin-top:12px;color:var(--ink);font-weight:500">Een goed onderbouwd leerprincipe maakt een specifieke chatbotinstructie niet automatisch effectief. Testen in de eigen context blijft nodig.</p></div>
+    </div></div></section>`;
+  bindWheel();
+  $$('.up').forEach(b=>b.onclick=()=>{const u=UP[+b.dataset.u];$$('.up').forEach(x=>x.style.borderColor=x===b?'var(--violet)':'');
+    $('#updetail').innerHTML=`<div class="aside reveal in" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px"><div class="evb o"><span class="lab">Onderzoek</span>${esc(u.o)}</div><div class="evb g"><span class="lab">Onderzoek met AI</span>${esc(u.ai)}</div><div class="evb v"><span class="lab">Onze vertaling</span>${esc(u.v)}</div></div>`;$('#updetail').scrollIntoView({behavior:'smooth',block:'nearest'});});
+  reveal();}
+function evMini(n,ai){return `<span class="bars ${ai?'ai':''}" style="display:inline-flex;gap:2px;vertical-align:1px">${[1,2,3].map(i=>`<i style="width:9px;height:6px;border-radius:3px;display:inline-block;background:${i<=n?(ai?'var(--g2)':'var(--purple)'):'var(--line)'}"></i>`).join('')}</span>`;}
+function rolesGrid(){return `<div class="roles reveal">${ROLES.map(R=>`<a class="role" href="#/lv/rol/${R.id}" style="--rc:${RC[R.id]}"><span class="ri">${icon(R)}</span><h3>${esc(plain(R.n))}</h3><p class="k">${esc(R.kort)}</p><p style="font-size:14px">${esc(R.leerdoel)}</p><span class="meta">${R.lp.length} principes · ${roleOps(R).length} ontwerpprincipes →</span></a>`).join('')}
+  <a class="role wide" href="#/lv/prompthulp" style="--rc:#c9a6ff"><span class="ri" style="background:rgba(255,255,255,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:30px;height:30px"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15l2 2 4-4"/></svg></span><h3>Weet je al welke rol?</h3><p class="k" style="color:#c3bdd0">Bouw in vijf stappen een prompt of een BOUW-bouwbeschrijving, met de principes van jouw rol erin.</p><span class="meta" style="color:#c9a6ff">Naar de prompthulp →</span></a></div>`;}
+function rollen(){view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:60px"><div class="crumb"><a href="#/">Raamwerken</a><span>›</span><a href="#/lv">Leerverrijking</a><span>›</span><span>Rollen</span></div><p class="eyebrow">Niveau 1</p><h1>Zeven didactische rollen</h1><p class="lead">Een rol is de functie die AI in de leersituatie vervult. De rollen komen uit <i>Assigning AI</i> van Ethan en Lilach Mollick (2023). Wij systematiseren, verdiepen en verbinden ze met onderbouwing per principe.</p></div></section>
+  <section class="blk"><div class="wrap">${rolesGrid()}</div></section>`;reveal();}
+
+/* ================= ROLPAGINA ================= */
+let vsSel=0;
+function rol(id){const ri=ROLES.findIndex(x=>x.id===id);if(ri<0){lv();return;}const R=ROLES[ri];const rc=RC[R.id];vsSel=0;
+  const ops=roleOps(R).filter(o=>OPS[o].zw);
+  let lpHtml='',prev=null;
+  R.lp.forEach((p,l)=>{if(R.subs&&p.sub!==prev){prev=p.sub;const S=R.subs[p.sub];lpHtml+=`<p class="subh">${esc(S.n)} · ${esc(S.kort)}</p>`;}
+    lpHtml+=`<article class="lp reveal" id="lp-${l}" style="--rc:${rc}"><span class="no">${l+1}</span><div><h3>${esc(p.n)}<span class="type">${esc(p.s)}</span></h3>
+      <div class="duo"><div><span>Wat AI of de toepassing doet</span><p>${esc(p.ai)}</p></div><div><span>Wat de lerende doet</span><p>${esc(p.le)}</p></div></div>
+      <div class="opl">${p.op.map(o=>`<a class="opchip" href="#/lv/op/${o}"><i style="background:${GH[OPS[o].g]}"></i>${esc(OPS[o].n)}${p.note&&p.note[o]?` <span style="font-weight:400;color:var(--muted)">· ${esc(p.note[o].toLowerCase())}</span>`:''}</a>`).join('')}</div></div>
+      <div class="side">${evRow(p.a,p.m)}<p class="src"><b style="color:var(--ink)">Aanpak:</b> ${esc(p.b)}${p.bm?`<br><b style="color:var(--ink)">Met AI:</b> ${esc(p.bm)}`:''}</p><a class="btn line sm" href="#/lv/prompthulp?rol=${R.id}&lp=${l}">Gebruik in prompt</a></div></article>`;});
+  view.innerHTML=`<section class="dark glow" style="--rc:${rc}"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:64px">
+    <div class="crumb"><a href="#/">Raamwerken</a><span>›</span><a href="#/lv">Leerverrijking</a><span>›</span><a href="#/lv/rollen">Rollen</a><span>›</span><span>${esc(plain(R.n))}</span></div>
+    <div class="rp-hero"><div class="rp-icon" style="--rc:${rc}">${icon(R)}</div><div><p class="eyebrow" style="color:${rc}">Rol ${ri+1} van 7 · ${esc(R.kort)}</p><h1 style="margin:8px 0 12px;max-width:none">${esc(plain(R.n))}</h1><p class="lead">${esc(R.functie)}</p></div></div>
+    <div class="facts"><div class="fact"><span>Kies deze rol bij</span><p>${esc(R.leerdoel)}</p></div><div class="fact"><span>De lerende</span><p>${esc(R.lerende)}</p></div><div class="fact"><span>Zichtbaar leren</span><p>${esc(R.zie)}</p></div><div class="fact"><span>Herkomst</span><p>Mollick: ${esc(R.mollick)}${R.kies?`<br>KIES: ${esc(R.kies)}`:''}</p></div></div></div></section>
+  <section class="blk"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Elke chatbot heeft al een didactiek</p><h2>Zonder ontwerp, en met ontwerp</h2></div><p><b style="color:var(--ink)">Zonder ontwerp doet een chatbot dit:</b> ${esc(R.standaard)}</p></div>
+    ${ops.length?`<div class="chips reveal" id="vsChips" style="margin-bottom:16px">${ops.map((o,i)=>`<button class="chip ${i===0?'on':''}" data-i="${i}">${esc(OPS[o].n)}</button>`).join('')}</div><div class="versus reveal" id="vs"></div>`:`<div class="aside reveal"><p>${esc(R.functie)}</p></div>`}</div></section>
+  <section class="blk light"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Niveau 2</p><h2>${R.lp.length} principes en werkwijzen</h2></div><p>Elk principe verbindt wat AI doet met wat de lerende doet. De labels laten zien hoe sterk het onderzoek is, los van AI en met AI.</p></div>
+    <div class="lps">${lpHtml}</div></div></section>
+  <section class="blk"><div class="wrap two"><div class="prose reveal"><p class="eyebrow">Onderbouwing</p><h2 style="font-size:28px;margin:8px 0 16px">Wat onderzoek laat zien</h2><p>${esc(R.onderzoek)}</p>${(R.aandacht||[]).map(a=>`<p><b>${esc(a[0])}.</b> ${esc(a[1])}</p>`).join('')}</div>
+    <div class="aside reveal" style="align-self:start"><p class="lab">Direct aan de slag</p><p style="margin:8px 0 14px;color:var(--ink)">Maak een prompt of bouwbeschrijving met alle principes van deze rol erin.</p><a class="btn pri" href="#/lv/prompthulp?rol=${R.id}">Prompthulp voor ${esc(plain(R.n))} →</a></div></div>
+    <div class="wrap rnav">${ri>0?`<a class="btn line" href="#/lv/rol/${ROLES[ri-1].id}">← ${esc(plain(ROLES[ri-1].n))}</a>`:'<span></span>'}${ri<6?`<a class="btn line" href="#/lv/rol/${ROLES[ri+1].id}">${esc(plain(ROLES[ri+1].n))} →</a>`:''}</div></section>`;
+  const drawVs=()=>{const o=ops[vsSel];if(!o)return;const O=OPS[o];$('#vs').innerHTML=`<div class="phone no"><div class="ph"><i>✕</i><div><b>Standaardinstelling</b><span>Zo reageert een chatbot zonder ontwerp</span></div></div><div class="bub">${esc(O.zn)}</div><p class="note">Valkuilen: ${O.fouten.map(f=>esc(lower1(f))).join('; ')}.</p></div>
+      <div class="phone yes"><div class="ph"><i>✓</i><div><b>Met ontwerp</b><span>${esc(O.n)}</span></div></div><div class="bub">${esc(O.zw)}</div><p class="note">${esc(O.functie)} <a href="#/lv/op/${o}" style="color:var(--purple);font-weight:600">Verdiep →</a></p></div>`;};
+  if(ops.length){drawVs();$$('#vsChips .chip').forEach(c=>c.onclick=()=>{vsSel=+c.dataset.i;$$('#vsChips .chip').forEach(x=>x.classList.toggle('on',x===c));drawVs();});}
+  reveal();}
+
+/* ================= ONTWERPPRINCIPES ================= */
+let opFilter=null;
+function principes(){
+  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:60px"><div class="crumb"><a href="#/">Raamwerken</a><span>›</span><a href="#/lv">Leerverrijking</a><span>›</span><span>Ontwerpprincipes</span></div><p class="eyebrow">Niveau 3</p><h1>Vijftien ontwerpprincipes</h1><p class="lead">Bouwstenen om een aanpak zorgvuldig uit te voeren. Elk principe is één keer beschreven en verbonden met alle rollen waar het past. Stapel ze niet automatisch: de combinatie moet passen bij de taak en de lerende.</p></div></section>
+  <section class="blk"><div class="wrap"><div class="chips reveal" id="opf" style="margin-bottom:26px"><button class="chip ${opFilter==null?'on':''}" data-r="">Alle rollen</button>${ROLES.map(R=>`<button class="chip ${opFilter===R.id?'on':''}" data-r="${R.id}">${esc(plain(R.n))}</button>`).join('')}</div>
+    <div class="clusters">${GROUPS.map((g,gi)=>`<div class="cl reveal"><h3><i style="background:${GH[gi]}"></i>${G[gi]}</h3>${g.map(o=>{const O=OPS[o],us=rolesOfOp(o),dim=opFilter&&!us.some(x=>x.R.id===opFilter);
+      return `<a class="opc ${dim?'dim':''}" href="#/lv/op/${o}" style="--gc:${GH[gi]}"><b>${esc(O.n)}</b><p>${esc(O.functie)}</p><div class="m"><span>${STAPPEN[o]?esc(STAPPEN[o].kort):''}</span><span>· ${us.length} ${us.length===1?'rol':'rollen'}</span></div></a>`;}).join('')}</div>`).join('')}</div></div></section>`;
+  $$('#opf .chip').forEach(c=>c.onclick=()=>{opFilter=c.dataset.r||null;principes();});reveal();}
+function snippet(o,aanLerende){const O=OPS[o];const b=(aanLerende?(O.pl||O.pb):(O.pb||O.pl))||[];const lines=b.map(x=>'- '+x);lines.push('- Vermijd: '+O.fouten.map(lower1).join('; ')+'.');if(!aanLerende&&O.zw){lines.push('','ZO WEL: “'+O.zw+'”','ZO NIET: “'+O.zn+'”');}return lines.join('\n');}
+function op(o){const O=OPS[o];if(!O){principes();return;}const gi=O.g,gc=GH[gi],S=STAPPEN[o],us=rolesOfOp(o);const stairs=o==='hd';
+  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:60px"><div class="crumb"><a href="#/">Raamwerken</a><span>›</span><a href="#/lv">Leerverrijking</a><span>›</span><a href="#/lv/principes">Ontwerpprincipes</a><span>›</span><span>${esc(O.n)}</span></div>
+    <p class="eyebrow" style="color:${gc}">Ontwerpprincipe · ${G[gi]}</p><h1 style="max-width:20ch">${esc(O.n)}</h1><p class="lead">${esc(O.functie)}</p>
+    <div class="chips" style="margin-top:24px">${us.map(x=>`<a class="chip" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff" href="#/lv/rol/${x.R.id}">${esc(plain(x.R.n))}</a>`).join('')}</div></div></section>
+  <section class="blk"><div class="wrap">
+    ${S?`<div class="sh reveal"><div><p class="eyebrow" style="color:${gc}">Zo pak je het aan</p><h2>${esc(S.label)}</h2></div>${S.note?`<p>${esc(S.note)}</p>`:''}</div><div class="${stairs?'stairs-wrap':''} reveal"><div class="stepper ${stairs?'stairs':''}" style="--gc:${gc}">${S.s.map((x,i)=>`<div class="st" style="--i:${i}"><span class="d">${i+1}</span><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join('')}</div></div>`:''}
+    <div class="versus reveal" style="margin-top:50px">${O.zw?`<div class="phone no"><div class="ph"><i>✕</i><div><b>Zo niet</b><span>Valkuil</span></div></div><div class="bub">${esc(O.zn)}</div></div><div class="phone yes"><div class="ph"><i>✓</i><div><b>Zo wel</b><span>${esc(O.n)}</span></div></div><div class="bub">${esc(O.zw)}</div></div>`:''}</div>
+    ${O.vb?`<div class="aside reveal" style="margin-top:20px"><p class="lab">Voorbeeld</p><p style="margin-top:6px;color:var(--ink)">${esc(O.vb)}</p></div>`:''}
+  </div></section>
+  <section class="blk light"><div class="wrap two"><div class="reveal">
+    <div class="duo" style="margin-top:0"><div style="background:#fff"><span>Wanneer</span><p>${esc(O.wanneer)}</p></div><div style="background:#fff"><span>Zo zie je of het werkt</span><p>${esc(O.beoordeel)}</p></div><div style="background:#fff"><span>AI of de toepassing</span><p>${esc(O.ai)}</p></div><div style="background:#fff"><span>De lerende</span><p>${esc(O.le)}</p></div></div>
+    <div class="aside" style="margin-top:14px"><p class="lab" style="color:var(--bad)">Let op</p><ul class="fails" style="margin-top:6px">${O.fouten.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>${O.afdwing?`<p style="margin-top:12px;font-size:14.5px"><b style="color:var(--ink)">Afdwingen in plaats van vragen:</b> ${esc(O.afdwing)}</p>`:''}</div>
+    <h3 style="margin:30px 0 12px;font-size:22px">Onderbouwing</h3><div class="evid"><div class="evb o"><span class="lab">Onderzoek</span>${esc(O.onderzoek)}</div><div class="evb g"><span class="lab">Grens</span>${esc(O.grens)}</div><div class="evb v"><span class="lab">Onze vertaling</span>${esc(O.vertaling)}</div></div></div>
+    <div class="reveal" style="align-self:start;position:sticky;top:90px"><div class="copybox"><p class="lab" style="color:#c9a6ff;margin-bottom:8px">Bouwsteen voor je prompt</p><pre id="snip">${esc(snippet(o,false))}</pre><button class="btn pri sm" id="cp">Kopieer bouwsteen</button></div>
+      <div class="aside" style="margin-top:14px"><p class="lab">Komt voor bij</p>${us.map(x=>x.R.lp.map((p,l)=>p.op.includes(o)?`<a href="#/lv/rol/${x.R.id}" style="display:block;text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px"><b style="color:${RC[x.R.id]}">${esc(plain(x.R.n))}</b> · ${esc(p.n)}</a>`:'').join('')).join('')}</div></div>
+  </div></section>`;
+  $('#cp').onclick=()=>copy($('#snip').textContent,'Bouwsteen gekopieerd');reveal();}
+
+/* ================= PROMPTHULP ================= */
+const PS={rol:'tutor',sub:0,sel:null,leerdoel:'',doelgroep:'',bronnen:'',zie:'',tab:'chat',zieEdited:false};
+function lpsOf(R){return R.lp.map((p,l)=>({p,l})).filter(x=>!R.subs||x.p.sub===PS.sub);}
+function ctx(){const R=ROLES.find(x=>x.id===PS.rol);const S=R.subs?R.subs[PS.sub]:null;return {R,S,doel:S?S.doel:R.doel,grens:S?S.grens:R.grens,zie:S?S.zie:R.zie,aanLerende:!!R.lerendeStuurt};}
+function chosen(){const c=ctx();return lpsOf(c.R).filter(x=>PS.sel.has(x.l)).map(x=>x.p);}
+function uniqOps(ps){const o=[];ps.forEach(p=>p.op.forEach(k=>{if(!o.includes(k))o.push(k);}));return o.map(k=>OPS[k]);}
+const fill=(v,ph)=>v&&v.trim()?v.trim():ph;
+function chatText(){const c=ctx(),ps=chosen(),ops=uniqOps(ps);const fouten=[...new Set(ops.flatMap(O=>O.fouten))];
+  if(c.aanLerende){return ['# 1. Doel','Bij deze opdracht gebruik je AI als hulpmiddel voor een deeltaak. Het leerdoel blijft: '+fill(PS.leerdoel,'[vul in: wat moet je straks zelf begrijpen of kunnen?]'),'',
+    '# 2. Context en voorwaarden','- Deeltaken waarbij AI mag helpen: [vul in]','- Deeltaken die je zelf doet: [vul in]','- AI kan fouten even stellig brengen als feiten. Jij blijft verantwoordelijk voor wat je inlevert.','',
+    '# 3. Bronnen','- '+fill(PS.bronnen,'[Vul in: welke AI-toepassing en welke bronnen je mag gebruiken]'),'',
+    '# 4. Werkwijze',...ps.map(p=>'- '+p.p),...[...new Set(ops.flatMap(O=>(O.pl||O.pb||[])))].map(b=>'- '+b),'',
+    '# 5. Verantwoording','- Lever bij je werk een korte verantwoording in: wat deed AI, wat deed je zelf, en waarom klopt de uitkomst?'].join('\n');}
+  const out=['# 1. Doel',c.doel,'Leerdoel: '+fill(PS.leerdoel,'[vul in: wat moet de lerende straks begrijpen of kunnen?]'),'',
+    '# 2. Context en voorwaarden','- Doelgroep en voorkennis: '+fill(PS.doelgroep,'[vul in: leeftijd, niveau, opleiding en wat de lerende al kent]'),'- '+c.grens,'- Blijf eerlijk over wat niet klopt, ook als de lerende aandringt.','',
+    '# 3. Bronnen','- '+fill(PS.bronnen,'[Plak hier de lesstof, de criteria of een uitgewerkt voorbeeld.]'),'','# 4. Voorbeelden'];
+  ops.forEach(O=>{if(O.zw){out.push('ZO WEL ('+O.n.toLowerCase()+'): “'+O.zw+'”');out.push('ZO NIET: “'+O.zn+'”');}});
+  out.push('','# 5. Werkwijze');ps.forEach(p=>out.push('- '+p.p));
+  [...new Set(ops.flatMap(O=>(O.pb||O.pl||[])))].forEach(b=>out.push('- '+b));
+  if(fouten.length)out.push('- Vermijd: '+fouten.map(lower1).join('; ')+'.');
+  return out.join('\n');}
+function bouwText(){const c=ctx(),ps=chosen(),ops=uniqOps(ps);const afdw=[...new Set(ops.map(O=>O.afdwing).filter(Boolean))];
+  const out=['# B · Bedoeling','- Leerdoel: '+fill(PS.leerdoel,'[vul in]'),'- Rol van AI: '+plain(c.R.n)+(c.S?' ('+c.S.n+')':'')+'.','- Principes: '+ps.map(p=>p.n).join('; ')+'.','- Zichtbaar leren: '+fill(PS.zie,c.zie),'',
+    '# O · Ontwerp','- Doelgroep en voorkennis: '+fill(PS.doelgroep,'[vul in]'),'- Wat de lerende doet:'];
+  ps.forEach(p=>out.push('  '+p.n+': '+p.le));out.push('- Wat AI of de toepassing doet:');ps.forEach(p=>out.push('  '+p.n+': '+p.ai));
+  ops.forEach(O=>out.push('  '+O.n+': '+O.ai));
+  out.push('','# U · Uitvoering','- Test of de AI zich zo gedraagt, ook bij onverwachte antwoorden en als de lerende aandringt.','- Test tegen het standaardgedrag van een chatbot: '+c.R.standaard,
+    '- Controleer dat deze ontwerpfouten niet optreden: '+[...new Set(ops.flatMap(O=>O.fouten))].map(lower1).join('; ')+'.','','# W · Waarborgen');
+  if(afdw.length)afdw.forEach(a=>out.push('- Afdwingen in plaats van vragen: '+a));else out.push('- Bepaal wat de toepassing moet afdwingen in plaats van alleen vragen, bijvoorbeeld een volgende stap die pas opent na een eigen poging of tussenproduct.');
+  if(c.R.waarborg)out.push('- '+c.R.waarborg);out.push('- AI blijft eerlijk over wat niet klopt, ook als de lerende aandringt.');
+  ops.forEach(O=>out.push('- Zo beoordeel je het ('+O.n.toLowerCase()+'): '+O.beoordeel));
+  return out.join('\n');}
+function hlText(t){return esc(t).replace(/^(# .*)$/gm,'<span class="hl">$1</span>').replace(/\[[^\]]+\]/g,m=>`<span class="ph">${m}</span>`);}
+function prompthulp(q){const p=new URLSearchParams(q||'');if(p.get('rol')&&ROLES.some(R=>R.id===p.get('rol'))){PS.rol=p.get('rol');PS.sel=null;PS.zieEdited=false;const R=ROLES.find(x=>x.id===PS.rol);if(p.get('lp')!=null){const l=+p.get('lp');if(R.subs&&R.lp[l])PS.sub=R.lp[l].sub;PS.sel=new Set([l]);}}
+  if(!PS.sel){const c=ctx();PS.sel=new Set(lpsOf(c.R).map(x=>x.l));}
+  if(!PS.zieEdited)PS.zie=ctx().zie;
+  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:56px"><div class="crumb"><a href="#/">Raamwerken</a><span>›</span><a href="#/lv">Leerverrijking</a><span>›</span><span>Prompthulp</span></div><p class="eyebrow">De ontwerpketen als werkplaats</p><h1 style="max-width:20ch">Van leerdoel naar prompt</h1><p class="lead">Vul de stappen in. Rechts groeit je prompt mee in ons promptschema: doel, context en voorwaarden, bronnen, voorbeelden en werkwijze. Bouw je een app, kies dan BOUW: een app kan gedrag afdwingen waar een prompt het alleen vraagt.</p></div></section>
+  <section class="blk" style="padding-top:40px"><div class="wrap ph-grid"><div id="phL"></div><div class="sticky" id="phR"></div></div></section>`;
+  drawPH();}
+function drawPH(){const c=ctx(),R=c.R;
+  $('#phL').innerHTML=`<div class="card"><h3><span class="s">1</span>Leerdoel</h3><p class="hint">Begin bij het leerdoel, niet bij de tool. Wat moet de lerende straks begrijpen of kunnen?</p><textarea id="fLd" rows="2" placeholder="Bijvoorbeeld: de leerling kan uitleggen waarom een ijsblokje in water drijft.">${esc(PS.leerdoel)}</textarea></div>
+  <div class="card"><h3><span class="s">2</span>Rol van AI</h3><p class="hint">Eén rol per leeractiviteit. Combineer rollen alleen als ze elkaar opvolgen.</p><div class="rolepick">${ROLES.map(x=>`<button class="rpk ${x.id===PS.rol?'on':''}" data-r="${x.id}" style="--rc:${RC[x.id]}">${icon(x)}<span>${esc(plain(x.n))}</span></button>`).join('')}</div>
+    <p style="margin-top:14px;font-size:14.5px;color:var(--ink)">${esc(c.S?c.S.doel:R.functie)}</p>${R.subs?`<div class="subtog">${R.subs.map((s,i)=>`<button class="chip ${PS.sub===i?'on':''}" data-sub="${i}">${esc(s.n)}</button>`).join('')}</div>`:''}</div>
+  <div class="card"><h3><span class="s">3</span>Principes en werkwijzen</h3><p class="hint">Instellingen, geen wetten: zet uit wat niet past bij je doel, taak en lerende.</p>${lpsOf(R).map(({p,l})=>`<label class="lpcheck"><input type="checkbox" data-l="${l}" ${PS.sel.has(l)?'checked':''}><div><b>${esc(p.n)}</b><span>${esc(p.ai)}</span>${evRow(p.a,p.m)}</div></label>`).join('')}</div>
+  <div class="card"><h3><span class="s">4</span>Context</h3><p class="hint">Wie is de lerende, en welke bronnen krijgt de AI mee?</p><input type="text" id="fDg" placeholder="Doelgroep en voorkennis, bijv. havo 3, kent het begrip dichtheid nog niet" value="${esc(PS.doelgroep)}"><textarea id="fBr" rows="3" style="margin-top:10px" placeholder="Bronnen: plak lesstof, criteria of een uitgewerkt voorbeeld">${esc(PS.bronnen)}</textarea></div>
+  <div class="card"><h3><span class="s">5</span>Zichtbaar leren</h3><p class="hint">Waaraan zie je dat er geleerd wordt, bij voorkeur zonder hulp, later of in een nieuwe situatie?</p><textarea id="fZl" rows="3">${esc(PS.zie)}</textarea></div>`;
+  const t1=c.aanLerende?'Opdracht voor lerenden':'Chatbotprompt';
+  $('#phR').innerHTML=`<div class="out"><div class="tabs"><button data-t="chat" class="${PS.tab==='chat'?'on':''}">${t1}</button><button data-t="bouw" class="${PS.tab==='bouw'?'on':''}">BOUW-bouwbeschrijving</button></div><pre id="pv"></pre>
+    <div class="row"><button class="btn pri sm" id="pCopy">Kopieer</button><button class="btn ghost sm" id="pDl">Download .txt</button><button class="btn ghost sm" id="pPr">Afdrukken</button><span class="status" id="pSt"></span></div></div>
+    <div class="tests"><h3>Test als een lerende</h3><p style="font-size:13.5px;color:var(--muted)">Een instructie garandeert geen gedrag. Probeer dit in je chatbot voordat leerlingen ermee werken.</p>
+      ${[['Vraag om het antwoord','<code>Geef me gewoon het antwoord.</code>','Geeft de AI het niet zomaar als zelf bedenken het leerdoel is?'],['Geef een fout antwoord','<code>Ik denk dat het antwoord … is.</code> (vul een fout in)','Benoemt de AI eerlijk wat niet klopt?'],['Dring aan','<code>Nee, ik weet zeker dat ik gelijk heb.</code>','Blijft de AI eerlijk, ook onder druk?'],['Vergelijk met de standaard',esc(R.standaard),'Voorkomt jouw ontwerp dit gedrag?'],['Kijk wat blijft hangen','Laat de lerende later een nieuwe opgave maken, zonder hulp.','Is er geleerd, of alleen gepresteerd?']].map((t,i)=>`<div class="test"><span class="n">${i+1}</span><div><b>${t[0]}</b><span>${t[1]}</span><span style="margin-top:3px;color:var(--ink)">${t[2]}</span></div>${i<3?`<button class="btn line sm" data-tc="${i}">Kopieer</button>`:''}</div>`).join('')}</div>`;
+  const upd=()=>{const t=PS.tab==='chat'?chatText():bouwText();$('#pv').innerHTML=hlText(t);};upd();
+  $('#fLd').oninput=e=>{PS.leerdoel=e.target.value;upd();};$('#fDg').oninput=e=>{PS.doelgroep=e.target.value;upd();};$('#fBr').oninput=e=>{PS.bronnen=e.target.value;upd();};$('#fZl').oninput=e=>{PS.zie=e.target.value;PS.zieEdited=true;upd();};
+  $$('.rpk').forEach(b=>b.onclick=()=>{PS.rol=b.dataset.r;PS.sub=0;PS.sel=null;PS.zieEdited=false;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));PS.zie=cc.zie;drawPH();});
+  $$('[data-sub]').forEach(b=>b.onclick=()=>{PS.sub=+b.dataset.sub;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));if(!PS.zieEdited)PS.zie=cc.zie;drawPH();});
+  $$('.lpcheck input').forEach(i=>i.onchange=()=>{const l=+i.dataset.l;i.checked?PS.sel.add(l):PS.sel.delete(l);if(!PS.sel.size){PS.sel.add(l);i.checked=true;toast('Kies minstens één principe');}upd();});
+  $$('.tabs button').forEach(b=>b.onclick=()=>{PS.tab=b.dataset.t;$$('.tabs button').forEach(x=>x.classList.toggle('on',x===b));upd();});
+  $('#pCopy').onclick=()=>copy(PS.tab==='chat'?chatText():bouwText(),'Tekst gekopieerd');
+  $('#pDl').onclick=()=>{const t=PS.tab==='chat'?chatText():bouwText();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download=(PS.tab==='chat'?'prompt-':'bouw-')+PS.rol+'.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);};
+  $('#pPr').onclick=()=>window.print();
+  const TC=['Geef me gewoon het antwoord.','Ik denk dat het antwoord … is.','Nee, ik weet zeker dat ik gelijk heb.'];$$('[data-tc]').forEach(b=>b.onclick=()=>copy(TC[+b.dataset.tc],'Testzin gekopieerd'));}
+
+/* ================= ROUTER ================= */
+function route(force){const h=(typeof force==='string'?force:location.hash).replace(/^#\/?/,'');const [path,q]=h.split('?');const parts=path.split('/').filter(Boolean);
+  let nav='home';
+  if(!parts.length)hub();
+  else if(parts[0]==='lv'){
+    if(!parts[1]){lv();nav='lv';}
+    else if(parts[1]==='rollen'){rollen();nav='rollen';}
+    else if(parts[1]==='rol'){rol(parts[2]);nav='rollen';}
+    else if(parts[1]==='principes'){principes();nav='principes';}
+    else if(parts[1]==='op'){op(parts[2]);nav='principes';}
+    else if(parts[1]==='prompthulp'){prompthulp(q);nav='prompt';}
+    else lv();}
+  else if(parts[0]==='samenhang'){hub();setTimeout(()=>{const t=$('#samenhang');if(t)t.scrollIntoView();},50);}
+  else hub();
+  $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.n===nav));
+  window.scrollTo(0,0);
+  const t=$('h1');document.title=(t?t.textContent+' · ':'')+'AVD-raamwerken';}
+addEventListener('hashchange',route);
+// ankers binnen een pagina (#up, #samenhang) niet als route behandelen
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute('href');if(h.startsWith('#/'))return;e.preventDefault();const t=document.getElementById(h.slice(1));if(t)t.scrollIntoView({behavior:reduce()?'auto':'smooth'});});
+route();
+window.__avd={go:h=>route(h),PS,chatText,bouwText};
+})();
+</script>
+</body>
+</html>
