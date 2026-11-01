@@ -854,6 +854,131 @@ body.atlas .ph-desc{margin-top:14px;font:400 14.5px/1.55 var(--sans);color:var(-
 body.atlas input[type=text]:focus-visible,body.atlas textarea:focus-visible{outline:2.5px solid var(--vi);outline-offset:2px}
 @media (max-width:640px){.tbs{grid-template-columns:minmax(0,1fr)}.hb-fig{display:none}body.atlas .rolepick{grid-template-columns:repeat(2,minmax(0,1fr))}.hb{padding:34px 0 24px}.hb-lead{font-size:16.5px}.tb-st{top:-10px}}
 @media print{body.atlas .out::before,.tb-st,body.atlas #phL,body.atlas .ph-hd{display:none}body.atlas .out pre{max-height:none;overflow:visible}body.atlas .out{box-shadow:none}.reveal{opacity:1!important;transform:none!important}}
+/* ================= drie raamwerken: dezelfde uitvergroting, eigen inkt ================= */
+.uv.rw{--pu:var(--fi);--vi:var(--fi);--lv:var(--tint)}
+.uv.rw[data-fw="geletterd"]{--fi:#4b3f9e;--tint:rgba(75,63,158,.1)}
+.uv.rw[data-fw="kies"]{--fi:#a8475f;--tint:rgba(168,71,95,.1)}
+.uv.rw[data-fw="bouw"]{--fi:#2f6f73;--tint:rgba(47,111,115,.1)}
+.uv.rw .plist a:hover,.uv.rw .pstrip a:hover{background:var(--tint)}
+.uv.rw .nota.pu{background:var(--tint)}
+/* de letters zelf: groot, op een rij, zodat het woord leesbaar blijft */
+.uv.rw .uv-h1{max-width:18ch;font-size:clamp(40px,4.8vw,70px)}
+.uv.rw .fries{grid-template-columns:repeat(var(--n),minmax(0,1fr));max-width:calc(var(--n) * 260px);width:100%;margin-left:auto;margin-right:auto}
+.uv.rw[data-v="over"] .fries{gap:18px;margin-top:34px}
+.uv.rw[data-v="over"] .fz-s{width:136px;height:136px;box-shadow:0 0 0 5px var(--pa),0 0 0 6.5px var(--pu),0 26px 36px -20px rgba(40,25,35,.55)}
+.uv.rw[data-v="over"] .fz-s::before{inset:10px}
+.uv.rw[data-v="over"] .fz-s i{font-size:72px}
+.uv.rw[data-v="over"] .fz-n{font-size:25px;margin-top:26px}
+.uv.rw[data-v="over"] .fz-l{font-size:16px;max-width:22ch}
+.uv.rw .sokkel{max-width:calc(var(--n) * 260px)}
+.plinth.rwp{grid-template-columns:repeat(var(--m),minmax(0,1fr))}
+.plinth.rwp .pb{align-items:flex-start;padding:16px 20px 15px}
+.plinth.rwp .pb span{font:italic 500 17.5px/1.35 var(--serif);color:var(--ik)}
+.plinth.rwp div.pb span{font:400 15px/1.5 var(--sans);color:#3a3442}
+.plinth.rwp div.pb b{display:block;font:700 22px/1.1 var(--serif);color:var(--pu);margin-bottom:5px}
+.plinth.rwp div.pb:hover{background:none}
+/* het blad van een letter */
+.panel.pv-let .lt{max-width:58ch}
+.panel.pv-let details.ref .knip{margin-top:6px}
+/* een verdieping */
+.pn-one.wide{max-width:none}
+.pn-one.wide>.lsub{max-width:70ch}
+.itl{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.itl li{padding:14px 4px 13px;border-bottom:1px solid var(--ln)}
+.itl b{display:block;font:600 20px/1.25 var(--serif);color:var(--ik)}
+.itl span{display:block;font:400 15px/1.55 var(--sans);color:#3a3442;margin-top:4px;max-width:62ch}
+.pn-one .itl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:0 36px;border-top:0;margin-top:22px}
+.pn-one .itl li{border-top:1px solid var(--ln);border-bottom:0}
+.itq{list-style:none;margin:0;padding:0}
+.itq li{padding:16px 0 15px;border-bottom:1px solid var(--ln)}
+.itq li:last-child{border-bottom:0}
+.itq b{display:block;font:italic 500 clamp(22px,2.1vw,30px)/1.2 var(--serif);color:var(--ik);letter-spacing:-.005em}
+.itq span{display:block;font:400 15px/1.55 var(--sans);color:var(--mu);margin-top:6px}
+.pn-one .itq{margin-top:22px;max-width:900px}
+.knip.big{margin-top:0}
+.pn-one .knip.big{margin-top:22px;max-width:920px}
+.knip.big .kn-b{white-space:normal;padding:4px 22px 8px}
+.kn-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0 24px;max-width:1000px;margin-top:10px}
+/* een reeks: naast elkaar als er ruimte is, anders onder elkaar */
+.flow{list-style:none;margin:0;padding:0;display:grid}
+.flow li{position:relative;padding:14px 4px 14px;border-top:2px solid var(--pu)}
+.flow li+li{margin-top:30px}
+.flow li+li::before{content:"↓";position:absolute;left:4px;top:-30px;font:400 22px/28px var(--serif);color:var(--pu)}
+.flow b{display:block;font:700 21px/1.2 var(--serif);color:var(--ik)}
+.flow span{display:block;font:400 15px/1.55 var(--sans);color:#3a3442;margin-top:6px}
+.pn-one .flow{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:0 52px;margin-top:26px}
+.pn-one .flow li+li{margin-top:0}
+.pn-one .flow li+li::before{content:"→";left:-40px;top:8px;font-size:26px}
+.knip.big .flow{margin:6px 0 4px}
+/* de vork van Kiezen: een subtaak, drie keuzes, en de rollen klein eronder */
+.fork{margin-top:26px}
+.fk-top{position:relative;text-align:center}
+.fk-top span{display:inline-block;font:600 11px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--ik);border:1.2px solid var(--ik);border-radius:3px;padding:7px 14px;background:var(--pc)}
+.fk-top::after{content:"";position:absolute;left:50%;top:100%;height:16px;border-left:1.2px solid var(--ik)}
+.fk-cols{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:22px;margin-top:34px}
+.fk-cols::before{content:"";position:absolute;left:calc((100% - 44px)/6);right:calc((100% - 44px)/6);top:-18px;border-top:1.2px solid var(--ik)}
+.fk-c{position:relative;border:1px solid var(--ln2);border-radius:5px;padding:20px 20px 16px;background:var(--pa)}
+.fk-c::before{content:"";position:absolute;left:50%;top:-19px;height:18px;border-left:1.2px solid var(--ik)}
+.fk-c h2{font:700 27px/1.1 var(--serif);color:var(--ik);letter-spacing:-.01em}
+.fk-c>p:not(.sl){font:400 15px/1.55 var(--sans);color:#3a3442;margin-top:8px}
+.fk-c.ai{background:var(--pc);border-color:var(--pu);box-shadow:0 22px 40px -32px rgba(40,25,35,.5)}
+.fk-c.ai h2{color:var(--pu)}
+.fk-c .sl{margin-top:16px}
+.fk-roles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px}
+.fk-roles li{border-top:1px solid var(--ln);padding-top:8px}
+.fk-roles b{display:block;font:600 15.5px/1.2 var(--serif);color:var(--ik)}
+.fk-roles span{display:block;font:400 12.5px/1.45 var(--sans);color:var(--mu);margin-top:3px}
+.fk-cap{text-align:center;font:italic 400 14.5px var(--serif);color:var(--mu);margin-top:14px}
+/* de drie typen apps */
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:24px;border-top:2px solid var(--ik)}
+.cols3 section{padding:18px 24px 8px;border-left:1px solid var(--ln)}
+.cols3 section:first-child{border-left:0;padding-left:2px}
+.cols3 h2{font:700 27px/1.1 var(--serif);color:var(--pu);letter-spacing:-.01em}
+.cols3 p:not(.sl){font:400 15px/1.55 var(--sans);color:#3a3442;margin-top:8px}
+.cols3 .sl{margin-top:18px}
+.cols3 .w{font:italic 400 16px/1.5 var(--serif);color:var(--ik);margin-top:0}
+/* hub: elke plaat opent nu een atlas */
+.tb-l.sm i{width:25px;height:25px;font-size:12.5px;box-shadow:0 0 0 1.5px var(--pc),0 0 0 2.5px var(--fi)}
+.tb-l.sm{gap:6px;flex-wrap:nowrap;padding:6px 3px}
+.rl-list i{width:14px;height:14px;margin:4px 0 0 8px}
+body.atlas .nav a.on[data-n="geletterd"]{color:var(--c-geletterd);box-shadow:inset 0 -2px 0 var(--c-geletterd)}
+body.atlas .nav a.on[data-n="kies"]{color:var(--c-kies);box-shadow:inset 0 -2px 0 var(--c-kies)}
+body.atlas .nav a.on[data-n="bouw"]{color:var(--c-bouw);box-shadow:inset 0 -2px 0 var(--c-bouw)}
+/* beamer (1280x720) */
+@media (min-width:961px) and (max-height:800px){
+  .uv.rw .uv-h1{font-size:46px}
+  .uv.rw[data-v="over"] .fries{margin-top:16px}
+  .uv.rw[data-v="over"] .fz-s{width:92px;height:92px}.uv.rw[data-v="over"] .fz-s::before{inset:7px}.uv.rw[data-v="over"] .fz-s i{font-size:48px}
+  .uv.rw[data-v="over"] .fz-n{font-size:20px;margin-top:16px}.uv.rw[data-v="over"] .fz-l{font-size:14px}
+  .plinth.rwp .pb{padding:11px 16px 10px}.plinth.rwp .pb span{font-size:16px}
+  .fork{margin-top:16px}.fk-c{padding:14px 16px 12px}.fk-c h2{font-size:23px}
+}
+@media (max-width:1180px) and (min-width:761px){
+  .uv.rw[data-v="over"] .fz-s{width:104px;height:104px}.uv.rw[data-v="over"] .fz-s i{font-size:54px}
+  .uv.rw[data-v="over"] .fz-n{font-size:21px}
+  .fk-cols{gap:14px}.fk-roles{grid-template-columns:minmax(0,1fr)}
+  .cols3 section{padding:16px 16px 8px}
+}
+/* telefoon */
+@media screen and (max-width:760px){
+  .uv.rw .uv-h1{font-size:36px}
+  .uv.rw[data-v="over"] .fries{grid-template-columns:minmax(0,1fr);gap:0;margin-top:20px}
+  .uv.rw[data-v="over"] .fz{grid-template-columns:76px 1fr}
+  .uv.rw[data-v="over"] .fz-s{width:60px;height:60px;box-shadow:0 0 0 3px var(--pa),0 0 0 4.5px var(--pu)}.uv.rw[data-v="over"] .fz-s::before{inset:5px}.uv.rw[data-v="over"] .fz-s i{font-size:30px}
+  .uv.rw[data-v="over"] .fz-n{font-size:21px;margin:0}.uv.rw[data-v="over"] .fz-l{font-size:14px;max-width:none}
+  .plinth.rwp{grid-template-columns:minmax(0,1fr)}
+  .pn-one .flow{grid-auto-flow:row;gap:0}
+  .pn-one .flow li+li{margin-top:30px}
+  .pn-one .flow li+li::before{content:"↓";left:4px;top:-30px;font-size:22px}
+  .fk-top::after,.fk-cols::before,.fk-c::before{display:none}
+  .fk-cols{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px}
+  .fk-roles{grid-template-columns:minmax(0,1fr)}
+  .cols3{grid-template-columns:minmax(0,1fr)}
+  .cols3 section{border-left:0;padding:16px 0 8px;border-top:1px solid var(--ln)}.cols3 section:first-child{border-top:0}
+  .knip.big .kn-b{padding:4px 16px 8px}
+}
+@media print{.fk-c,.cols3 h2,.plinth.rwp{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
 </style>
 </head>
 <body>
@@ -861,9 +986,11 @@ body.atlas input[type=text]:focus-visible,body.atlas textarea:focus-visible{outl
   <a class="brand" href="#/"><span class="mark" aria-hidden="true"><i style="background:var(--c-geletterd)"></i><i style="background:var(--c-kies)"></i><i style="background:var(--c-bouw)"></i><i style="background:var(--c-lv)"></i></span><span><b>AVD-raamwerken</b><small>AI voor Docenten</small></span></a>
   <nav class="nav" aria-label="Hoofdnavigatie">
     <a href="#/" data-n="home">Raamwerken</a>
+    <a href="#/geletterdheid" data-n="geletterd">AI-geletterdheid</a>
+    <a href="#/kies" data-n="kies">KIES</a>
+    <a href="#/bouw" data-n="bouw">BOUW</a>
     <a href="#/lv" data-n="lv">Leerverrijking</a>
     <a href="#/lv/prompthulp" data-n="prompt">Prompthulp</a>
-    <a href="#/lv/over" data-n="over">Over het raamwerk</a>
   </nav>
 </div></header>
 <main id="view"></main>
@@ -1312,18 +1439,12 @@ function reveal(){if(io)io.disconnect();if(reduce()||!('IntersectionObserver' in
   io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});$$('.reveal').forEach(e=>io.observe(e));}
 
 /* ================= HUB ================= */
-// elk raamwerk is een plaat in de atlas; de letters van het raamwerk staan centraal (bij KIES: K, I, E, S)
+// elk raamwerk is een plaat die een eigen atlas opent; de letters van het raamwerk staan centraal (bij KIES: K, I, E, S)
 const FW=[
- {id:'geletterd',n:'AI-geletterdheid',as:'Handelen als professional',t:'I',ink:'#4b3f9e',p:'Voor docenten en onderwijsprofessionals: wat moet je weten, kunnen en vinden om AI verantwoord in te zetten?',letters:[['A','Mindset','Mensgerichte AI-mindset'],['B','Ethiek','Ethiek en verantwoord gebruik'],['C','Kennis','AI-kennis en -vaardigheden'],['D','Didactiek','AI-pedagogiek en -didactiek'],['E','Agency','Digitale agency']],meta:'5 domeinen',url:'https://aivoordocenten.nl/raamwerk-ai-geletterdheid/'},
- {id:'kies',n:'KIES',as:'Handelen als lerende',t:'II',ink:'#a8475f',p:'Voor de AI-vaardigheid van leerlingen en studenten: bewust kiezen bij iedere deeltaak.',letters:[['K','Kiezen'],['I','Instrueren'],['E','Evalueren'],['S','Spelregels']],meta:'4 letters',url:'https://aivoordocenten.nl/kies/'},
- {id:'bouw',n:'BOUW',as:'Handelen als maker',t:'III',ink:'#2f6f73',p:'Voor het ontwerpen en bouwen van AI-leeromgevingen: van app-idee naar een onderbouwde bouwbeschrijving.',letters:[['B','Bedoeling'],['O','Ontwerp'],['U','Uitvoering'],['W','Waarborgen']],meta:'4 letters',url:'https://aivoordocenten.nl/bouw-raamwerk/'},
- {id:'lv',n:'Leerverrijking',as:'Handelen als ontwerper',t:'IV',ink:'#5F3792',p:'Welke rol geef je AI, en hoe zorg je dat die het leren dient? Zeven didactische rollen, onderbouwd met leerwetenschap.',meta:ROLES.length+' rollen',url:'#/lv',feat:true}];
-// een verkleinde Tabula didactica voor de plaat van Leerverrijking
-function miniPlate(){let s='<svg class="mini" viewBox="-64 -64 128 128" aria-hidden="true"><circle r="50" class="o1"/><circle r="32" class="o2"/>';
-  const no=Object.keys(OPS).length,nr=ROLES.length;for(let i=0;i<no;i++){const a=i/no*Math.PI*2-Math.PI/2,x=Math.cos(a)*32,y=Math.sin(a)*32;s+=`<path class="d" d="M${x.toFixed(1)} ${(y-3).toFixed(1)}l3 3l-3 3l-3-3z"/>`;}
-  const LF=['#F3ECFA','#E6D8F5','#D2BCEE','#A784D6','#5F3792'];UP.forEach((u,i)=>{s+=`<circle r="${18-i*(16/UP.length)}" fill="${LF[i%LF.length]}" class="f"/>`;});
-  for(let i=0;i<nr;i++){const a=i/nr*Math.PI*2-Math.PI/2;s+=`<circle class="sl" cx="${(Math.cos(a)*50).toFixed(1)}" cy="${(Math.sin(a)*50).toFixed(1)}" r="7"/>`;}
-  return s+'</svg>';}
+ {id:'geletterd',n:'AI-geletterdheid',as:'Handelen als professional',ink:'#4b3f9e',p:'Voor docenten en onderwijsprofessionals: wat moet je weten, kunnen en vinden om AI verantwoord in te zetten?',letters:[['A','Mindset','Mensgerichte AI-mindset'],['B','Ethiek','Ethiek en verantwoord gebruik'],['C','Kennis','AI-kennis en vaardigheden'],['D','Didactiek','AI-pedagogiek en didactiek'],['E','Agency','Digital agency']],url:'#/geletterdheid'},
+ {id:'kies',n:'KIES',as:'Handelen als lerende',ink:'#a8475f',p:'Voor de AI-vaardigheid van leerlingen en studenten: bewust kiezen bij iedere deeltaak.',letters:[['K','Kiezen'],['I','Instrueren'],['E','Evalueren'],['S','Spelregels']],url:'#/kies'},
+ {id:'bouw',n:'BOUW',as:'Handelen als maker',ink:'#2f6f73',p:'Voor het ontwerpen en bouwen van AI-leeromgevingen: van app-idee naar een onderbouwde bouwbeschrijving.',letters:[['B','Bedoeling'],['O','Ontwerp'],['U','Uitvoering'],['W','Waarborgen']],url:'#/bouw'},
+ {id:'lv',n:'Leerverrijking',as:'Handelen als ontwerper',ink:'#5F3792',p:'Welke rol geef je AI, en hoe zorg je dat die het leren dient? Zeven didactische rollen, onderbouwd met leerwetenschap.',letters:ROLES.map((R,i)=>[String(i+1),plain(R.n)]),sm:true,url:'#/lv'}];
 function relSvg(){
   const N={geletterd:[120,96],kies:[480,96],bouw:[480,302],lv:[120,302]};
   const E=[['lv','bouw','levert de bedoeling'],['lv','kies','docentkant van dezelfde rollen'],['lv','geletterd','werkt domein D uit']];
@@ -1334,25 +1455,22 @@ function relSvg(){
   E.forEach(([a,b,l],i)=>{const [x1,y1]=N[a],[x2,y2]=N[b];const mx=(x1+x2)/2,my=(y1+y2)/2+(i===1?-20:0);
     s+=`<path class="ed" d="M${x1+(x2>x1?88:0)} ${y1+(y2>y1?34:y2<y1?-34:0)} Q ${mx} ${my} ${x2-(x2>x1?90:0)} ${y2+(y2>y1?-34:y2<y1?34:0)}" marker-end="url(#ar)"/>`;
     s+=x1===x2?`<text class="el" x="${mx+10}" y="${my+4}" style="text-anchor:start">${l}</text>`:`<text class="el" x="${i===1?mx-34:mx}" y="${i===1?my-26:my-9}">${l}</text>`;});
-  Object.entries(N).forEach(([k,[x,y]])=>{const f=FW.find(z=>z.id===k);s+=`<g><rect class="nd" x="${x-88}" y="${y-30}" width="176" height="60" rx="4" style="stroke:${f.ink}"/><circle cx="${x-64}" cy="${y}" r="13" style="fill:${f.ink}"/><text class="ni" x="${x-64}" y="${y+1}">${f.t}</text><text class="nn" x="${x-43}" y="${y-3}">${f.n}</text><text class="na" x="${x-43}" y="${y+15}">${f.as.replace('Handelen als ','als ')}</text></g>`;});
+  Object.entries(N).forEach(([k,[x,y]])=>{const f=FW.find(z=>z.id===k);s+=`<g><rect class="nd" x="${x-88}" y="${y-30}" width="176" height="60" rx="4" style="stroke:${f.ink}"/><circle cx="${x-66}" cy="${y}" r="7" style="fill:${f.ink}"/><text class="nn" x="${x-50}" y="${y-3}">${f.n}</text><text class="na" x="${x-50}" y="${y+15}">${f.as.replace('Handelen als ','als ')}</text></g>`;});
   return s+'</svg>';}
 function hub(){
   view.innerHTML=`<section class="hb"><div class="wrap">
-    <header class="hb-hd"><p class="kick">AI voor Docenten · atlas van de raamwerken</p>
-    <h1 class="hb-h1">Vier raamwerken, één <em>samenhangend</em> geheel.</h1>
-    <p class="hb-lead">AI begint niet bij tools, maar bij goed onderwijs. Onze raamwerken geven docenten taal en houvast: als professional, als ontwerper, als maker, en voor de lerende zelf. Praktisch genoeg voor maandag, doordacht genoeg voor schoolbeleid.</p>
-    <div class="hb-btns"><a class="btn pri" href="#/lv">Open de atlas van Leerverrijking →</a><a class="lk" href="#samenhang">Hoe ze samenhangen ↓</a></div></header>
-    <div class="tbs">${FW.map(f=>`<a class="tb ${f.feat?'feat':''}" href="${f.url}" ${f.feat?'':'target="_blank" rel="noopener"'} style="--fi:${f.ink}">
-      <span class="tb-h"><span>Tabula ${f.t}</span><span>${f.meta}</span></span>
+    <header class="hb-hd"><h1 class="hb-h1">Vier raamwerken, één <em>samenhangend</em> geheel.</h1>
+    <p class="hb-lead">AI begint niet bij tools, maar bij goed onderwijs. Vier raamwerken geven taal en houvast: voor de professional, de lerende, de maker en de ontwerper.</p></header>
+    <div class="tbs">${FW.map(f=>`<a class="tb" href="${f.url}" style="--fi:${f.ink}">
       <h3>${f.n}<small>${f.as}</small></h3>
-      ${f.letters?`<span class="tb-l" aria-hidden="true">${f.letters.map(([L,w,full])=>`<i title="${L} · ${full||w}">${L}</i>`).join('')}</span><span class="tb-w">${f.letters.map(([L,w,full])=>`<span ${full?`title="${L} · ${full}"`:''}><b>${L}</b> ${w}</span>`).join('')}</span>`:`<span class="tb-m">${miniPlate()}<small>${ROLES.length} rollen · ${ROLES.reduce((n,R)=>n+R.lp.length,0)} principes en werkwijzen · ${Object.keys(OPS).length} ontwerpprincipes · ${UP.length} uitgangspunten</small></span>`}
+      <span class="tb-l ${f.sm?'sm':''}" aria-hidden="true">${f.letters.map(([L,w,full])=>`<i title="${esc(full||w)}">${L}</i>`).join('')}</span>
+      <span class="tb-w">${f.letters.map(([L,w,full])=>`<span ${full?`title="${esc(full)}"`:''}>${f.sm?'':`<b>${L}</b> `}${esc(w)}</span>`).join('')}</span>
       <p>${f.p}</p>
-      <span class="tb-f"><span>${f.feat?'Open de atlas':'Lees op aivoordocenten.nl'}${f.feat?'':'<span class="sr"> (opent in een nieuw tabblad)</span>'}</span><span aria-hidden="true">${f.feat?'→':'↗'}</span></span>
-      ${f.feat?'<span class="tb-st">Concept v2</span>':''}</a>`).join('')}</div>
+      <span class="tb-f"><span>Open de atlas</span><span aria-hidden="true">→</span></span></a>`).join('')}</div>
   </div></section>
-  <section class="hb hb-rel" id="samenhang"><div class="wrap"><div class="hb-sh reveal"><div><p class="kick">Fig. · Samenhang</p><h2 tabindex="-1">Goed bouwen veronderstelt een onderwijskundige basis</h2></div><p>Elk raamwerk kijkt vanuit een andere rol naar leren met AI. Samen vormen ze één verhaal: van professionele houding tot een werkende leeromgeving.</p></div>
+  <section class="hb hb-rel" id="samenhang"><div class="wrap"><div class="hb-sh reveal"><h2 tabindex="-1">Goed bouwen veronderstelt een onderwijskundige basis</h2></div>
     <div class="rel reveal"><figure class="hb-fig">${relSvg()}</figure><ol class="rl-list">
-      ${[['geletterd','AI-geletterdheid · de professional','Leerverrijking werkt domein D, AI-pedagogiek en -didactiek, concreet uit.'],['kies','KIES · de lerende','Leerverrijking is de docentkant van dezelfde rollen. De rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.'],['bouw','BOUW · de maker','Leerverrijking levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.'],['lv','Leerverrijking · de ontwerper','Welke rol geef ik AI, en hoe zorg ik dat die het leren dient?']].map(([id,b,t])=>{const f=FW.find(z=>z.id===id);return `<li style="--fi:${f.ink}"><i>${f.t}</i><div><b>${b}</b><span>${t}</span></div></li>`;}).join('')}</ol></div></div></section>`;
+      ${[['geletterd','AI-geletterdheid · de professional','Leerverrijking werkt domein D, AI-pedagogiek en didactiek, concreet uit.'],['kies','KIES · de lerende','Leerverrijking is de docentkant van dezelfde rollen. De rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.'],['bouw','BOUW · de maker','Leerverrijking levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.']].map(([id,b,t])=>{const f=FW.find(z=>z.id===id);return `<li style="--fi:${f.ink}"><i></i><div><b>${b}</b><span>${t}</span></div></li>`;}).join('')}</ol></div></div></section>`;
   reveal();}
 
 
@@ -1493,13 +1611,13 @@ function lpPos(R,s){if(!R||s.p==null)return 0;return subLps(R,R.lp[s.p].sub).fin
 function fz(R,i){
   return `<a class="fz" href="#/lv/${R.id}" data-r="${R.id}" data-k="fz-${R.id}" title="Rol ${i+1} · ${esc(plain(R.n))}" style="--d:${i}"><span class="fz-s"><i>${i+1}</i></span><span class="fz-n">${esc(R.n)}</span><span class="fz-l">${esc(LD[R.id]||R.kort)}</span></a>`;}
 function lvShell(){const big=store.get('avd-big')==='1';document.body.classList.toggle('lvbig',big);
-  return `<section class="uv" id="uv" data-v="over" aria-label="Raamwerk Leerverrijking">
+  return `<section class="uv" id="uv" data-fw="lv" data-v="over" aria-label="Raamwerk Leerverrijking">
   <header class="uv-h"><nav class="uv-crumb kick" id="uvCrumb" aria-label="Waar je bent"></nav></header>
   <div class="uv-top" id="uvTop"></div>
   <nav class="fries" id="fries" aria-label="De zeven rollen">${ROLES.map((R,i)=>fz(R,i)).join('')}</nav>
   <div class="stage" id="stage"></div>
   <svg class="hair" id="hair" aria-hidden="true"></svg>
-  <footer class="uv-f"><span class="uv-docs"><a href="${DOCS.wp}" target="_blank" rel="noopener">Whitepaper</a><a href="${DOCS.ag}" target="_blank" rel="noopener">Achtergronddocument</a></span><button type="button" id="lvBig" class="${big?'on':''}" aria-pressed="${big}" title="Grotere tekst voor de beamer">A+</button></footer>
+  <footer class="uv-f"><span class="uv-docs"><a href="#/lv/over">Over het raamwerk</a><a href="${DOCS.wp}" target="_blank" rel="noopener">Whitepaper</a><a href="${DOCS.ag}" target="_blank" rel="noopener">Achtergronddocument</a></span><button type="button" id="lvBig" class="${big?'on':''}" aria-pressed="${big}" title="Grotere tekst voor de beamer">A+</button></footer>
   <div class="lensf" id="lensf" aria-hidden="true"><span id="lensT"></span></div>
   <div class="sr-only" id="lvlive" aria-live="polite"></div></section>`;}
 
@@ -1629,7 +1747,7 @@ function stampOf(s){const v=viewOf(s),R=s.rol&&s.rol!=='zonder'?roleById(s.rol):
 /* ---------- toepassen ---------- */
 function lvRoute(parts,q){if(parts[1]==='rondleiding'){location.replace('ruimte.html'+location.hash);return;}
   const s=lvParse(parts,q);document.body.classList.add('atlas','lvmode');
-  let fresh=false;if(!$('#uv')){view.innerHTML=lvShell();bindAtlas();LV.cur=null;fresh=true;window.scrollTo({top:0,left:0,behavior:'instant'});}
+  let fresh=false;const u0=$('#uv');if(!u0||u0.dataset.fw!=='lv'){view.innerHTML=lvShell();bindAtlas();LV.cur=null;fresh=true;window.scrollTo({top:0,left:0,behavior:'instant'});}
   // altijd de nette vorm van het adres tonen; meld het alleen als er echt iets niet bestond
   const canon=lvHash(s);if(s.bad)toast('Deze plek bestaat niet (meer).');if(location.hash!==canon)history.replaceState(null,'',canon);
   const prev=LV.cur;if(!prev||prev.rol!==s.rol||prev.sub!==s.sub)LV.rpv=false;
@@ -1684,7 +1802,7 @@ function lensZoom(a,b,label,out){const L=$('#lensf');if(!L||!a||!b||!b.width)ret
   lensZoom.an=an;an.onfinish=an.oncancel=()=>{if(lensZoom.an===an){L.style.display='none';lensZoom.an=null;}};}
 // haarlijnen: van het kader rond het actieve zegel of principe naar de hoeken van het blad
 function hair(){const svg=$('#hair'),uv=$('#uv');if(!svg||!uv)return;const panel=$('#panel'),src=$('#stage .pstrip a.on')||$('#fries .fz.on .fz-s');
-  if(!panel||!src||innerWidth<=760||!['rol','pr'].includes(uv.dataset.v)){svg.innerHTML='';svg.setAttribute('width',0);svg.setAttribute('height',0);return;}
+  if(!panel||!src||innerWidth<=760||!['rol','pr','let','deel'].includes(uv.dataset.v)){svg.innerHTML='';svg.setAttribute('width',0);svg.setAttribute('height',0);return;}
   const u=uv.getBoundingClientRect(),a=src.getBoundingClientRect(),b=panel.getBoundingClientRect(),pad=src.matches('.fz-s')?9:3;
   svg.setAttribute('width',u.width);svg.setAttribute('height',u.height);svg.setAttribute('viewBox',`0 0 ${u.width} ${u.height}`);
   // staat de strook met principes op twee regels, laat de lijnen dan onder de hele strook beginnen
@@ -1694,7 +1812,7 @@ function hair(){const svg=$('#hair'),uv=$('#uv');if(!svg||!uv)return;const panel
   if(!reduce())$$('#hair .hl').forEach(p=>{const n=p.getTotalLength();p.animate([{strokeDasharray:n,strokeDashoffset:n},{strokeDasharray:n,strokeDashoffset:0}],{duration:520,delay:260,easing:'ease-out',fill:'backwards'});});}
 function bindAtlas(){const uv=$('#uv');
   // onthoud waar je klikte, zodat de lens vanaf daar kan uitvergroten
-  uv.addEventListener('click',e=>{const a=e.target.closest('a[href^="#/lv"]');if(!a||e.ctrlKey||e.metaKey||e.shiftKey)return;const z=a.matches('.fz')?a.querySelector('.fz-s'):a.matches('.plist a')?a.querySelector('i'):a;
+  uv.addEventListener('click',e=>{const a=e.target.closest('a[href^="#/"]');if(!a||e.ctrlKey||e.metaKey||e.shiftKey)return;const z=(a.matches('.fz')&&a.querySelector('.fz-s'))||a;
     const nav=a.closest('.sidenav');LV.origin={r:z.getBoundingClientRect(),t:Date.now(),label:a.dataset.zoom||'',dir:nav?(a.dataset.k==='nav-n'?1:-1):0};},true);
   uv.addEventListener('mouseover',e=>{if(uv.dataset.v!=='lib')return;const po=e.target.closest('[data-po]');const set=po?new Set(OPR[po.dataset.po].map(r=>r.id)):null;
     $$('#fries .fz').forEach(a=>{a.classList.toggle('uses',!!set&&set.has(a.dataset.r));a.classList.toggle('dim',!!set&&!set.has(a.dataset.r));});});
@@ -1706,11 +1824,12 @@ function bindAtlas(){const uv=$('#uv');
   uv.addEventListener('focusin',e=>{if(uv.dataset.v!=='lib')return;const po=e.target.closest('[data-po]');if(!po)return;const set=new Set(OPR[po.dataset.po].map(r=>r.id));$$('#fries .fz').forEach(a=>{a.classList.toggle('uses',set.has(a.dataset.r));a.classList.toggle('dim',!set.has(a.dataset.r));});});
   $('#lvBig').onclick=()=>{const on=!document.body.classList.contains('lvbig');document.body.classList.toggle('lvbig',on);store.set('avd-big',on?'1':'0');$('#lvBig').classList.toggle('on',on);$('#lvBig').setAttribute('aria-pressed',on);requestAnimationFrame(hair);};
 }
-function lvKeys(e){if(!document.body.classList.contains('atlas')||!$('#uv'))return;if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.target.closest&&e.target.closest('input,textarea,select'))return;const k=e.key;
-  if(k==='Escape'){const kp=$('#kpanel');if(kp&&kp.classList.contains('on')){closeKnip(true);return;}const s=LV.cur;if(!s)return;const v=viewOf(s);
-    const up=v==='pr'?lvHash({rol:s.rol,sub:s.sub}):v==='opd'?'#/lv/principes':v==='fund'&&s.fund?'#/lv/fundament':'#/lv';
-    if(location.hash!==up){LV.origin=null;location.hash=up;e.preventDefault();}return;}
-  if(k==='Home'&&!(e.target.closest&&e.target.closest('details'))){if(location.hash!=='#/lv'){location.hash='#/lv';e.preventDefault();}return;}
+function lvKeys(e){const uv=$('#uv');if(!document.body.classList.contains('atlas')||!uv)return;if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.target.closest&&e.target.closest('input,textarea,select'))return;const k=e.key,isLv=uv.dataset.fw==='lv';
+  if(k==='Escape'){const kp=$('#kpanel');if(kp&&kp.classList.contains('on')){closeKnip(true);return;}let up;
+    if(isLv){const s=LV.cur;if(!s)return;const v=viewOf(s);up=v==='pr'?lvHash({rol:s.rol,sub:s.sub}):v==='opd'?'#/lv/principes':v==='fund'&&s.fund?'#/lv/fundament':'#/lv';}
+    else up=uv.dataset.up||uv.dataset.root;
+    if(up&&location.hash!==up){LV.origin=null;location.hash=up;e.preventDefault();}return;}
+  if(k==='Home'&&!(e.target.closest&&e.target.closest('details'))){const root=isLv?'#/lv':uv.dataset.root;if(root&&location.hash!==root){location.hash=root;e.preventDefault();}return;}
   const nav=k==='ArrowRight'||k==='PageDown'?'n':k==='ArrowLeft'||k==='PageUp'?'p':null;if(!nav)return;if(e.target.closest&&e.target.closest('.seg,.optabs,#kpanel,details'))return;
   const t=$(`#stage .sidenav a[data-k="nav-${nav}"]`);if(t){LV.origin={r:t.getBoundingClientRect(),t:Date.now(),dir:nav==='n'?1:-1};location.hash=t.getAttribute('href');e.preventDefault();}}
 document.addEventListener('keydown',lvKeys);
@@ -1769,14 +1888,277 @@ function lvOver(){const a=EVC.a,m=EVC.m,n=EVC.n;
    <li>Wisniewski, B., Zierer, K., &amp; Hattie, J. (2020). The power of feedback revisited. <i>Frontiers in Psychology, 10</i>, 3087.</li></ul>
   <p style="font-size:14px;color:var(--muted)">De volledige bronnenlijst staat in het achtergronddocument.</p></article>`;}
 
+/* ================= DRIE RAAMWERKEN · DEZELFDE UITVERGROTING ================= */
+// inhoud van aivoordocenten.nl (de raamwerkpagina's en de pdf's daar), ingekort tot wat op een blad past
+const SC0='\n\nScoor elke stelling samen van 0 tot 3.';
+function niv(dn,b,g){return [
+  {id:'basis',n:'Basis',f:'Geletterdheid: wat je als docent kunt in dit domein.',items:b[0],knip:[['Checklist Basis',dn+', basisniveau:\n'+b[1].map(x=>'[ ] '+x).join('\n')]]},
+  {id:'gevorderd',n:'Gevorderd',f:'Bekwaamheid: wat je bovendien kunt, in je eigen praktijk en voor collega’s en de organisatie.',items:g[0],knip:[['Checklist Gevorderd',dn+', gevorderd niveau:\n'+g[1].map(x=>'[ ] '+x).join('\n')]]}];}
+const FWD={
+geletterd:{id:'geletterd',n:'AI-geletterdheid',full:'Raamwerk AI-geletterdheid voor docenten',lw:'De vijf domeinen',
+ h1:'AI-geletterd is meer dan AI <em>kunnen gebruiken</em>.',
+ lead:'Vijf domeinen beschrijven wat AI-geletterdheid betekent voor docenten, van po tot wo. Ze staan niet in een rangorde maar versterken elkaar. Ethiek loopt als rode draad door alle vijf.',
+ sokkel:{lb:'Twee niveaus in elk domein',items:[['Basis','Geletterdheid: je begrijpt hoe AI werkt, beoordeelt de uitkomsten en kiest bewust.'],['Gevorderd','Bekwaamheid: je zet AI echt in, begeleidt anderen en draagt bij aan de organisatie.']]},
+ docs:[['AI-geletterdheid op aivoordocenten.nl','https://aivoordocenten.nl/raamwerk-ai-geletterdheid/'],['Raamwerk','https://aivoordocenten.nl/downloads/raamwerk-ai-geletterdheid-2026b.pdf'],['Zelfscan','https://zelfscan-ai-geletterdheid.vercel.app/']],
+ letters:[
+ {L:'A',n:'Mensgerichte AI-mindset',q:'AI is gereedschap, geen vervanging',
+  t:'AI is een hulpmiddel. Het vervangt de docent niet, en ook het menselijk oordeel niet. Je gaat bewust en kritisch met AI om, vanuit je eigen professionele waarden, en je houdt je eigen rol scherp. Dit domein gaat over houding en identiteit.',
+  knip:['Reflectievragen','Wie ben ik als docent?\nWat zijn mijn waarden?\nHoe verhoudt AI zich daartoe?\nWat doet AI, en wat doe ik zelf?'],
+  delen:niv('Mensgerichte AI-mindset',
+   [[['Eigen rol beschrijven','Je beschrijft je eigen rol als docent in relatie tot AI: wat doet AI, en wat doe je zelf?'],['Wenselijk of onmisbaar','Je geeft voorbeelden van situaties waarin AI wenselijk is, en van situaties waarin menselijk oordeel onmisbaar is.'],['Reflecteren op aannames','Je denkt na over je eigen houding en aannames over AI, en over hoe die je handelen beïnvloeden.'],['Bewust kiezen','Je kiest in een concrete situatie bewust voor of tegen AI, en onderbouwt die keuze met argumenten.'],['Waarden als ijkpunt','Bij beslissingen over AI gebruik je je eigen professionele waarden als referentiepunt.']],
+    ['Kan uitleggen wat AI wel en niet kan in de eigen onderwijscontext','Maakt een bewuste keuze om AI wel of niet in te zetten, met argumenten','Herkent wanneer menselijk oordeel noodzakelijk is','Reflecteert op eigen vooroordelen over AI','Beschrijft de eigen professionele rol in een wereld met AI']],
+   [[['Gedeelde normen','Je helpt actief mee aan gedeelde normen voor AI-gebruik in je team of school.'],['Collega’s begeleiden','Je begeleidt collega’s als ze nadenken over hun eigen rol in relatie tot AI.'],['Beleidsgesprekken','Je doet mee aan gesprekken over AI-beleid in de organisatie, of je leidt ze.'],['Positie in het debat','Je neemt een kritische positie in het publieke debat over AI in het onderwijs.'],['Visie naar praktijk','Je vertaalt een visie op mensgerichte AI-inzet naar concrete praktijk in je eigen organisatie.']],
+    ['Draagt bij aan een teamvisie op mensgerichte AI-inzet','Begeleidt collega’s bij professionele reflectie op AI','Neemt een actieve rol in AI-beleidsvorming op schoolniveau','Verbindt persoonlijke waarden aan organisatorische keuzes over AI','Is zichtbaar als professionele stem in het AI-debat']])},
+ {L:'B',n:'Ethiek en verantwoord gebruik',q:'Ethiek zit in elke keuze',
+  t:'Ethiek is bij AI geen laagje dat je er later overheen legt. Het zit in elke keuze: welke tool je gebruikt, hoe je hem inzet en wat je met de output doet. Privacy, bias, transparantie en verantwoordelijkheid lopen door elke AI-beslissing heen.',
+  knip:['Privacycheck vooraf','Welke data voer je in bij deze AI-tool?\nMag je leerlinggegevens invoeren?\nWat zijn de voorwaarden van de tool?'],
+  delen:niv('Ethiek en verantwoord gebruik',
+   [[['Ethische vragen herkennen','Je herkent ethische vraagstukken rond AI: privacy, bias, transparantie en verantwoordelijkheid.'],['Geschikte data','Je beschrijft welke data je wel en niet in AI-tools kunt invoeren.'],['Bewust afwegen','Je weegt bewust af wanneer het wenselijk is om AI in te zetten.'],['Transparant naar leerlingen','Je vertelt leerlingen open wanneer je AI in de les gebruikt.'],['Wet- en regelgeving','Je kent de basis van de wet- en regelgeving die ertoe doet, zoals de AVG en de AI Act.']],
+    ['Benoemt concrete privacyrisico’s bij AI-gebruik in de klas','Kan uitleggen wat bias is en een voorbeeld geven uit de eigen context','Communiceert transparant met leerlingen over AI-gebruik','Kent de hoofdlijnen van de AVG en de AI Act voor het onderwijs','Neemt verantwoordelijkheid voor door AI gemaakte output']],
+   [[['Tools ethisch evalueren','Je evalueert AI-tools systematisch op ethische gronden, ook op bias.'],['Richtlijnen en protocollen','Je helpt mee aan ethische richtlijnen en protocollen voor AI-gebruik in de organisatie.'],['Collega’s begeleiden','Je begeleidt collega’s bij ethisch verantwoorde keuzes rond AI.'],['Casuïstiek maken','Je maakt van ethische vraagstukken casussen voor teamgesprekken of voor je onderwijs.'],['Ethisch kader op school','Je gebruikt een ethisch kader als de school AI-tools kiest en invoert.']],
+    ['Evalueert AI-tools systematisch op ethische criteria','Ontwikkelt of draagt bij aan ethische richtlijnen voor de school','Betrekt ethiek actief in pedagogische en didactische keuzes over AI','Begeleidt collega’s bij ethische vraagstukken rond AI','Onderbouwt de keuze voor een tool met ethische argumenten']]).concat([
+   {id:'kernthemas',n:'Kernthema’s',f:'Vier vragen die bij elke AI-beslissing meelopen.',items:[['Privacy en databescherming','Welke data voer je in bij een AI-tool, en mogen leerlinggegevens erin? De AVG en de Europese AI Act stellen eisen aan het gebruik van persoonsgegevens.'],['Bias en eerlijkheid','AI-systemen zijn getraind op data uit de samenleving, inclusief de vooroordelen daarin. Je herkent dat en weegt het mee.'],['Transparantie en verantwoording','Zet je AI in, dan moeten leerlingen dat weten. In sommige situaties is dat ook wettelijk verplicht.'],['Verantwoordelijkheid voor de output','Je bent en blijft verantwoordelijk voor wat er in de klas gebeurt, ook als je AI-materiaal gebruikt.']],
+    knip:[['Vuistregels privacy','Persoonsgegevens vragen een grondslag.\nAnonimiseren is de minimale stap.\nEen gratis account is iets anders dan een EDU-omgeving met verwerkersovereenkomst.']]}])},
+ {L:'C',n:'AI-kennis en vaardigheden',q:'AI begrijpen, aansturen en beoordelen',
+  t:'Wie AI inzet, moet begrijpen hoe het werkt. Niet zoals een ingenieur, maar als professionele gebruiker. Je weet wat een taalmodel is, waarom AI hallucineert en hoe trainingsdata de output beïnvloeden. En je weet hoe je AI goed aanstuurt.',
+  knip:['Kennisvragen om te checken','Wat is machine learning?\nWat zijn trainingsdata?\nWaarom hallucineert een taalmodel?\nWat is het verschil tussen generatieve, regelgebaseerde en discriminatieve AI?\nWelke AI-tools zijn er, waarvoor zijn ze geschikt, en welke zijn toegestaan op school?'],
+  delen:niv('AI-kennis en vaardigheden',
+   [[['Werking uitleggen','Je legt op hoofdlijnen uit hoe generatieve AI werkt: trainingsdata, taalmodellen en hallucinaties.'],['Effectief prompten','Je geeft context, beschrijft een rol en verfijnt je instructies.'],['Output beoordelen','Je beoordeelt AI-output kritisch: klopt het, zit er bias in en is het bruikbaar?'],['Twee tools inzetten','Je kent minstens twee AI-tools en gebruikt ze voor onderwijstaken.'],['Tools voor leerlingen','Je weet welke tools je met leerlingen kunt gebruiken, en onder welke voorwaarden.']],
+    ['Kan uitleggen wat een taalmodel is, zonder vakjargon','Past prompting toe en verfijnt op basis van de output','Herkent hallucinaties en weet hoe daarmee om te gaan','Gebruikt AI-tools bewust en doelgericht in het eigen werk','Evalueert output systematisch op kwaliteit en bias']],
+   [[['Systemen vergelijken','Je vergelijkt AI-systemen op architectuur, kwaliteit en geschiktheid voor een specifieke toepassing.'],['Geavanceerd prompten','Je gebruikt geavanceerde prompttechnieken, zoals few-shot learning, chain-of-thought en systeeminstructies.'],['Nieuwe tools evalueren','Je beoordeelt zelf een nieuwe AI-tool op kwaliteit, betrouwbaarheid en geschiktheid.'],['Training begrijpen','Je begrijpt hoe AI-modellen worden getraind en wat dat betekent voor de output.'],['Anderen begeleiden','Je helpt anderen in je organisatie om AI-vaardigheden op te bouwen.']],
+    ['Vergelijkt AI-systemen op inhoudelijke gronden','Past geavanceerde prompttechnieken toe en kan ze uitleggen','Evalueert nieuwe tools zelfstandig op meerdere criteria','Heeft inzicht in de beperkingen van specifieke AI-modellen','Begeleidt collega’s bij het ontwikkelen van AI-vaardigheden']]).concat([
+   {id:'kerngebieden',n:'Kerngebieden',f:'Kennis, vaardigheden, kritisch oordeel en zicht op de tools.',items:[['Conceptuele kennis','Je begrijpt op hoofdlijnen hoe generatieve AI werkt, bijvoorbeeld wat trainingsdata zijn en waarom een taalmodel hallucineert.'],['Praktische vaardigheden','Je prompt effectief en beoordeelt output kritisch. Je vergelijkt tools en kiest de juiste voor een taak.'],['Kritische evaluatie','Je ziet wanneer iets klopt, wanneer het plausibel klinkt maar fout is, en wanneer het bias weerspiegelt.'],['Het tool-landschap','Je weet welke AI-tools er voor onderwijs zijn, waarvoor ze geschikt zijn en welke op jouw school zijn toegestaan.']],
+    knip:[['Promptopbouw','Context: ...\nRol: ...\nGewenst format: ...\nDaarna: verfijn op basis van de output.']]}])},
+ {L:'D',n:'AI-pedagogiek en didactiek',q:'Leren versterken, denken niet omzeilen',
+  t:'AI-geletterdheid gaat niet alleen over jezelf, maar ook over je leerlingen. Je bepaalt wanneer AI het leren versterkt en wanneer het denken wordt omzeild. Je ontwerpt leeractiviteiten waarin AI het leren verrijkt en niet vervangt, en je kiest een positie over toetsing.',
+  knip:['Ontwerpvragen bij een AI-activiteit','Wanneer voegt AI iets toe aan het leerproces?\nWelk doel heeft de activiteit?\nWat doet de leerling zelf, en wat doet de AI?\nHoe beoordeel je het leerproces als AI erbij betrokken is?\nWat is een authentieke toets in een wereld waarin AI teksten kan schrijven?'],
+  rel:['Uitgewerkt in het Raamwerk Leerverrijking','#/lv'],
+  delen:niv('AI-pedagogiek en didactiek',
+   [[['Doelgericht integreren','Je gebruikt AI in je lessen op een pedagogisch en didactisch verantwoorde manier, met een helder doel.'],['Ondersteunen of omzeilen','Je ziet het verschil tussen AI-gebruik dat het leren ondersteunt en AI-gebruik dat het leren omzeilt.'],['Leerlingen begeleiden','Je helpt leerlingen om AI bewust en kritisch te gebruiken.'],['Eenvoudig ontwerpen','Je ontwerpt eenvoudige leeractiviteiten met AI en let daarbij op het leerproces.'],['Reflecteren op toetsing','Je denkt na over wat AI betekent voor je eigen manier van toetsen.']],
+    ['Integreert AI doelgericht in minstens één lesactiviteit','Kan uitleggen waarom een bepaalde AI-inzet het leren ondersteunt','Begeleidt leerlingen bij reflectie op AI-gebruik','Heeft een doordachte positie over AI en toetsing','Ontwerpt activiteiten waarbij het denkproces zichtbaar blijft']],
+   [[['Hogere-orde denken','Je ontwerpt vernieuwende leeractiviteiten met AI die hogere-orde denken stimuleren.'],['Visie op toetsing','Je formuleert een visie op toetsing die rekening houdt met AI, en je voert die uit.'],['Collega’s begeleiden','Je begeleidt collega’s als zij AI pedagogisch en didactisch in hun onderwijs inbouwen.'],['AI-geletterde leerlingen','Je ontwerpt leeractiviteiten waarin leerlingen zelf AI-geletterdheid ontwikkelen.'],['Schoolbrede afspraken','Je helpt mee aan schoolbrede afspraken over AI in toetsing en onderwijs.']],
+    ['Ontwerpt complexe leeractiviteiten met AI die transfer bevorderen','Heeft een uitgewerkte visie op toetsing in een AI-rijke omgeving','Begeleidt collega’s bij AI-pedagogiek en -didactiek op basis van eigen ervaring','Draagt bij aan schoolbreed beleid over AI in onderwijs en toetsing','Documenteert en deelt pedagogische en didactische ervaringen met AI']]).concat([
+   {id:'kernvragen',n:'Kernvragen',f:'Vier vragen die dit domein onderscheiden van een gewone AI-cursus.',vorm:'vragen',items:[['Wanneer voegt AI iets toe?','AI kan het leren verrijken, maar ook het denken vervangen. Je beoordeelt wanneer AI het leren ondersteunt en wanneer het het leren omzeilt.'],['Hoe begeleid je bewust gebruik?','Je gaat het gesprek aan, maakt fouten bespreekbaar en stimuleert verwondering én kritisch denken.'],['Hoe ontwerp je met AI?','Welk doel heeft de activiteit, wat doet de leerling zelf en wat doet de AI?'],['Hoe ga je om met toetsing?','AI verandert de spelregels van toetsing fundamenteel. Je kiest een positie over wat een authentieke toets nog is.']]}])},
+ {L:'E',n:'Digital agency',q:'Regie houden over AI',
+  t:'Digital agency (Saab, 2025) is het vermogen om technologie kritisch te begrijpen, bewust te beoordelen en doelgericht in te zetten. Het gaat om regie: je doet actief mee en laat je niet passief meesturen. Dit domein brengt de andere vier samen.',
+  knip:['Kritische vragen bij een AI-systeem','Hoe werkt dit AI-systeem?\nWie ontwikkelt het?\nWelke belangen spelen daarin?\nWie profiteert ervan?\nWat zijn de maatschappelijke gevolgen?'],
+  delen:niv('Digital agency',
+   [[['Zelf beslissen','Je beslist zelf en bewust wanneer en hoe je AI inzet.'],['Keuzes onderbouwen','Je onderbouwt je keuzes over AI met professionele argumenten.'],['Kritisch reflecteren','Je denkt kritisch na over de rol die AI speelt in je eigen werk.'],['Niet klakkeloos volgen','Je volgt de aanbevelingen van tools of platforms niet zomaar op.'],['Actief meepraten','Je doet actief mee aan gesprekken over AI in je school of team.']],
+    ['Onderbouwt AI-keuzes met professionele argumenten','Handelt niet automatisch vanuit externe druk of modetrends','Reflecteert regelmatig op de eigen positie ten opzichte van AI','Neemt actief deel aan teamgesprekken over AI','Erkent verantwoordelijkheid voor keuzes rond AI']],
+   [[['Voortrekkersrol','Je neemt in je organisatie het voortouw als het gaat om AI-bewustzijn.'],['Collega’s coachen','Je coacht collega’s zodat ze zelf leren handelen rond AI.'],['Collectief leren','Je helpt de AI-geletterdheid van je team groeien, door kennis te delen of door professionalisering.'],['Kritisch naar aanbieders','Je neemt een kritische positie in tegenover commerciële AI-aanbieders in het onderwijs.'],['Professionele identiteit','Je ziet AI-geletterdheid als deel van je professionele identiteit, en dat laat je actief zien.']],
+    ['Neemt een zichtbare voortrekkersrol in AI-bewustzijn in de organisatie','Coacht collega’s bij het ontwikkelen van eigen handelingsvermogen','Draagt bij aan collectieve professionalisering buiten de eigen klas','Heeft een kritische, onderbouwde positie ten opzichte van AI-aanbieders','Beschouwt AI-geletterdheid als professionele kernwaarde']]).concat([
+   {id:'dimensies',n:'Vijf dimensies',f:'Waaruit regie over AI bestaat.',items:[['Autonomie','Je maakt eigen, afgewogen keuzes over AI, gebaseerd op je professionele waarden, je kennis en je pedagogisch-didactisch inzicht.'],['Kritisch bewustzijn','Je begrijpt hoe AI-systemen werken, wie ze maakt en welke belangen er spelen. Je ziet ook de gevolgen voor de samenleving.'],['Verantwoordelijkheidsbesef','Je erkent dat keuzes over AI gevolgen hebben voor leerlingen, collega’s en de organisatie.'],['Constructieve nieuwsgierigheid','Je verkent technologie met verwondering en een kritische, open blik. Je wilt haar echt begrijpen en beheersen.'],['Participatie en voortrekkerschap','Op gevorderd niveau gaat het verder dan jezelf: je helpt de organisatie bewust richting te geven aan AI.']]}])}]},
+kies:{id:'kies',n:'KIES',full:'KIES, AI-vaardigheid van leerlingen en studenten',lw:'De vier letters',
+ h1:'Gebruik je AI, of gebruikt AI <em>jou</em>?',
+ lead:'KIES helpt leerlingen en studenten bewust kiezen wanneer en hoe ze AI inzetten, zonder hun eigen denken uit handen te geven. Eerst kiezen, dan instrueren, dan evalueren. Daaromheen gelden de spelregels.',
+ sokkel:{lb:'Bij elke keuze drie vragen',to:'k/vragen',items:['Leer ik minder, hetzelfde of meer?','Gaat het sneller?','Wordt het resultaat beter?']},
+ docs:[['KIES op aivoordocenten.nl','https://aivoordocenten.nl/kies/'],['Raamwerk','https://aivoordocenten.nl/downloads/kies/raamwerk-kies-2026.pdf'],['KIES-app','https://ai-vaardigheid.vercel.app/']],
+ letters:[
+ {L:'K',n:'Kiezen',q:'Wanneer gebruik je AI?',
+  t:'Kiezen is het hart van KIES. Per opdracht en per subtaak bepaal je opnieuw: zet ik AI in, en zo ja, in welke rol? Dat is een actieve beslissing, geen gewoonte. Weten wanneer, in welke rol en waarom is belangrijker dan kunnen prompten.',
+  knip:['De K-vraag bij een nieuwe opdracht','Wat is hier de slimste aanpak: zelf, samen met AI, of AI doet het?'],
+  team:'Stelling K1: Wij stellen onze leerlingen actief de vraag wanneer ze AI wel of niet inzetten.\n- Hoe verwerken we deze vraag in onze opdrachten?\n- Welke argumenten geven we leerlingen mee om te kiezen?\n- Hoe voorkomen we dat de keuze voor AI altijd voor de hand ligt?\n- Welke voorbeeldrol nemen wij hierin?\n\nStelling K2: Wij maken voor elke opdracht expliciet wat AI wel en niet mag doen.\n- Welke rollen onderscheiden we voor AI in een opdracht?\n- Hoe leggen we dit vast voor leerlingen?\n- Hoe consistent is dit binnen ons team en tussen vakken?\n- Wat communiceren we hierover naar ouders?'+SC0,
+  delen:[
+  {id:'keuzes',n:'Drie keuzes',f:'Per subtaak doe je het zelf, werk je samen met AI of besteed je een deel uit. Bij de laatste twee krijgt AI een rol.',vorm:'fork',
+   items:[['Zelf doen','Je doet deze stap zonder AI. Dat kan verstandig zijn bij de subtaak waar het leerdoel zit.'],['Samen met AI','Je blijft zelf aan het stuur en het denkwerk blijft van jou. AI voegt iets toe aan je denken, maar vervangt het niet.'],['Een deel uitbesteden','AI levert een product, zoals een tekst, vertaling of samenvatting. Jij stuurt aan, beoordeelt het en maakt het eigen.']],
+   rollen:[[['Uitlegger','Legt iets uit in jouw tempo en op jouw niveau. Jij vraagt door.'],['Brainstormer','Stelt vragen en bedenkt samen met jou ideeën. Jij kiest wat je oppakt.'],['Oefenmaatje','Toetst je kennis, of je oefent ertegen, zoals een sollicitatiegesprek.'],['Feedbackgever','Geeft tips op een tekst die jij hebt gemaakt. Jij beslist wat je ermee doet.']],
+    [['Samenvatter','Vat een bron of tekst samen. Jij werkt ermee verder.'],['Schrijver','Schrijft een stuk tekst op basis van wat jij aanlevert. Jij kiest wat blijft.'],['Vertaler','Vertaalt een tekst. Jij controleert en past aan.'],['Verbeteraar','Maakt jouw tekst beter qua stijl of spelling. Jij beslist wat je overneemt.']]],
+   cap:'De acht rollen zijn een startset, geen volledige lijst.',rel:['De docentkant van deze rollen: Raamwerk Leerverrijking','#/lv']},
+  {id:'vragen',n:'Drie vragen',f:'Wat doet deze keuze met je leren, je tempo en je resultaat? Zit het leerdoel in de subtaak, dan weegt leren het zwaarst.',vorm:'vragen',
+   items:[['Leer ik minder, hetzelfde of meer?','Dan wanneer ik het zelf had gedaan.'],['Gaat het sneller?','Sneller is een legitiem doel, zeker bij een voorbereidende subtaak.'],['Wordt het resultaat beter?','Ook beter is een legitiem doel. De kunst is het verschil met leren te herkennen.']],
+   kaart:['De drie vragen','1. Leer ik door deze manier van AI-inzet minder, hetzelfde of meer dan wanneer ik het zelf had gedaan?\n2. Gaat het langzamer, even snel of sneller?\n3. Wordt het resultaat slechter, even goed of beter?'],
+   knip:[['Terugblik op je keuze','Wat ging bij jou omhoog en wat omlaag: leren, kwaliteit of snelheid?\nStel dat je deze opdracht voor school echt moet inleveren. Zou je dan dezelfde keuzes maken? Wat zou je veranderen?\nWat wil je bij je volgende opdracht anders doen?']]},
+  {id:'per-subtaak',n:'Zo kies je, per subtaak',f:'Een opdracht bestaat uit stappen, zoals bronnen verzamelen, argumenten opbouwen, formuleren en reviseren. Per stap maak je de afweging opnieuw.',vorm:'flow',
+   items:[['AI of zelf?','Kies je voor zelf, dan stopt het hier en geldt de gewone aanpak.'],['Samen of uitbesteden?','Dat verschil bepaalt wat je ervan leert.'],['Welke rol?','Welke rol krijgt AI in deze subtaak?']],
+   kaart:['Kiezen per subtaak','Zet ik hier AI in, of doe ik dit zelf?\nZo ja: werk ik samen met AI, of besteed ik een deel uit?\nWelke rol krijgt de AI in deze subtaak?'],
+   knip:[['Als een leerling vastloopt','Wat wil je hier eigenlijk leren?\nWat hoop je dat dit werk over jou laat zien?\nWelke stap vind jij zelf het belangrijkst om goed te doen?\nHoe zou je dit aanpakken zonder AI? En wat verandert er als je AI inschakelt?']]}]},
+ {L:'I',n:'Instrueren',q:'Hoe vraag je het goed?',
+  t:'Zodra je een rol hebt gekozen, moet je die goed aansturen. Een brainstormer vraag je iets anders dan een samenvatter. Je geeft een heldere opdracht en relevante context, en je stuurt bij tot AI bruikbare hulp geeft. Instrueren is niet het hart van KIES, wel een voorwaarde om je keuze tot iets te laten leiden.',
+  knip:['Promptskelet','Rol: Doe alsof je een ... bent.\nContext: Ik ...\nInstructies: ...\nVoorbeeld: Het zou ongeveer zo moeten klinken: ...'],
+  team:'Stelling I1: Onze leerlingen krijgen expliciet instructie over het aansturen van AI.\n- Welke instructie geven wij hierover, en wie geeft die?\n- Hoe sluit dit aan bij vaknormen en leerdoelen?\n- Wat is het verschil tussen oppervlakkig en doordacht aansturen?\n- Hoe oefenen we dit in de praktijk?\n\nStelling I2: Onze leerlingen begrijpen dat hun manier van aansturen de uitkomst bepaalt.\n- Hoe maken we dit verband zichtbaar in de les?\n- Welke voorbeelden gebruiken we?\n- Hoe voorkomen we dat leerlingen alleen kopiëren?\n- Wanneer is een prompt goed genoeg?'+SC0,
+  delen:[
+  {id:'vier-delen',n:'Vier delen van een prompt',f:'Veel leerlingen slaan het voorbeeld over, terwijl dat vaak het verschil maakt.',
+   items:[['Rol','Tegen wie praat AI? Bijvoorbeeld: ‘Doe alsof je een docent Nederlands bent.’'],['Context','Wat moet AI weten over de situatie? Bijvoorbeeld: ‘Ik schrijf een brief voor een stage.’'],['Instructies','Wat moet AI precies doen? Bijvoorbeeld: ‘Maak deze brief korter en formeler.’'],['Voorbeeld','Hoe ziet een goed antwoord eruit?']]},
+  {id:'per-rol',n:'Per rol anders',f:'Wat je meegeeft, hangt af van de rol die je bij Kiezen koos.',
+   items:[['Uitlegger','Geef je eigen niveau mee en wat je al weet.'],['Brainstormer','Geef het probleem en nodig AI uit tot breed en vrij denken.'],['Feedbackgever','Geef je tekst en het criterium waarop je feedback wilt. Een feedbackgever werkt alleen als je precies uitlegt waarop.'],['Schrijver','Geef doel, doelgroep, toon en lengte mee.']]},
+  {id:'bijsturen',n:'Bijsturen',f:'De eerste output is een begin. Bijsturen is vaak belangrijker dan de eerste prompt.',
+   items:[['Opnieuw proberen','Kijk naar de eerste output en stuur bij: opnieuw prompten, aanvullen of de rol verfijnen.'],['Kort als kan, lang als nodig','Een goede prompt is niet zo lang mogelijk. De inhoud bepaalt het resultaat, niet de lengte.'],['Geen garantie','Ook een scherpe prompt levert nooit een gegarandeerd kloppend antwoord. Daarom blijf je evalueren.']]}]},
+ {L:'E',n:'Evalueren',q:'Klopt wat AI zegt?',
+  t:'Wat uit AI komt is grondstof, geen eindproduct. Je controleert het op juistheid, kwaliteit en bruikbaarheid en verwerkt het bewust in je eigen werk. Ook als je een deel uitbesteedt, blijf je eigenaar en moet je weten wat er staat.',
+  knip:['Checklist AI-output','Klopt wat er staat?\nIs het compleet?\nIs het relevant voor deze opdracht?\nPast het bij mijn eigen stem?\nBegrijp ik wat er staat?'],
+  team:'Stelling E1: Onze leerlingen kunnen AI-output kritisch beoordelen op juistheid, relevantie en bias.\n- Welke beoordelingscriteria geven we mee?\n- Hoe oefenen we dit in concrete situaties?\n- Welke fouten leren leerlingen herkennen?\n- Hoe voorkomen we klakkeloos overnemen?\n\nStelling E2: Onze leerlingen nemen eigenaarschap over wat ze met AI maken.\n- Wat betekent eigenaarschap als AI heeft meegeschreven?\n- Hoe maken we dat zichtbaar bij beoordeling?\n- Welke vraag stellen we leerlingen na een AI-opdracht?\n- Hoe voorkomen we dat eigenaarschap een formaliteit wordt?'+SC0,
+  delen:[
+  {id:'mens-ai-mens',n:'Mens, AI, mens',f:'Jij begint, AI produceert, jij maakt het eigen.',vorm:'flow',
+   items:[['Mens geeft input','Jij geeft de opdracht, de prompt en de context.'],['AI produceert','AI voorspelt waarschijnlijke woorden en weet niet zelf of het klopt.'],['Mens maakt het eigen','Jij toetst, corrigeert en herschrijft tot het eigen werk is. Zonder deze stap wordt AI-gebruik wegklikken in plaats van leren.']]},
+  {id:'eigenaarschap',n:'Kennis, oordeel, eigenaarschap',f:'Wat je nodig hebt om AI-uitvoer echt te kunnen beoordelen.',
+   items:[['Kennis','Je weet hoe taalmodellen werken en waarom ze de fout ingaan.'],['Oordeel','Klopt wat er staat, is het compleet, is het relevant voor deze opdracht, en past het bij je eigen stem?'],['Eigenaarschap','Je blijft verantwoordelijk voor wat er staat, ook als AI meeschreef. Je kunt uitleggen waarom dit het juiste antwoord is.']],
+   knip:[['De check-vraag','Klopt dit?\nHoe weet je dat?']]},
+  {id:'valkuilen',n:'Drie valkuilen',f:'Vooroordelen, verzinsels en ja-knikken.',
+   items:[['Vooroordelen','AI leerde patronen van mensen, en menselijke vooroordelen sluipen daarin mee. Zo beschrijft AI een dokter vaak automatisch als ‘hij’.'],['Verzinsels','AI verzint soms feiten, namen, citaten of bronnen, en brengt die even zelfverzekerd als wat wel klopt.'],['Ja-knikken','AI geeft je snel gelijk, ook als je het mis hebt. Dat voelt prettig, maar is gevaarlijk voor kritisch denken.']],
+   knip:[['Valkuilen opsporen','Voor wie is dit antwoord eigenlijk geschreven?\nHoe zou je dit in het echt checken?']]}]},
+ {L:'S',n:'Spelregels',q:'Wat mag en moet?',
+  t:'Je werkt volgens de afspraken van je school en weegt privacy, bias, energieverbruik en verantwoord gebruik mee. De schoolregels zijn het zichtbare topje. Het grotere deel is zelf vragen stellen die niet in een schoolregel staan.',
+  knip:['Schoolbeleid concreet maken','Bij ons mag AI wel voor ..., niet voor ..., en je moet het melden bij ...'],
+  team:'Stelling S1: Wij hebben heldere afspraken over wanneer AI wel en niet gebruikt mag worden.\n- Hoe communiceren we deze afspraken naar leerlingen?\n- Wie controleert ze, en hoe?\n- Wat doen we als afspraken worden overschreden?\n- Hoe vaak en op basis waarvan herzien we ze?\n\nStelling S2: Wij voeren met leerlingen het bredere gesprek over AI in werk en samenleving.\n- Welke vragen komen aan bod (energie, arbeid, autonomie, betrouwbaarheid)?\n- In welke vakken landen deze gesprekken?\n- Hoe geven we ruimte aan verschillende visies?\n- Wat is hier ons leerdoel?'+SC0,
+  delen:[
+  {id:'grote-vragen',n:'Vier grote vragen',f:'In S zoom je uit naar de bredere gevolgen van AI, voor de wereld en voor jezelf.',vorm:'vragen',
+   items:[['Wat kost deze prompt aan energie en water?','En hoe telt dat op bij dagelijks gebruik?'],['Waar gaat mijn data naartoe?','En wie kan die zien of gebruiken?'],['Waar komen de trainingsdata vandaan?','Wie is daardoor wel en niet zichtbaar in de output?'],['Wat doet AI met mijn eigen denken?','Wat doet dagelijks gebruik op termijn met mijn denkvermogen, mijn geheugen en mijn aandacht?']],
+   kaart:['Vier S-vragen','Wat kost deze prompt aan energie en water?\nWaar gaat mijn data heen?\nWaar komen de trainingsdata vandaan waar dit model op is getraind?\nWat doet dagelijks AI-gebruik op de lange termijn met mijn eigen denkvermogen?']},
+  {id:'themas',n:'Drie thema’s in de les',f:'Privacy, transparantie en duurzaamheid.',
+   items:[['Privacy','Wat stop je in AI? Wat van jezelf, wat van anderen, en wat is vertrouwelijk?'],['Transparantie','Wanneer is AI een gewoon hulpmiddel, en wanneer meld je dat je het gebruikt?'],['Duurzaamheid','Wat kost één AI-vraag aan energie, en wanneer telt dat op?']],
+   knip:[['Stellingen voor de klas','Privacy: Een prompt is een privégesprek tussen mij en AI.\nTransparantie: Als de docent niet vraagt of je AI hebt gebruikt, hoef je het ook niet te zeggen.\nDuurzaamheid: Eén AI-vraag stelt zo weinig voor, dat hoef ik me niet aan te trekken.\n\nEens of oneens? Leg uit waarom.']]},
+  {id:'afspraken',n:'Afspraken en houding',f:'Regels met uitleg werken beter dan regels zonder uitleg.',
+   items:[['Schoolafspraken','Je kent de concrete afspraken van je school of opleiding over wat wel en niet mag.'],['Ethiek als rode draad','Ethiek zit in alle vier de letters. S geeft het een eigen plek, zodat ecologische en maatschappelijke vragen niet verdwijnen.'],['Nieuwsgierig naar de technologie','Je bent niet alleen gebruiker. Je wilt weten hoe AI werkt en wat het doet met de wereld en met jou.']],
+   knip:[['Groepsafspraak bij een project','Wat mag wel en niet met AI bij dit project? Spreek het kort af en schrijf het op.']]}]}]},
+bouw:{id:'bouw',n:'BOUW',full:'BOUW, zelf leeromgevingen bouwen',lw:'De vier letters',
+ h1:'Bouw leeromgevingen waar leerlingen echt van <em>leren</em>.',
+ lead:'Met BOUW werk je een app-idee uit tot een didactisch onderbouwd ontwerp, met een bouwbeschrijving en een prompt voor je eigen bouwtool. Want meer techniek betekent niet vanzelf meer leren.',
+ sokkel:{lb:'Bij iedere bouwbeslissing drie vragen',to:'b/vragen',items:['Welke leeractiviteit helpt deze leerlingen naar welk doel?','Waaraan herken ik wat de leerling heeft geleerd?','Wat voegt deze app toe aan het onderwijs?']},
+ docs:[['BOUW op aivoordocenten.nl','https://aivoordocenten.nl/bouw-raamwerk/'],['Raamwerk','https://aivoordocenten.nl/downloads/bouw/raamwerk-bouw-herzien-2026.pdf'],['BOUW-app','https://avd-bouw.vercel.app/']],
+ letters:[
+ {L:'B',n:'Bedoeling',q:'Begin voor de eerste prompt',
+  t:'Bepaal wat leerlingen moeten leren en wat ze al weten en kunnen. Bepaal wat de app daaraan bijdraagt, en hoe je het geleerde zichtbaar maakt: in de app, of buiten de app in de les.',
+  knip:['Startvraag','Wat moeten deze leerlingen leren, en wat weten en kunnen ze al?'],
+  delen:[
+  {id:'bepalen',n:'Wat je bepaalt',f:'Vier keuzes die je maakt voordat je iets bouwt.',
+   items:[['Leerdoel','Wat moeten leerlingen begrijpen of kunnen? Maak het concreet: ‘kritischer worden op nieuws’ is nog te vaag.'],['Voorkennis','Wat weten en kunnen leerlingen al? Je ontwerp sluit daarop aan.'],['Bijdrage van de app','Wat voegt de app toe aan de les?'],['Zichtbaar leren','Hoe maak je zichtbaar wat leerlingen geleerd hebben? Dat kan in de app, maar ook in de les.']]},
+  {id:'vragen',n:'Drie vragen',f:'Stel ze bij je eerste idee, en opnieuw bij elke functie die je toevoegt.',vorm:'vragen',
+   items:[['Welke leeractiviteit helpt deze leerlingen naar welk doel?',''],['Waaraan herken ik wat de leerling heeft geleerd?',''],['Wat voegt deze app toe aan het onderwijs?','']],
+   kaart:['Drie vragen bij iedere bouwbeslissing','1. Welke leeractiviteit helpt deze leerlingen naar welk doel?\n2. Waaraan herken ik wat de leerling heeft geleerd?\n3. Wat voegt deze app toe aan het onderwijs?']},
+  {id:'voorbeeld',n:'Voorbeeld: een escaperoom over nepnieuws',f:'Van een leuk idee naar een scherp leerdoel.',vorm:'flow',
+   items:[['Eerste idee','Leerlingen zijn onderzoekers op een nieuwsredactie. Ze kraken codes en openen dossiers.'],['Het probleem','De verdachtste kop aanklikken oefent het leerdoel niet. Leerlingen kunnen winnen zonder de betrouwbaarheid van nieuws te onderzoeken.'],['Scherper doel','Een bewering terugvoeren op een bron, en beoordelen of het bewijs voldoende is.']]}]},
+ {L:'O',n:'Ontwerp',q:'Verbind inhoud, activiteit en hulp',
+  t:'Stem uitleg, voorbeelden, oefenen en feedback af op het leerdoel en de voorkennis. Kies passende ondersteuning. Maak de omgeving overzichtelijk, motiverend en toegankelijk. En kies vooral een activiteit die het beoogde leren echt oefent.',
+  nota:['Valkuil','Laat animaties, scores of een chatbot het ontwerp niet bepalen. Blijf vragen wat leerlingen ervan leren.'],
+  knip:['Ontwerpvragen bij je app-idee','Wat oefenen leerlingen precies als ze [jouw app] gebruiken?\nWat betekent goede feedback in [jouw app]?\nWelke stap in het denken van de leerling wordt mogelijk door wat jij hebt gebouwd?'],
+  delen:[
+  {id:'afstemmen',n:'Wat je op elkaar afstemt',f:'Vijf ontwerpkeuzes die samen het leren dienen.',
+   items:[['Uitleg en voorbeelden','Afgestemd op het leerdoel en op de voorkennis van de leerlingen.'],['Oefenen','Een leeractiviteit die het beoogde leren echt oefent. Wat oefenen leerlingen precies?'],['Feedback','Afgestemd op het leerdoel, bijvoorbeeld feedback op de redenering van de leerling.'],['Passende ondersteuning','Hulp die bij de leerling past, en die na verloop van tijd kan afnemen.'],['De omgeving','Overzichtelijk, motiverend en toegankelijk. Een jonge leerling op een tablet heeft andere bediening nodig dan een student op een laptop.']]},
+  {id:'leerprincipes',n:'Onderbouwd met leerprincipes',f:'Koppel elke ontwerpkeuze aan een leerprincipe, en leg uit waarom dat principe hier past.',
+   items:[['De kennisbasis','Kennis over voorkennis, cognitieve belasting, uitleg en voorbeelden, oefenen, feedback en motivatie.'],['Zelf uitleggen','Voorbeeld: onderbouwleerlingen voorspellen wat er in een voedselweb verandert als een populatie afneemt.'],['Gespreid oefenen','Voorbeeld: leerlingen in het po halen woordenschat op verschillende dagen opnieuw op.'],['Feedback die verder helpt','Voorbeeld: een rekenoefening in een beroepssituatie in het mbo, met een hint die aansluit bij de fout en een nieuwe poging.']]},
+  {id:'voorbeeld',n:'Voorbeeld: een escaperoom over nepnieuws',f:'Hoe het ontwerp het scherpere leerdoel gaat dienen.',
+   items:[['Dossiers','Elk dossier bevat twee berichten over dezelfde gebeurtenis.'],['Feedback op de redenering','Leerlingen krijgen feedback op hun redenering.'],['Hulp die afneemt','De hulp neemt na verloop van tijd af.'],['Een afweging','Helpt de aftellende klok, of leidt tijdsdruk tot gokken?']]}]},
+ {L:'U',n:'Uitvoering',q:'Regisseer de bouw-AI',
+  t:'Jij bepaalt de visie en de kwaliteitscriteria, de AI bouwt. Werk klein en testbaar. Laat functies aantoonbaar werken en vraag om bewijs in plaats van beloften. BOUW bouwt de app niet zelf: je neemt de bouwprompt mee naar je eigen bouwtool.',
+  knip:['Werkwijze','1. Jij brengt het onderwijsidee.\n2. AI helpt het bouwen.\n3. Jij test en verbetert.'],
+  rel:['Van leerdoel naar bouwbeschrijving: de prompthulp','#/lv/prompthulp'],
+  delen:[
+  {id:'regie',n:'Regie over de bouw-AI',f:'Jij stuurt, de AI bouwt.',
+   items:[['Klein en testbaar','Werk in kleine stappen die je kunt testen.'],['Bewijs, geen beloften','Laat functies aantoonbaar werken.'],['Drie vragen per functie','Stel de drie BOUW-vragen opnieuw bij elke functie die je toevoegt.'],['Zelf controleren','Na het bouwen controleer jij de inhoud en de werking van de app.']]},
+  {id:'bouwprompt',n:'Van ontwerp naar bouwprompt',f:'Wat de BOUW-app met je uitwerkt, voor je eigen bouwtool.',vorm:'flow',
+   items:[['Een scherper leerdoel','Wat leerlingen moeten begrijpen of kunnen, en wat je app aan de les toevoegt.'],['Onderbouwde ontwerpkeuzes','Wat leerlingen zien en doen, welke uitleg of feedback helpt en hoe de omgeving eruitziet.'],['Bouwbeschrijving','Wat de app doet, wat de leerling ziet en doet, welke ondersteuning nodig is en waarom.'],['Bouwprompt','Een uitgebreide opdracht voor je eigen bouwtool, met je voorkeuren voor vormgeving en algemene kwaliteitseisen.']],
+   knip:[['Bouwbeschrijving en bouwprompt','Bouwbeschrijving:\n- wat de app moet doen\n- wat de leerling of student ziet en doet\n- welke ondersteuning nodig is\n- waarom je deze keuzes maakt\n\nBouwprompt voor je eigen bouwtool:\n- de functionele beschrijving uit de bouwbeschrijving\n- je voorkeuren voor vormgeving\n- algemene kwaliteitseisen: weinig afleiders, goed leesbaar, toegankelijk, duidelijke bediening\n\nNa het bouwen: controleer zelf de inhoud en de werking.']]}]},
+ {L:'W',n:'Waarborgen',q:'Behandel het als leermiddel',
+  t:'Wie voor leerlingen bouwt, draagt professionele verantwoordelijkheid. Regel privacy, veiligheid, toegankelijkheid, onderhoud en menselijke regie, passend bij het type app. Een onderbouwd ontwerp is nog geen bewijs van leerwinst: test de app en kijk wat er in de les gebeurt.',
+  knip:['Richtvraag','Hoe houd je grip op data, AI-uitvoer, kosten en toegankelijkheid?'],
+  delen:[
+  {id:'typen',n:'Drie typen apps',f:'Opslag en AI zijn aparte keuzes die je kunt combineren. Kies wat het leerdoel vraagt en stem de waarborgen daarop af.',vorm:'cols',wl:'Waarborg',
+   items:[['De platte app','Werkt in de browser zonder centrale database en bewaart voortgang lokaal, zoals een oefenset, simulatie of flashcardtrainer.','Controleer de inhoud, de toegankelijkheid en welke gegevens worden bewaard of verstuurd. Lokale opslag zegt niet alles over gegevensverkeer.'],['De app met database','Centrale opslag, zodat voortgang op meerdere apparaten werkt of de docent kan meekijken.','Maak met de school afspraken over toegang, bewaartermijnen en gebruik van leerlinggegevens.'],['De app met AI','AI reageert op open antwoorden, stelt feedback voor of voert een gesprek.','AI-reacties kunnen onjuist of ongeschikt zijn. Test grondig, ook bij onverwachte antwoorden, en vergelijk de meerwaarde met vaste feedback, voorbeelden of docentbegeleiding.']]},
+  {id:'regelen',n:'Wat je regelt',f:'Passend bij het type app.',
+   items:[['Privacy','Weet welke gegevens de app bewaart of verstuurt.'],['Veiligheid','Bij een app met AI test je de inhoud en de hulp, ook bij onverwachte antwoorden.'],['Toegankelijkheid','Pas bediening en vormgeving aan de doelgroep aan.'],['Onderhoud','Regel het onderhoud van de app.'],['Menselijke regie','Jij controleert inhoud en werking, en kijkt wat er in de les gebeurt.']]}]}]}};
+const FWR={geletterdheid:'geletterd',kies:'kies',bouw:'bouw'},FWP={geletterd:'geletterdheid',kies:'kies',bouw:'bouw'};
+const FA={cur:null};
+const lc=L=>L.L.toLowerCase();
+function faL(F,l){return F.letters.find(x=>lc(x)===l)||null;}
+
+/* ---------- toestand en links ---------- */
+function faParse(F,parts){const s={fw:F.id,l:null,d:null},a=(parts[1]||'').toLowerCase(),b=parts[2];
+  if(a){const L=faL(F,a);if(!L)s.bad=true;else{s.l=a;if(b!=null){if(L.delen.some(x=>x.id===b))s.d=b;else s.bad=true;}}}
+  if(parts.length>3)s.bad=true;return s;}
+function faHash(s){const r='#/'+FWP[s.fw];return s.l?r+'/'+s.l+(s.d?'/'+s.d:''):r;}
+const faView=s=>s.d?'deel':s.l?'let':'over',faLvl=s=>s.d?2:s.l?1:0;
+
+/* ---------- schil ---------- */
+function faShell(F){const big=store.get('avd-big')==='1';document.body.classList.toggle('lvbig',big);
+  return `<section class="uv rw" id="uv" data-fw="${F.id}" data-v="over" aria-label="${esc(F.full)}" style="--n:${F.letters.length}">
+  <header class="uv-h"><nav class="uv-crumb kick" id="uvCrumb" aria-label="Waar je bent"></nav></header>
+  <div class="uv-top" id="uvTop"></div>
+  <nav class="fries" id="fries" aria-label="${esc(F.lw)}">${F.letters.map((L,i)=>`<a class="fz" href="${faHash({fw:F.id,l:lc(L)})}" data-r="${lc(L)}" data-k="fz-${lc(L)}" title="${esc(L.n)}" style="--d:${i}"><span class="fz-s"><i>${L.L}</i></span><span class="fz-n">${esc(L.n)}</span><span class="fz-l">${esc(L.q)}</span></a>`).join('')}</nav>
+  <div class="stage" id="stage"></div>
+  <svg class="hair" id="hair" aria-hidden="true"></svg>
+  <footer class="uv-f"><span class="uv-docs">${F.docs.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(n)}<span class="sr-only"> (opent in een nieuw tabblad)</span></a>`).join('')}</span><button type="button" id="lvBig" class="${big?'on':''}" aria-pressed="${big}" title="Grotere tekst voor de beamer">A+</button></footer>
+  <div class="lensf" id="lensf" aria-hidden="true"><span id="lensT"></span></div>
+  <div class="sr-only" id="lvlive" aria-live="polite"></div></section>`;}
+
+/* ---------- de bladen ---------- */
+function faOver(F){const S=F.sokkel,to=S.to?S.to.split('/'):null;
+  return {top:`<h1 class="uv-h1" id="lf-h" tabindex="-1">${F.h1}</h1><p class="uv-lead">${esc(F.lead)}</p>`,
+  body:`<div class="sokkel"><p class="sk-lb"><span>${esc(S.lb)}</span></p><ul class="plinth rwp" style="--m:${S.items.length}">${S.items.map((x,i)=>`<li>${to?`<a class="pb" href="${faHash({fw:F.id,l:to[0],d:to[1]})}" data-k="sk-${i}" style="--d:${i}"><span>${esc(x)}</span></a>`:`<div class="pb" style="--d:${i}"><span><b>${esc(x[0])}</b>${esc(x[1])}</span></div>`}</li>`).join('')}</ul></div>`};}
+function faLetFig(F,s){const L=faL(F,s.l),k=F.letters.indexOf(L),n=F.letters.length,pv=F.letters[(k+n-1)%n],nx=F.letters[(k+1)%n],key=F.id+'-'+s.l;
+  return {body:`<article class="panel pv-let" id="panel"><div class="pn-grid">
+  <div class="pn-l">
+    <div class="pn-id">${seal(L.L,'xl')}<h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(L.n)}</h1></div>
+    <p class="lsub">${esc(L.q)}</p>
+    <p class="lt">${esc(L.t)}</p>
+    ${L.nota?`<div class="nota pu"><b>${esc(L.nota[0])}</b>${esc(L.nota[1])}</div>`:''}
+    ${L.knip?card(L.knip[0],L.knip[1],key):''}
+    ${L.rel?`<p class="ph-l"><a class="lk" href="${L.rel[1]}">${esc(L.rel[0])} →</a></p>`:''}
+    ${L.team?`<details class="ref"><summary>Gesprek in je team</summary>${card('Gesprekskaart',L.team,key+'-team',{long:true})}</details>`:''}
+  </div>
+  <div class="pn-r"><p class="sl"><span>Verdieping</span></p>
+    <ol class="plist">${L.delen.map(d=>`<li><a href="${faHash({fw:F.id,l:s.l,d:d.id})}" data-k="d-${d.id}"><span><b>${esc(d.n)}</b><em>${esc(d.f)}</em></span><span class="ar" aria-hidden="true">→</span></a></li>`).join('')}</ol></div></div>
+  ${sideNav([faHash({fw:F.id,l:lc(pv)}),'‹ '+pv.n],[faHash({fw:F.id,l:lc(nx)}),nx.n+' ›'])}</article>`};}
+// de inhoud van een verdieping: een register, vragen, een reeks, de vork van K of de kolommen van W
+function faItems(d,key){const I=d.items;let h;
+  if(d.vorm==='fork')h=`<div class="fork"><p class="fk-top"><span>${esc(d.top||'Een subtaak')}</span></p><div class="fk-cols">${I.map((c,i)=>`<section class="fk-c ${i?'ai':''}"><h2>${esc(c[0])}</h2><p>${esc(c[1])}</p>${i&&d.rollen?`<p class="sl"><span>Rollen voor AI</span></p><ul class="fk-roles">${d.rollen[i-1].map(r=>`<li><b>${esc(r[0])}</b><span>${esc(r[1])}</span></li>`).join('')}</ul>`:''}</section>`).join('')}</div>${d.cap?`<p class="fk-cap">${esc(d.cap)}</p>`:''}</div>`;
+  else if(d.vorm==='cols')h=`<div class="cols3">${I.map(c=>`<section><h2>${esc(c[0])}</h2><p>${esc(c[1])}</p>${c[2]?`<p class="sl"><span>${esc(d.wl||'Waarborg')}</span></p><p class="w">${esc(c[2])}</p>`:''}</section>`).join('')}</div>`;
+  else h=`<ol class="${d.vorm==='vragen'?'itq':d.vorm==='flow'?'flow':'itl'}">${I.map(c=>`<li><b>${esc(c[0])}</b>${c[1]?`<span>${esc(c[1])}</span>`:''}</li>`).join('')}</ol>`;
+  // een lijst die je wilt overnemen, staat zelf op een knipkaart: zo staat hij maar één keer op het blad
+  if(d.kaart){const id=kid(key+'-kaart');KT[id]=d.kaart[1];h=`<div class="knip big" data-kid="${id}"><div class="kn-h"><span><span class="sc">✂</span>${esc(d.kaart[0])}</span><span class="kn-a"><button type="button" data-copyk="${id}">Kopieer</button></span></div><div class="kn-b">${h}</div><span class="stamp">Gekopieerd</span></div>`;}
+  return h;}
+function faDeelFig(F,s){const L=faL(F,s.l),j=L.delen.findIndex(x=>x.id===s.d),d=L.delen[j],key=F.id+'-'+s.l+'-'+d.id,H=x=>faHash({fw:F.id,l:s.l,d:x.id});
+  const prev=j>0?[H(L.delen[j-1]),'‹ '+L.delen[j-1].n]:null,next=j<L.delen.length-1?[H(L.delen[j+1]),L.delen[j+1].n+' ›']:null;
+  const side=(d.knip||[]).map((k,i)=>card(k[0],k[1],key+'-'+i)).join('')+(d.rel?`<p class="ph-l"><a class="lk" href="${d.rel[1]}">${esc(d.rel[0])} →</a></p>`:'');
+  const wide=d.vorm==='fork'||d.vorm==='cols'||!d.knip,head=`<h1 class="pn-h1" id="lf-h" tabindex="-1">${esc(d.n)}</h1><p class="lsub">${esc(d.f)}</p>`;
+  return {body:`<nav class="pstrip" aria-label="Verdieping bij ${esc(L.n)}">${L.delen.map(x=>`<a href="${H(x)}" class="${x.id===d.id?'on':''}" ${x.id===d.id?'aria-current="true"':''} data-k="ps-${x.id}" title="${esc(x.n)}"><span>${esc(x.n)}</span></a>`).join('')}</nav>
+  <article class="panel pv-deel" id="panel">${wide?`<div class="pn-one wide">${head}${faItems(d,key)}${side?`<div class="kn-row">${side}</div>`:''}</div>`
+   :`<div class="pn-grid"><div class="pn-l">${head}${side}</div><div class="pn-r">${faItems(d,key)}</div></div>`}
+  ${sideNav(prev,next)}</article>`};}
+function faCrumb(F,s){const L=s.l?faL(F,s.l):null,c=[L?`<a href="${faHash({fw:F.id})}">${esc(F.n)}</a>`:`<span>${esc(F.n)}</span>`];
+  if(L){c.push(s.d?`<a href="${faHash({fw:F.id,l:s.l})}">${esc(L.n)}</a>`:`<span>${esc(L.n)}</span>`);if(s.d)c.push(`<span>${esc(L.delen.find(x=>x.id===s.d).n)}</span>`);}
+  return c.join(' <span class="sep">›</span> ');}
+function faTitle(F,s){const L=s.l?faL(F,s.l):null,d=L&&s.d?L.delen.find(x=>x.id===s.d):null,t=d?d.n:L?L.n:F.n;
+  document.title=t+(d?' · '+L.n:'')+(L?' · '+F.n:'')+' · AVD-raamwerken';say(t);}
+
+/* ---------- toepassen ---------- */
+function faRoute(F,parts){const s=faParse(F,parts);document.body.classList.add('atlas','lvmode');
+  let fresh=false;const u0=$('#uv');if(!u0||u0.dataset.fw!==F.id){view.innerHTML=faShell(F);bindAtlas();FA.cur=null;fresh=true;window.scrollTo({top:0,left:0,behavior:'instant'});}
+  const canon=faHash(s);if(s.bad)toast('Deze plek bestaat niet (meer).');if(location.hash!==canon)history.replaceState(null,'',canon);
+  faApply(F,s,FA.cur,fresh);}
+function faApply(F,s,prev,fresh){FA.cur=s;const uv=$('#uv'),v=faView(s),ae=document.activeElement,inA=!!(ae&&ae.closest&&ae.closest('#uv')),fk=inA?ae.dataset.k:null;
+  const motion=!reduce()&&!!prev,org=LV.origin&&Date.now()-LV.origin.t<1500?LV.origin:null;LV.origin=null;
+  const lv0=prev?faLvl(prev):null,lv1=faLvl(s),same=prev&&faHash(prev)===faHash(s);
+  const first=new Map();if(motion)$$('#fries .fz').forEach(a=>first.set(a.dataset.r,a.querySelector('.fz-s').getBoundingClientRect()));
+  const oldPanel=$('#panel'),oldRect=oldPanel&&motion?oldPanel.getBoundingClientRect():null;
+  uv.dataset.v=v;uv.dataset.l=lv1;uv.dataset.root=faHash({fw:F.id});uv.dataset.up=s.d?faHash({fw:F.id,l:s.l}):s.l?uv.dataset.root:'';
+  $$('#fries .fz').forEach(a=>{const on=a.dataset.r===s.l;a.classList.toggle('on',on);a.classList.toggle('dim',!!s.l&&!on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});
+  const f=v==='over'?faOver(F):v==='let'?faLetFig(F,s):faDeelFig(F,s);$('#uvTop').innerHTML=f.top||'';$('#stage').innerHTML=f.body;
+  $('#uvCrumb').innerHTML=faCrumb(F,s);
+  uv.classList.toggle('intro',!!fresh&&v==='over'&&!reduce());if(fresh&&v==='over')setTimeout(()=>uv.classList.remove('intro'),1600);
+  let el=fk&&prev&&faView(prev)===v?$(`#uv [data-k="${fk}"]`):null;if(inA&&(!el||el.offsetParent===null))el=$('#lf-h');if(inA&&el)el.focus({preventScroll:true});
+  const back=motion&&lv1<lv0?faBack(prev,s):null;
+  if(back){back.scrollIntoView({block:'center',behavior:'instant'});if(inA){const bl=back.closest('a');if(bl)bl.focus({preventScroll:true});}}else if(!same)window.scrollTo({top:0,left:0,behavior:'instant'});
+  faTitle(F,s);centerOn($('#fries .fz.on'));centerOn($('#stage .pstrip a.on'));
+  if(motion&&!same){flipFries(first);const panel=$('#panel');
+    if(lv1>lv0&&org&&panel)lensZoom(org.r,panel.getBoundingClientRect(),'');
+    else if(lv1<lv0&&oldRect&&back)lensZoom(oldRect,back.getBoundingClientRect(),'',true);
+    else if(lv1===lv0&&panel){const dir=org&&org.dir?org.dir:faDir(F,prev,s);panel.animate([{opacity:0,transform:`translateX(${dir*36}px)`},{opacity:1,transform:'none'}],{duration:340,easing:'cubic-bezier(.2,.7,.2,1)'});}
+    if(lv1>lv0&&panel)panel.animate([{opacity:0,transform:'scale(.985)'},{opacity:1,transform:'none'}],{duration:420,delay:140,easing:'cubic-bezier(.2,.7,.2,1)',fill:'backwards'});}
+  $('#hair').innerHTML='';clearTimeout(hair.t);hair.t=setTimeout(()=>requestAnimationFrame(hair),motion&&!same?680:0);}
+// terug naar een hoger niveau: het blad krimpt terug naar de regel of het zegel waar het vandaan kwam
+function faBack(p,s){if(p.d&&s.l===p.l&&!s.d)return $(`#stage [data-k="d-${p.d}"]`);if(p.l&&!s.l)return $(`#fries .fz[data-r="${p.l}"] .fz-s`);return null;}
+function faDir(F,a,b){if(a.l!==b.l){const i=x=>F.letters.findIndex(L=>lc(L)===x);return i(b.l)>i(a.l)?1:-1;}const D=faL(F,a.l).delen,i=x=>D.findIndex(d=>d.id===x);return i(b.d)>i(a.d)?1:-1;}
+
+
 /* ================= ROUTER ================= */
 function route(force){const h=(typeof force==='string'?force:location.hash).replace(/^#\/?/,'');const [path,q]=h.split('?');const parts=path.split('/').filter(Boolean);
   let nav='home',anchor=null,board=false;
   if(!parts.length)hub();
   else if(parts[0]==='lv'){
     if(parts[1]==='prompthulp'){prompthulp(q);nav='prompt';}
-    else if(parts[1]==='over'){lvOver();nav='over';}
+    else if(parts[1]==='over'){lvOver();nav='lv';}
     else{lvRoute(parts,q);nav='lv';board=true;}}
+  else if(own(FWR,parts[0])){const id=FWR[parts[0]];faRoute(FWD[id],parts);nav=id;board=true;}
   else if(parts[0]==='samenhang'){hub();anchor='samenhang';}
   else hub();
   document.body.classList.add('atlas');
@@ -1789,7 +2171,7 @@ addEventListener('hashchange',()=>route());
 document.addEventListener('click',e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.button!==0)return;const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute('href');if(h.startsWith('#/'))return;e.preventDefault();const t=document.getElementById(h.slice(1));
   if(t){t.scrollIntoView({behavior:reduce()?'instant':'smooth'});const f=t.querySelector('[tabindex="-1"]');if(f)f.focus({preventScroll:true});}});
 route();
-window.__avd={go:h=>route(h),PS,chatText,bouwText,LV,KT};
+window.__avd={go:h=>route(h),PS,chatText,bouwText,LV,KT,FWD,FA};
 })();
 
 </script>
