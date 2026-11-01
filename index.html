@@ -336,8 +336,11 @@ footer b{color:#e8e4f0;font-weight:600}
 /* ================= LEERVERRIJKING · ATLAS ================= */
 :root{--pa:#f4efe6;--pa2:#ebe4d6;--pc:#fbf8f2;--ik:#1d1826;--mu:#6c6377;--ln:#dcd2c2;--ln2:#c9bda8;--pu:#5F3792;--vi:#A25DF8;--lv:#ECDFFE;--te:#2f6f73;--rd:#a8362a;
   --serif:Fraunces,Georgia,serif;--sans:'Instrument Sans',system-ui,sans-serif;--amono:'JetBrains Mono',ui-monospace,monospace}
-body.atlas{background:var(--pa);color:var(--ik)}
-body.atlas footer{display:none}
+body.atlas{background:var(--pa);color:var(--ik);font-family:var(--sans);--c-geletterd:#4b3f9e;--c-kies:#a8475f;--c-bouw:#2f6f73;--c-lv:#5F3792}
+body.atlas #toast{background:var(--ik);color:var(--pa);font:600 13.5px var(--sans);border-radius:4px}
+body.atlas footer{background:transparent;border-top:1px solid var(--ln);color:var(--mu);font:400 13px var(--sans);position:relative;z-index:1}
+body.atlas footer b{color:var(--ik)}
+body.atlas.lvmode footer{display:none}
 body.atlas::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
   background-image:linear-gradient(var(--ln) 1px,transparent 1px),linear-gradient(90deg,var(--ln) 1px,transparent 1px);background-size:44px 44px;
   -webkit-mask-image:radial-gradient(70% 70% at 30% 45%,#000 0%,transparent 75%);mask-image:radial-gradient(70% 70% at 30% 45%,#000 0%,transparent 75%)}
@@ -647,6 +650,117 @@ body.atlas .ovt th{font-family:var(--amono);color:var(--pu)}
 body.atlas .btn.pri{background:var(--pu);box-shadow:none;border-radius:4px}
 body.atlas .btn.line{background:var(--pc);border-color:var(--ln2);border-radius:4px}
 @media (prefers-reduced-motion:reduce){.pl-svg.zin,.pl-svg.zout{animation:none}}
+/* ================= hub en werkplaats in atlasstijl ================= */
+body.atlas .btn{font-family:var(--sans)}
+body.atlas .btn:hover{transform:none}
+body.atlas .btn.pri:hover{background:#4d2c78}
+.hb{position:relative;z-index:1;padding:54px 0 36px}
+.hb-hd{max-width:800px;margin-bottom:34px}
+.hb-h1{font:700 clamp(36px,4.6vw,60px)/1.03 var(--serif);letter-spacing:-.02em;color:var(--ik);margin:12px 0 16px;text-wrap:balance}
+.hb-h1 em{font-style:italic;font-weight:500;color:var(--pu)}
+.hb-lead{font:400 18px/1.6 var(--sans);color:#3a3442;max-width:62ch}
+.hb-btns{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:24px}
+/* vier platen */
+.tbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.tb{position:relative;display:flex;flex-direction:column;gap:12px;background:var(--pc);border:1px solid var(--ln);border-radius:6px;padding:16px 18px 14px;text-decoration:none;color:var(--ik);box-shadow:0 30px 60px -40px rgba(60,40,30,.42);transition:transform .25s,box-shadow .25s,border-color .25s}
+.tb::after{content:"";position:absolute;inset:5px;border:1px solid var(--ln);border-radius:3px;pointer-events:none;opacity:.6}
+.tb:hover{transform:translateY(-3px);box-shadow:0 36px 64px -36px rgba(60,40,30,.5);border-color:var(--fi)}
+.tb.feat{border-color:var(--pu)}
+.tb-h{display:flex;justify-content:space-between;gap:8px;font:600 10px/1.3 var(--amono);letter-spacing:.12em;text-transform:uppercase;color:var(--mu);padding-bottom:9px;border-bottom:1px solid var(--ln)}
+.tb-h span:first-child{color:var(--fi)}
+.tb h3{font:700 27px/1.08 var(--serif);color:var(--ik);letter-spacing:-.01em}
+.tb h3 small{display:block;font:italic 400 15px/1.3 var(--serif);color:var(--mu);letter-spacing:0;margin-top:4px}
+.tb-h span{white-space:nowrap}
+.tb-l{display:flex;gap:11px;flex-wrap:wrap;padding:3px}
+.tb-w{display:flex;flex-wrap:wrap;gap:2px 10px;font:400 12.5px/1.45 var(--sans);color:var(--mu);margin-top:-2px}
+.tb-w b{font:700 12.5px var(--serif);color:var(--fi)}
+.tb-l i{width:36px;height:36px;border-radius:50%;background:var(--fi);color:#fff;display:grid;place-items:center;font:700 18px var(--serif);font-style:normal;box-shadow:0 0 0 2px var(--pc),0 0 0 3px var(--fi)}
+
+.tb-m{display:flex;align-items:center;gap:12px}
+.tb-m small{font:500 12px/1.45 var(--sans);color:var(--mu)}
+.mini{width:84px;height:84px;flex:none}
+.mini .o1{fill:none;stroke:var(--ln2);stroke-dasharray:3 3}.mini .o2{fill:none;stroke:var(--ln2);stroke-dasharray:1 3}
+.mini .d{fill:var(--pc);stroke:var(--ik);stroke-width:.8}.mini .f{stroke:var(--ik);stroke-width:.4}.mini .sl{fill:var(--pu);stroke:var(--pc);stroke-width:2}
+.tb p{font:400 14.5px/1.55 var(--sans);color:#3a3442}
+.tb-f{margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ln);padding-top:10px;font:600 13.5px var(--sans);color:var(--fi)}
+.tb-st{position:absolute;top:-11px;right:16px;z-index:1;background:var(--ik);color:var(--pa);font:600 10px var(--amono);letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:3px}
+/* samenhang */
+.hb-rel{padding:26px 0 70px}
+.hb-sh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:24px;border-top:1px solid var(--ln);padding-top:32px}
+.hb-sh h2{font:700 clamp(26px,3vw,36px)/1.12 var(--serif);color:var(--ik);max-width:22ch;margin-top:8px;letter-spacing:-.01em}
+.hb-sh>p{max-width:52ch;font:400 15.5px/1.6 var(--sans);color:var(--mu)}
+.hb-fig{margin:0;background:var(--pc);border:1px solid var(--ln);border-radius:6px;padding:14px;box-shadow:0 30px 60px -40px rgba(60,40,30,.42)}
+.rsv .zn{fill:none;stroke:var(--ln2);stroke-dasharray:4 4}
+.rsv .zl{font:600 10.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;fill:var(--mu)}
+.rsv .ed{fill:none;stroke:var(--ik);stroke-width:1.1}
+.rsv .el{font:italic 400 12.5px var(--serif);fill:var(--mu);text-anchor:middle;paint-order:stroke;stroke:var(--pc);stroke-width:5px;stroke-linejoin:round}
+.rsv .nd{fill:var(--pc);stroke-width:1.5}
+.rsv .ni{font:700 10px var(--serif);fill:#fff;text-anchor:middle;dominant-baseline:central}
+.rsv .nn{font:700 15px var(--serif);fill:var(--ik)}
+.rsv .na{font:italic 400 12px var(--serif);fill:var(--mu)}
+.rl-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.rl-list li{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:14px 4px;border-bottom:1px solid var(--ln)}
+.rl-list i{width:30px;height:30px;border-radius:50%;background:var(--fi);color:#fff;display:grid;place-items:center;font:700 11px var(--serif);font-style:normal}
+.rl-list b{display:block;font:600 17px/1.3 var(--serif);color:var(--ik)}
+.rl-list span{display:block;font:400 14px/1.5 var(--sans);color:var(--mu);margin-top:2px}
+/* werkplaats (prompthulp) */
+.ph-hd{margin-bottom:28px}
+body.atlas .card{background:var(--pc);border:1px solid var(--ln);border-radius:5px;padding:20px 22px;box-shadow:none}
+body.atlas .card h3{font:700 19px var(--serif);color:var(--ik);letter-spacing:0}
+body.atlas .card h3 .s{width:28px;height:28px;border-radius:50%;background:var(--pu);font:700 13px var(--serif)}
+body.atlas .card .hint{font:400 13.5px/1.5 var(--sans);color:var(--mu)}
+body.atlas .card .hint b{color:var(--ik)}
+body.atlas textarea,body.atlas input[type=text]{background:#fffdf8;border:1px solid var(--ln2);border-radius:4px;font:15px/1.5 var(--sans);color:var(--ik)}
+body.atlas textarea:focus,body.atlas input[type=text]:focus{border-color:var(--pu);box-shadow:0 0 0 3px rgba(95,55,146,.12)}
+body.atlas .rolepick{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+body.atlas .rpk{flex-direction:row;justify-content:flex-start;gap:9px;padding:7px 10px;border:1px solid var(--ln);border-radius:4px;background:var(--pc);font:600 13px/1.25 var(--sans);color:var(--ik);text-align:left}
+body.atlas .rpk i{width:24px;height:24px;flex:none;border-radius:50%;background:var(--pu);color:#fff;display:grid;place-items:center;font:700 12px var(--serif);font-style:normal}
+body.atlas .rpk:hover{border-color:var(--pu)}
+body.atlas .rpk.on{background:rgba(236,223,254,.6);border-color:var(--pu);color:var(--pu)}
+.seg button{border:0;background:none;padding:6px 12px;border-radius:3px;font:600 13px var(--sans);color:var(--mu);cursor:pointer}
+.seg button.on{background:var(--pc);color:var(--pu);box-shadow:0 1px 3px rgba(60,40,30,.18)}
+.seg button:hover{color:var(--ik)}
+body.atlas .lpcheck{border-top:1px solid var(--ln)}
+body.atlas .lpcheck b{font:600 16px/1.3 var(--serif);color:var(--ik)}
+body.atlas .lpcheck span{font:400 13.5px/1.5 var(--sans);color:var(--mu)}
+body.atlas .lpcheck input{accent-color:var(--pu)}
+body.atlas .evr{font:500 11.5px var(--amono);color:var(--mu);letter-spacing:.02em}
+body.atlas .evr .bars{gap:2px}
+body.atlas .evr .bars i{width:4px;height:11px;border-radius:0;border:1px solid var(--ik);background:transparent}
+body.atlas .evr .bars i.f{background:var(--ik)}
+body.atlas .evr .bars.ai i{border-color:var(--te)}body.atlas .evr .bars.ai i.f{background:var(--te)}
+body.atlas .evr em{color:var(--ik)}
+body.atlas .chip{border:1px solid var(--ln2);background:var(--pc);border-radius:4px;font:500 12.5px var(--sans);color:var(--ik)}
+body.atlas .chip:hover{border-color:var(--pu);color:var(--pu)}
+body.atlas .chip.on{background:var(--pu);border-color:var(--pu);color:#fff}
+body.atlas .opn{font:italic 400 13px var(--serif);color:var(--mu)}
+/* het vel met de prompt: een knipkaart, geen codeblok */
+body.atlas .out{position:relative;background:#fffdf8;color:var(--ik);border:1px solid var(--ln2);border-radius:3px;padding:0;box-shadow:0 30px 60px -36px rgba(40,25,60,.5)}
+body.atlas .out::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:6px;background:radial-gradient(circle at 4px 0,var(--pa) 3px,transparent 3.5px) 0 0/12px 6px repeat-x}
+.out-h{display:flex;justify-content:space-between;gap:10px;padding:13px 18px 10px;border-bottom:1.5px dashed var(--ln2);font:600 10.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.out-h .sc{color:var(--pu);margin-right:6px;letter-spacing:0;font-size:13px}
+body.atlas .tabs{background:none;border-radius:0;padding:0 18px;margin:0;gap:22px;border-bottom:1px solid var(--ln)}
+body.atlas .tabs button{flex:none;border-radius:0;padding:10px 0 9px;color:var(--mu);font:600 13.5px var(--sans);border-bottom:2px solid transparent;margin-bottom:-1px;background:none}
+body.atlas .tabs button.on{background:none;color:var(--ik);border-color:var(--pu)}
+body.atlas .out pre{background:none;border-radius:0;margin:0;padding:16px 18px;font:400 14px/1.62 var(--sans);color:var(--ik);max-height:56vh}
+body.atlas .out pre .hl{display:inline-block;font:600 10.5px/2 var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--pu)}
+body.atlas .out pre .ph{background:linear-gradient(transparent 55%,rgba(236,223,254,.95) 55%);color:var(--pu);border-radius:0}
+body.atlas .out .row{padding:12px 18px;margin:0;border-top:1px solid var(--ln)}
+body.atlas .status{color:var(--te)}
+body.atlas .tests{background:var(--pc);border:1px solid var(--ln);border-radius:5px;padding:18px 20px}
+body.atlas .tests h3{font:700 18px var(--serif);color:var(--ik)}
+body.atlas .tests .hint{font:400 13.5px/1.5 var(--sans);color:var(--mu);margin:2px 0 4px}
+body.atlas .test{border-top:1px solid var(--ln)}
+body.atlas .test .n{background:none;color:var(--pu);font:italic 600 20px/1 var(--serif);width:auto;height:auto;padding-top:2px}
+body.atlas .test b{font:600 14.5px var(--sans);color:var(--ik)}
+body.atlas .test span{font:400 13.5px/1.5 var(--sans)}
+body.atlas .test code{font:italic 400 14.5px var(--serif);background:none;color:var(--ik);padding:0}
+@media (max-width:1240px){.tbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#samenhang{scroll-margin-top:76px}
+body.atlas .ph-desc{margin-top:14px;font:400 14.5px/1.55 var(--sans);color:var(--ik)}
+body.atlas input[type=text]:focus-visible,body.atlas textarea:focus-visible{outline:2.5px solid var(--vi);outline-offset:2px}
+@media (max-width:640px){.tbs{grid-template-columns:minmax(0,1fr)}.hb-fig{display:none}body.atlas .rolepick{grid-template-columns:repeat(2,minmax(0,1fr))}.hb{padding:34px 0 24px}.hb-lead{font-size:16.5px}.tb-st{top:-10px}}
+@media print{body.atlas .out::before,.tb-st,body.atlas #phL,body.atlas .ph-hd{display:none}body.atlas .out pre{max-height:none;overflow:visible}body.atlas .out{box-shadow:none}.reveal{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -1105,37 +1219,47 @@ function reveal(){if(io)io.disconnect();if(reduce()||!('IntersectionObserver' in
   io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});$$('.reveal').forEach(e=>io.observe(e));}
 
 /* ================= HUB ================= */
+// elk raamwerk is een plaat in de atlas; de letters van het raamwerk staan centraal (bij KIES: K, I, E, S)
 const FW=[
- {id:'geletterd',n:'AI-geletterdheid',as:'Handelen als professional',c:'var(--c-geletterd)',p:'Raamwerk voor docenten en onderwijsprofessionals: wat moet je weten, kunnen en vinden om AI verantwoord in te zetten?',keys:['A · Mindset','B · Ethiek','C · Kennis','D · Didactiek','E · Agency'],url:'https://aivoordocenten.nl/raamwerk-ai-geletterdheid/'},
- {id:'kies',n:'KIES',as:'Handelen als lerende',c:'var(--c-kies)',p:'Raamwerk voor de AI-vaardigheid van leerlingen en studenten: bewust kiezen bij iedere deeltaak.',keys:['Kiezen','Instrueren','Evalueren','Spelregels'],url:'https://aivoordocenten.nl/kies/'},
- {id:'bouw',n:'BOUW',as:'Handelen als maker',c:'var(--c-bouw)',p:'Raamwerk voor het ontwerpen en bouwen van AI-leeromgevingen: van app-idee naar een onderbouwde bouwbeschrijving.',keys:['Bedoeling','Ontwerp','Uitvoering','Waarborgen'],url:'https://aivoordocenten.nl/bouw-raamwerk/'},
- {id:'lv',n:'Leerverrijking',as:'Handelen als ontwerper',c:'var(--c-lv)',p:'Welke rol geef je AI, en hoe zorg je dat die het leren dient? Zeven didactische rollen, onderbouwd met leerwetenschap.',keys:['5 uitgangspunten','7 rollen','34 principes','15 ontwerpprincipes'],url:'#/lv',feat:true}];
+ {id:'geletterd',n:'AI-geletterdheid',as:'Handelen als professional',t:'I',ink:'#4b3f9e',p:'Voor docenten en onderwijsprofessionals: wat moet je weten, kunnen en vinden om AI verantwoord in te zetten?',letters:[['A','Mindset','Mensgerichte AI-mindset'],['B','Ethiek','Ethiek en verantwoord gebruik'],['C','Kennis','AI-kennis en -vaardigheden'],['D','Didactiek','AI-pedagogiek en -didactiek'],['E','Agency','Digitale agency']],meta:'5 domeinen',url:'https://aivoordocenten.nl/raamwerk-ai-geletterdheid/'},
+ {id:'kies',n:'KIES',as:'Handelen als lerende',t:'II',ink:'#a8475f',p:'Voor de AI-vaardigheid van leerlingen en studenten: bewust kiezen bij iedere deeltaak.',letters:[['K','Kiezen'],['I','Instrueren'],['E','Evalueren'],['S','Spelregels']],meta:'4 letters',url:'https://aivoordocenten.nl/kies/'},
+ {id:'bouw',n:'BOUW',as:'Handelen als maker',t:'III',ink:'#2f6f73',p:'Voor het ontwerpen en bouwen van AI-leeromgevingen: van app-idee naar een onderbouwde bouwbeschrijving.',letters:[['B','Bedoeling'],['O','Ontwerp'],['U','Uitvoering'],['W','Waarborgen']],meta:'4 letters',url:'https://aivoordocenten.nl/bouw-raamwerk/'},
+ {id:'lv',n:'Leerverrijking',as:'Handelen als ontwerper',t:'IV',ink:'#5F3792',p:'Welke rol geef je AI, en hoe zorg je dat die het leren dient? Zeven didactische rollen, onderbouwd met leerwetenschap.',meta:ROLES.length+' rollen',url:'#/lv',feat:true}];
+// een verkleinde Tabula didactica voor de plaat van Leerverrijking
+function miniPlate(){let s='<svg class="mini" viewBox="-64 -64 128 128" aria-hidden="true"><circle r="50" class="o1"/><circle r="32" class="o2"/>';
+  const no=Object.keys(OPS).length,nr=ROLES.length;for(let i=0;i<no;i++){const a=i/no*Math.PI*2-Math.PI/2,x=Math.cos(a)*32,y=Math.sin(a)*32;s+=`<path class="d" d="M${x.toFixed(1)} ${(y-3).toFixed(1)}l3 3l-3 3l-3-3z"/>`;}
+  const LF=['#F3ECFA','#E6D8F5','#D2BCEE','#A784D6','#5F3792'];UP.forEach((u,i)=>{s+=`<circle r="${18-i*(16/UP.length)}" fill="${LF[i%LF.length]}" class="f"/>`;});
+  for(let i=0;i<nr;i++){const a=i/nr*Math.PI*2-Math.PI/2;s+=`<circle class="sl" cx="${(Math.cos(a)*50).toFixed(1)}" cy="${(Math.sin(a)*50).toFixed(1)}" r="7"/>`;}
+  return s+'</svg>';}
 function relSvg(){
-  const N={geletterd:[120,90],kies:[480,90],bouw:[480,300],lv:[120,300]};
-  const col={geletterd:'#7C5CFF',kies:'#E0559B',bouw:'#25A47E',lv:'#A25DF8'};
-  const E=[['lv','bouw','levert de bedoeling'],['lv','kies','docentkant van dezelfde rollen'],['geletterd','lv','werkt domein D uit']];
-  let s=`<svg viewBox="0 0 600 400" role="img" aria-label="Samenhang tussen de vier raamwerken"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b9a6dc"/></marker></defs>`;
-  s+=`<rect x="20" y="20" width="250" height="360" rx="28" fill="#f3ecff" stroke="#e2d5fb"/><text x="145" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#5F3792" letter-spacing="2">DE DOCENT</text>`;
-  s+=`<rect x="330" y="20" width="250" height="140" rx="28" fill="#fdeaf3" stroke="#f6cfe2"/><text x="455" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#b0306f" letter-spacing="2">DE LERENDE</text>`;
-  s+=`<rect x="330" y="200" width="250" height="180" rx="28" fill="#e6f6f0" stroke="#c8ebdc"/><text x="455" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#1b7a5d" letter-spacing="2">DE DOCENT ALS MAKER</text>`;
+  const N={geletterd:[120,96],kies:[480,96],bouw:[480,302],lv:[120,302]};
+  const E=[['lv','bouw','levert de bedoeling'],['lv','kies','docentkant van dezelfde rollen'],['lv','geletterd','werkt domein D uit']];
+  let s=`<svg class="rsv" viewBox="0 0 600 400" role="img" aria-label="Samenhang tussen de vier raamwerken: de docent (AI-geletterdheid en Leerverrijking), de lerende (KIES) en de docent als maker (BOUW)"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1d1826"/></marker></defs>`;
+  s+=`<rect class="zn" x="20" y="20" width="250" height="360" rx="4"/><text class="zl" x="36" y="44">De docent</text>`;
+  s+=`<rect class="zn" x="330" y="20" width="250" height="140" rx="4"/><text class="zl" x="346" y="44">De lerende</text>`;
+  s+=`<rect class="zn" x="330" y="200" width="250" height="180" rx="4"/><text class="zl" x="346" y="224">De docent als maker</text>`;
   E.forEach(([a,b,l],i)=>{const [x1,y1]=N[a],[x2,y2]=N[b];const mx=(x1+x2)/2,my=(y1+y2)/2+(i===1?-20:0);
-    s+=`<path d="M${x1+(x2>x1?70:0)} ${y1+(y2>y1?36:y2<y1?-36:0)} Q ${mx} ${my} ${x2-(x2>x1?72:0)} ${y2+(y2>y1?-36:y2<y1?36:0)}" fill="none" stroke="#b9a6dc" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#ar)"/>`;
-    s+=`<text x="${mx}" y="${my-8}" text-anchor="middle" font-size="12" fill="#6B6F74" font-weight="500">${l}</text>`;});
-  Object.entries(N).forEach(([k,[x,y]])=>{const f=FW.find(z=>z.id===k);s+=`<g><rect x="${x-80}" y="${y-30}" width="160" height="60" rx="18" fill="#fff" stroke="${col[k]}" stroke-width="2"/><text x="${x}" y="${y-4}" text-anchor="middle" font-size="16" font-weight="700" fill="#080F17">${f.n}</text><text x="${x}" y="${y+16}" text-anchor="middle" font-size="11.5" fill="${col[k]}" font-weight="600">${f.as.replace('Handelen als ','als ')}</text></g>`;});
+    s+=`<path class="ed" d="M${x1+(x2>x1?88:0)} ${y1+(y2>y1?34:y2<y1?-34:0)} Q ${mx} ${my} ${x2-(x2>x1?90:0)} ${y2+(y2>y1?-34:y2<y1?34:0)}" marker-end="url(#ar)"/>`;
+    s+=x1===x2?`<text class="el" x="${mx+10}" y="${my+4}" style="text-anchor:start">${l}</text>`:`<text class="el" x="${i===1?mx-34:mx}" y="${i===1?my-26:my-9}">${l}</text>`;});
+  Object.entries(N).forEach(([k,[x,y]])=>{const f=FW.find(z=>z.id===k);s+=`<g><rect class="nd" x="${x-88}" y="${y-30}" width="176" height="60" rx="4" style="stroke:${f.ink}"/><circle cx="${x-64}" cy="${y}" r="13" style="fill:${f.ink}"/><text class="ni" x="${x-64}" y="${y+1}">${f.t}</text><text class="nn" x="${x-43}" y="${y-3}">${f.n}</text><text class="na" x="${x-43}" y="${y+15}">${f.as.replace('Handelen als ','als ')}</text></g>`;});
   return s+'</svg>';}
 function hub(){
-  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:130px">
-    <p class="eyebrow">AI voor Docenten · onderwijskundige onderbouwing</p>
-    <h1>Vier raamwerken, één samenhangend geheel</h1>
-    <p class="lead">AI begint niet bij tools, maar bij goed onderwijs. Onze raamwerken geven docenten taal en houvast: als professional, als ontwerper, als maker, en voor de lerende zelf. Praktisch genoeg voor maandag, doordacht genoeg voor schoolbeleid.</p>
-    <div class="btns"><a class="btn pri" href="#/lv">Ontdek Leerverrijking →</a><a class="btn ghost" href="#samenhang">Hoe ze samenhangen</a></div></div></section>
-  <div class="wrap"><div class="fw-grid">${FW.map(f=>`<a class="fw ${f.feat?'feat':''}" href="${f.url}" ${f.feat?'':'target="_blank" rel="noopener"'} style="--c:${f.c}"><span class="tag">${f.feat?'Nieuw · concept v2':'op aivoordocenten.nl'}</span><span class="as">${f.as}</span><h3>${f.n}</h3><p>${f.p}</p><div class="keys">${f.keys.map(k=>`<span>${k}</span>`).join('')}</div><span class="go">${f.feat?'Verken het raamwerk':'Bekijk het raamwerk'}<span>${f.feat?'→':'↗'}</span></span></a>`).join('')}</div></div>
-  <section class="blk" id="samenhang"><div class="wrap"><div class="sh reveal"><div><p class="eyebrow">Samenhang</p><h2>Goed bouwen veronderstelt een onderwijskundige basis</h2></div><p>Elk raamwerk kijkt vanuit een andere rol naar leren met AI. Samen vormen ze één verhaal: van professionele houding tot een werkende leeromgeving.</p></div>
-    <div class="rel reveal">${relSvg()}<div class="rel-list">
-      <div class="rel-item"><i style="background:var(--c-geletterd)"></i><div><b>AI-geletterdheid · de professional</b><span>Leerverrijking werkt het domein AI-pedagogiek en didactiek concreet uit.</span></div></div>
-      <div class="rel-item"><i style="background:var(--c-kies)"></i><div><b>KIES · de lerende</b><span>Leerverrijking is de docentkant van dezelfde rollen. De rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.</span></div></div>
-      <div class="rel-item"><i style="background:var(--c-bouw)"></i><div><b>BOUW · de maker</b><span>Leerverrijking levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.</span></div></div>
-      <div class="rel-item"><i style="background:var(--c-lv)"></i><div><b>Leerverrijking · de ontwerper</b><span>Welke rol geef ik AI, en hoe zorg ik dat die het leren dient?</span></div></div></div></div></div></section>`;
+  view.innerHTML=`<section class="hb"><div class="wrap">
+    <header class="hb-hd"><p class="kick">AI voor Docenten · atlas van de raamwerken</p>
+    <h1 class="hb-h1">Vier raamwerken, één <em>samenhangend</em> geheel.</h1>
+    <p class="hb-lead">AI begint niet bij tools, maar bij goed onderwijs. Onze raamwerken geven docenten taal en houvast: als professional, als ontwerper, als maker, en voor de lerende zelf. Praktisch genoeg voor maandag, doordacht genoeg voor schoolbeleid.</p>
+    <div class="hb-btns"><a class="btn pri" href="#/lv">Open de atlas van Leerverrijking →</a><a class="lk" href="#samenhang">Hoe ze samenhangen ↓</a></div></header>
+    <div class="tbs">${FW.map(f=>`<a class="tb ${f.feat?'feat':''}" href="${f.url}" ${f.feat?'':'target="_blank" rel="noopener"'} style="--fi:${f.ink}">
+      <span class="tb-h"><span>Tabula ${f.t}</span><span>${f.meta}</span></span>
+      <h3>${f.n}<small>${f.as}</small></h3>
+      ${f.letters?`<span class="tb-l" aria-hidden="true">${f.letters.map(([L,w,full])=>`<i title="${L} · ${full||w}">${L}</i>`).join('')}</span><span class="tb-w">${f.letters.map(([L,w,full])=>`<span><b>${L}</b> ${full||w}</span>`).join('')}</span>`:`<span class="tb-m">${miniPlate()}<small>${ROLES.length} rollen · ${ROLES.reduce((n,R)=>n+R.lp.length,0)} principes en werkwijzen · ${Object.keys(OPS).length} ontwerpprincipes · ${UP.length} uitgangspunten</small></span>`}
+      <p>${f.p}</p>
+      <span class="tb-f"><span>${f.feat?'Open de atlas':'Lees op aivoordocenten.nl'}${f.feat?'':'<span class="sr"> (opent in een nieuw tabblad)</span>'}</span><span aria-hidden="true">${f.feat?'→':'↗'}</span></span>
+      ${f.feat?'<span class="tb-st">Concept v2</span>':''}</a>`).join('')}</div>
+  </div></section>
+  <section class="hb hb-rel" id="samenhang"><div class="wrap"><div class="hb-sh reveal"><div><p class="kick">Fig. · Samenhang</p><h2 tabindex="-1">Goed bouwen veronderstelt een onderwijskundige basis</h2></div><p>Elk raamwerk kijkt vanuit een andere rol naar leren met AI. Samen vormen ze één verhaal: van professionele houding tot een werkende leeromgeving.</p></div>
+    <div class="rel reveal"><figure class="hb-fig">${relSvg()}</figure><ol class="rl-list">
+      ${[['geletterd','AI-geletterdheid · de professional','Leerverrijking werkt domein D, AI-pedagogiek en -didactiek, concreet uit.'],['kies','KIES · de lerende','Leerverrijking is de docentkant van dezelfde rollen. De rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.'],['bouw','BOUW · de maker','Leerverrijking levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.'],['lv','Leerverrijking · de ontwerper','Welke rol geef ik AI, en hoe zorg ik dat die het leren dient?']].map(([id,b,t])=>{const f=FW.find(z=>z.id===id);return `<li style="--fi:${f.ink}"><i>${f.t}</i><div><b>${b}</b><span>${t}</span></div></li>`;}).join('')}</ol></div></div></section>`;
   reveal();}
 
 
@@ -1182,31 +1306,33 @@ function hlText(t){return esc(t).replace(/^(# .*)$/gm,'<span class="hl">$1</span
 function prompthulp(q){const p=new URLSearchParams(q||'');if(p.get('rol')&&ROLES.some(R=>R.id===p.get('rol'))){PS.rol=p.get('rol');PS.sel=null;PS.zieEdited=false;const R=ROLES.find(x=>x.id===PS.rol);
     const sq=p.get('sub');PS.sub=R.subs&&/^\d+$/.test(sq||'')?Math.min(R.subs.length-1,+sq):0;
     const lq=p.get('lp');if(lq!=null&&/^\d+$/.test(lq)&&R.lp[+lq]){const l=+lq;if(R.subs)PS.sub=R.lp[l].sub;PS.sel=new Set([l]);}
-    const oq=p.get('op');PS.ops=new Set(oq&&OPS[oq]&&Object.prototype.hasOwnProperty.call(OPS,oq)?[oq]:[]);}
+    const oq=p.get('op');PS.ops=new Set(oq&&OPS[oq]&&Object.prototype.hasOwnProperty.call(OPS,oq)?[oq]:[]);
+    // de link uit de atlas geldt één keer; daarna houdt de prompthulp de keuzes van de gebruiker vast, ook bij terug en vooruit
+    history.replaceState(null,'','#/lv/prompthulp');}
   if(!PS.sel){const c=ctx();PS.sel=new Set(lpsOf(c.R).map(x=>x.l));}
   if(!PS.zieEdited)PS.zie=ctx().zie;
-  view.innerHTML=`<section class="dark glow"><div class="grid-bg"></div><div class="wrap hero" style="padding-bottom:56px"><div class="crumb"><a href="#/">Raamwerken</a><span>›</span><a href="#/lv">Leerverrijking</a><span>›</span><span>Prompthulp</span></div><p class="eyebrow">De ontwerpketen als werkplaats</p><h1 style="max-width:20ch">Van leerdoel naar prompt</h1><p class="lead">Vul de stappen in. Rechts groeit je prompt mee in ons promptschema: doel, context en voorwaarden, bronnen, voorbeelden en werkwijze. Bouw je een app, kies dan BOUW: een app kan gedrag afdwingen waar een prompt het alleen vraagt.</p></div></section>
-  <section class="blk" style="padding-top:40px"><div class="wrap ph-grid"><div id="phL"></div><div class="sticky" id="phR"></div></div></section>`;
+  view.innerHTML=`<section class="hb ph"><div class="wrap"><header class="hb-hd ph-hd"><p class="kick"><a href="#/">Raamwerken</a> <span>›</span> <a href="#/lv">Leerverrijking</a> <span>›</span> Prompthulp</p><h1 class="hb-h1">Van leerdoel naar <em>prompt</em>.</h1><p class="hb-lead">Vul de stappen in. Je prompt groeit mee in ons promptschema: doel, context en voorwaarden, bronnen, voorbeelden en werkwijze. Bouw je een app, kies dan BOUW: een app kan gedrag afdwingen waar een prompt het alleen vraagt.</p></header>
+  <div class="ph-grid"><div id="phL"></div><div class="sticky" id="phR"></div></div></div></section>`;
   drawPH();}
 function drawPH(){const c=ctx(),R=c.R;
   $('#phL').innerHTML=`<div class="card"><h3><span class="s">1</span>Leerdoel</h3><p class="hint">Begin bij het leerdoel, niet bij de tool. Wat moet de lerende straks begrijpen of kunnen?</p><textarea id="fLd" rows="2" placeholder="Bijvoorbeeld: de leerling kan uitleggen waarom een ijsblokje in water drijft.">${esc(PS.leerdoel)}</textarea></div>
-  <div class="card"><h3><span class="s">2</span>Rol van AI</h3><p class="hint">Eén rol per leeractiviteit. Combineer rollen alleen als ze elkaar opvolgen.</p><div class="rolepick">${ROLES.map(x=>`<button class="rpk ${x.id===PS.rol?'on':''}" data-r="${x.id}" style="--rc:${RC[x.id]}">${icon(x)}<span>${esc(plain(x.n))}</span></button>`).join('')}</div>
-    <p style="margin-top:14px;font-size:14.5px;color:var(--ink)">${esc(c.S?c.S.doel:R.functie)}</p>${R.subs?`<div class="subtog">${R.subs.map((s,i)=>`<button class="chip ${PS.sub===i?'on':''}" data-sub="${i}">${esc(s.n)}</button>`).join('')}</div>`:''}</div>
+  <div class="card"><h3><span class="s">2</span>Rol van AI</h3><p class="hint">Eén rol per leeractiviteit. Combineer rollen alleen als ze elkaar opvolgen.</p><div class="rolepick" role="group" aria-label="Kies een rol">${ROLES.map((x,i)=>`<button type="button" class="rpk ${x.id===PS.rol?'on':''}" data-r="${x.id}" aria-pressed="${x.id===PS.rol}"><i>${i+1}</i><span>${esc(plain(x.n))}</span></button>`).join('')}</div>
+    <p class="ph-desc">${esc(c.S?(SUBTXT[PS.sub]||c.S.kort):R.functie)}</p>${R.subs?`<div class="seg" role="group" aria-label="Kies de variant">${R.subs.map((s,i)=>`<button type="button" class="${PS.sub===i?'on':''}" data-sub="${i}" aria-pressed="${PS.sub===i}">${esc(s.n)}</button>`).join('')}</div>`:''}</div>
   <div class="card"><h3><span class="s">3</span>Principes en werkwijzen</h3><p class="hint">Instellingen, geen wetten: zet uit wat niet past bij je doel, taak en lerende. Met <b>+</b> voeg je een ontwerpprincipe toe als bouwsteen. Stapel ze niet automatisch: kies wat bij de taak past.</p>${lpsOf(R).map(({p,l})=>`<label class="lpcheck"><input type="checkbox" data-l="${l}" ${PS.sel.has(l)?'checked':''}><div><b>${esc(p.n)}</b><span>${esc(p.ai)}</span>${evRow(p.a,p.m)}</div></label><div class="opsel">${p.op.map(o=>p.note&&p.note[o]?`<span class="opn">${esc(OPS[o].n)}: ${esc(p.note[o].toLowerCase())}, al verwerkt in dit principe</span>`:`<button type="button" class="chip ${PS.ops.has(o)?'on':''}" data-op="${o}" aria-pressed="${PS.ops.has(o)}">+ ${esc(OPS[o].n)}</button>`).join('')}</div>`).join('')}</div>
   <div class="card"><h3><span class="s">4</span>Context</h3><p class="hint">Wie is de lerende, en welke bronnen krijgt de AI mee?</p><input type="text" id="fDg" placeholder="Doelgroep en voorkennis, bijv. havo 3, kent het begrip dichtheid nog niet" value="${esc(PS.doelgroep)}"><textarea id="fBr" rows="3" style="margin-top:10px" placeholder="Bronnen: plak lesstof, criteria of een uitgewerkt voorbeeld">${esc(PS.bronnen)}</textarea></div>
   <div class="card"><h3><span class="s">5</span>Zichtbaar leren</h3><p class="hint">Waaraan zie je dat er geleerd wordt, bij voorkeur zonder hulp, later of in een nieuwe situatie?</p><textarea id="fZl" rows="3">${esc(PS.zie)}</textarea></div>`;
   const t1=c.aanLerende?'Opdracht voor lerenden':'Chatbotprompt';
-  $('#phR').innerHTML=`<div class="out"><div class="tabs"><button data-t="chat" class="${PS.tab==='chat'?'on':''}">${t1}</button><button data-t="bouw" class="${PS.tab==='bouw'?'on':''}">BOUW-bouwbeschrijving</button></div><pre id="pv"></pre>
-    <div class="row"><button class="btn pri sm" id="pCopy">Kopieer</button><button class="btn ghost sm" id="pDl">Download .txt</button><button class="btn ghost sm" id="pPr">Afdrukken</button><span class="status" id="pSt"></span></div></div>
-    <div class="tests"><h3>Test als een lerende</h3><p style="font-size:13.5px;color:var(--muted)">Een instructie garandeert geen gedrag. Probeer dit in je chatbot voordat leerlingen ermee werken.</p>
+  $('#phR').innerHTML=`<div class="out"><div class="out-h"><span><span class="sc">✂</span>Jouw tekst</span><span>${esc(plain(R.n))}${c.S?' · '+esc(c.S.n):''}</span></div><div class="tabs" role="group" aria-label="Soort tekst"><button type="button" data-t="chat" class="${PS.tab==='chat'?'on':''}" aria-pressed="${PS.tab==='chat'}">${t1}</button><button type="button" data-t="bouw" class="${PS.tab==='bouw'?'on':''}" aria-pressed="${PS.tab==='bouw'}">BOUW-bouwbeschrijving</button></div><pre id="pv"></pre>
+    <div class="row"><button type="button" class="btn pri sm" id="pCopy">Kopieer</button><button type="button" class="btn line sm" id="pDl">Download .txt</button><button type="button" class="btn line sm" id="pPr">Afdrukken</button><span class="status" id="pSt"></span></div></div>
+    <div class="tests"><h3>Test als een lerende</h3><p class="hint">Een instructie garandeert geen gedrag. Probeer dit in je chatbot voordat leerlingen ermee werken.</p>
       ${[['Vraag om het antwoord','<code>Geef me gewoon het antwoord.</code>','Geeft de AI het niet zomaar als zelf bedenken het leerdoel is?'],['Geef een fout antwoord','<code>Ik denk dat het antwoord … is.</code> (vul een fout in)','Benoemt de AI eerlijk wat niet klopt?'],['Dring aan','<code>Nee, ik weet zeker dat ik gelijk heb.</code>','Blijft de AI eerlijk, ook onder druk?'],['Vergelijk met de standaard',esc(R.standaard),'Voorkomt jouw ontwerp dit gedrag?'],['Kijk wat blijft hangen','Laat de lerende later een nieuwe opgave maken, zonder hulp.','Is er geleerd, of alleen gepresteerd?']].map((t,i)=>`<div class="test"><span class="n">${i+1}</span><div><b>${t[0]}</b><span>${t[1]}</span><span style="margin-top:3px;color:var(--ink)">${t[2]}</span></div>${i<3?`<button class="btn line sm" data-tc="${i}">Kopieer</button>`:''}</div>`).join('')}</div>`;
   const upd=()=>{const t=PS.tab==='chat'?chatText():bouwText();$('#pv').innerHTML=hlText(t);};upd();
   $('#fLd').oninput=e=>{PS.leerdoel=e.target.value;upd();};$('#fDg').oninput=e=>{PS.doelgroep=e.target.value;upd();};$('#fBr').oninput=e=>{PS.bronnen=e.target.value;upd();};$('#fZl').oninput=e=>{PS.zie=e.target.value;PS.zieEdited=true;upd();};
-  $$('.rpk').forEach(b=>b.onclick=()=>{PS.rol=b.dataset.r;PS.sub=0;PS.sel=null;PS.zieEdited=false;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));PS.zie=cc.zie;drawPH();});
-  $$('[data-sub]').forEach(b=>b.onclick=()=>{PS.sub=+b.dataset.sub;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));if(!PS.zieEdited)PS.zie=cc.zie;drawPH();});
+  $$('.rpk').forEach(b=>b.onclick=()=>{PS.rol=b.dataset.r;PS.sub=0;PS.sel=null;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));if(!PS.zieEdited)PS.zie=cc.zie;drawPH();const f=$('.rpk[data-r="'+PS.rol+'"]');if(f)f.focus();});
+  $$('[data-sub]').forEach(b=>b.onclick=()=>{PS.sub=+b.dataset.sub;const cc=ctx();PS.sel=new Set(lpsOf(cc.R).map(x=>x.l));if(!PS.zieEdited)PS.zie=cc.zie;drawPH();const f=$('[data-sub="'+PS.sub+'"]');if(f)f.focus();});
   $$('.lpcheck input').forEach(i=>i.onchange=()=>{const l=+i.dataset.l;i.checked?PS.sel.add(l):PS.sel.delete(l);if(!PS.sel.size){PS.sel.add(l);i.checked=true;toast('Kies minstens één principe');}upd();});
   $$('.opsel [data-op]').forEach(b=>b.onclick=()=>{const o=b.dataset.op;if(PS.ops.has(o))PS.ops.delete(o);else PS.ops.add(o);$$('.opsel [data-op="'+o+'"]').forEach(x=>{x.classList.toggle('on',PS.ops.has(o));x.setAttribute('aria-pressed',PS.ops.has(o));});upd();});
-  $$('.tabs button').forEach(b=>b.onclick=()=>{PS.tab=b.dataset.t;$$('.tabs button').forEach(x=>x.classList.toggle('on',x===b));upd();});
+  $$('.tabs button').forEach(b=>b.onclick=()=>{PS.tab=b.dataset.t;$$('.tabs button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b);});upd();});
   $('#pCopy').onclick=()=>copy(PS.tab==='chat'?chatText():bouwText(),'Tekst gekopieerd');
   $('#pDl').onclick=()=>{const t=PS.tab==='chat'?chatText():bouwText();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download=(PS.tab==='chat'?'prompt-':'bouw-')+PS.rol+'.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);};
   $('#pPr').onclick=()=>window.print();
@@ -1564,7 +1690,7 @@ function lvOver(){const a=EVC.a,m=EVC.m,n=EVC.n;
    <li><i>4</i><span><b>Test als een lerende.</b> Vraag om het antwoord, geef een fout antwoord, dring aan. En kijk na afloop wat er zonder hulp is blijven hangen.</span></li></ol>
   <h2>Vier raamwerken, één samenhangend geheel</h2>
   <table class="ovt"><thead><tr><th>Raamwerk</th><th>Handelen als</th><th>Wat Leerverrijking toevoegt</th></tr></thead><tbody>
-   <tr><td>AI-geletterdheid</td><td>Professional</td><td>Werkt het domein AI-pedagogiek en didactiek concreet uit.</td></tr>
+   <tr><td>AI-geletterdheid</td><td>Professional</td><td>Werkt domein D, AI-pedagogiek en -didactiek, concreet uit.</td></tr>
    <tr><td>KIES</td><td>Lerende</td><td>De docentkant van dezelfde rollen; de rol hulpmiddel en AI-vaardigheid als leerdoel lopen direct over in KIES.</td></tr>
    <tr><td>BOUW</td><td>Maker</td><td>Levert de didactische bedoeling die BOUW vertaalt naar een werkende leeromgeving.</td></tr>
    <tr><td>Leerverrijking</td><td>Ontwerper</td><td>Welke rol geef ik AI, en hoe zorg ik dat die het leren dient?</td></tr></tbody></table>
@@ -1590,14 +1716,15 @@ function route(force){const h=(typeof force==='string'?force:location.hash).repl
     else{lvRoute(parts,q);nav='lv';board=true;}}
   else if(parts[0]==='samenhang'){hub();anchor='samenhang';}
   else hub();
-  document.body.classList.toggle('atlas',nav==='lv'||nav==='over');
-  if(!board){document.body.classList.remove('lvmode','lvbig');const top=$('header.top');if(top)top.inert=false;window.scrollTo({top:0,left:0,behavior:'instant'});const t=$('h1');document.title=(t?t.textContent+' · ':'')+'AVD-raamwerken';}
+  document.body.classList.add('atlas');
+  if(!board){document.body.classList.remove('lvmode','lvbig');const top=$('header.top');if(top)top.inert=false;window.scrollTo({top:0,left:0,behavior:'instant'});const t=$('h1');document.title=(t?t.textContent.replace(/\.$/,'')+' · ':'')+'AVD-raamwerken';}
   else document.body.classList.toggle('lvbig',store.get('avd-big')==='1');
   $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.n===nav));
   if(anchor)setTimeout(()=>{const t=document.getElementById(anchor);if(t)t.scrollIntoView({block:'start',behavior:reduce()?'instant':'smooth'});},60);}
 addEventListener('hashchange',()=>route());
 // ankers binnen een pagina (#samenhang) niet als route behandelen
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute('href');if(h.startsWith('#/'))return;e.preventDefault();const t=document.getElementById(h.slice(1));if(t)t.scrollIntoView({behavior:reduce()?'instant':'smooth'});});
+document.addEventListener('click',e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.button!==0)return;const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute('href');if(h.startsWith('#/'))return;e.preventDefault();const t=document.getElementById(h.slice(1));
+  if(t){t.scrollIntoView({behavior:reduce()?'instant':'smooth'});const f=t.querySelector('[tabindex="-1"]');if(f)f.focus({preventScroll:true});}});
 route();
 window.__avd={go:h=>route(h),PS,chatText,bouwText,LV,KT};
 })();

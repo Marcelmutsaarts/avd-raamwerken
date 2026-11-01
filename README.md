@@ -19,9 +19,10 @@ Bediening:
 - Met Esc ga je een niveau terug.
 - **A+** geeft grotere tekst voor de beamer.
 
-Verder bevat de site:
+Verder bevat de site, in dezelfde atlasstijl:
+- **De hub:** `#/`, de atlas van de vier raamwerken als platen Tabula I tot en met IV. Bij AI-geletterdheid, KIES en BOUW staan de letters centraal. Daaronder staat de samenhang tussen de raamwerken.
 - **Over het raamwerk:** `#/lv/over`, de leesbare samenvatting van het whitepaper.
-- **De prompthulp:** `#/lv/prompthulp`. Ontwerpprincipes voeg je daar zelf toe als bouwsteen. Ze worden niet automatisch gestapeld.
+- **De prompthulp:** `#/lv/prompthulp`. Ontwerpprincipes voeg je daar zelf toe als bouwsteen. Ze worden niet automatisch gestapeld. De prompt groeit mee op een vel papier.
 
 Links (elke plek heeft een eigen adres):
 `#/lv`, `#/lv/tutor`, `#/lv/tutor?p=2`, `#/lv/tutor?p=2&o=hd`, `#/lv/op/vk`, `#/lv/principes`, `#/lv/zonder`, `#/lv/fundament/3`, `#/lv/bewijs`, `#/lv/over`, `#/lv/prompthulp?rol=coach`
