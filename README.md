@@ -12,3 +12,5 @@ Fase 1: het Raamwerk Leerverrijking (concept versie 2, november 2026).
 De inhoud staat in `index.html` (ROLES, OPS, UP, STAPPEN) en komt uit de Verkenner Leerverrijking. Eén statisch bestand, geen server, geen tracking.
 
 AI voor Docenten · door docenten, voor het onderwijs · aivoordocenten.nl
+
+Live: https://avd-raamwerken.vercel.app
