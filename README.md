@@ -2,58 +2,31 @@
 
 De onderwijskundige raamwerken van AI voor Docenten in één omgeving: AI-geletterdheid, KIES, BOUW en Leerverrijking.
 
-Fase 1: het Raamwerk Leerverrijking (concept versie 2, november 2026).
+Fase 1: het Raamwerk Leerverrijking (concept versie 2, november 2026). Dit is de interactieve variant van het raamwerk. Het whitepaper en het achtergronddocument staan als pdf in `docs/`.
 
-## Twee weergaven
+## Leerverrijking in drie kolommen (`index.html`)
 
-**Ruimte (3D).** Het raamwerk als maquette waar je doorheen beweegt:
+Je leest het raamwerk van links naar rechts:
 
-- **Poorten:** de 7 rollen, de ingang.
-- **Treden:** de 34 principes per rol, als pad naar binnen.
-- **Zuilen:** de 15 ontwerpprincipes. Hoe hoger de zuil, hoe meer rollen erop steunen.
-- **Schijven:** het fundament van 5 uitgangspunten, in het hart.
+1. **Rol.** De 7 rollen als personages. Daaronder staat "Zonder ontwerp": wat een standaardchatbot in elke rol doet.
+2. **Principes.** Per rol: wat AI doet, wat de lerende doet, hoe sterk het onderzoek is en een promptregel om te kopiëren. Je kopieert ook de hele rolprompt, of opent die in de prompthulp.
+3. **Ontwerpprincipe.** De stappen, zo niet en zo wel, de prompttekst om als bouwsteen mee te nemen, de rollen die het principe delen, en de onderbouwing.
 
-Een scherp dossierpaneel geeft de volledige tekst. Verder heeft de ruimte:
+Onderaan staan altijd de 5 uitgangspunten van het fundament en het overzicht van het bewijs.
 
-- **Opening "Elke chatbot heeft al een didactiek":** het stelsel bouwt zich op.
-- **Schakelaar "zonder en met ontwerp"** per rol.
-- **Bewijsstand:** de evidentie per principe als skyline.
-- **Rondleiding voor de beamer:** toets T, bediening met een clicker.
+Verder bevat de site:
+- **Over het raamwerk:** `#/lv/over`, de leesbare samenvatting van het whitepaper.
+- **De prompthulp:** `#/lv/prompthulp`. Ontwerpprincipes voeg je daar zelf toe als bouwsteen. Ze worden niet automatisch gestapeld.
+- **A+:** grotere tekst voor de beamer.
 
-Three.js laadt alleen in deze weergave. Werkt WebGL niet, of laadt het CDN niet, dan valt de app automatisch terug op de leesweergave.
+Links (elke plek heeft een eigen adres):
+`#/lv`, `#/lv/tutor`, `#/lv/tutor?p=2`, `#/lv/tutor?p=2&o=uv`, `#/lv/op/vk`, `#/lv/zonder`, `#/lv/fundament/3`, `#/lv/bewijs`, `#/lv/over`, `#/lv/prompthulp?rol=coach`
 
-**Lees.** De platte pagina's, met dezelfde links:
+## 3D-weergave (`ruimte.html`)
 
-- **Rollenwiel:** het raamwerk in één beeld.
-- **Rolpagina's** met de principes en twee bewijslabels.
-- **Bibliotheek** van de ontwerpprincipes.
+Het raamwerk als maquette, met een opening en een rondleiding voor de beamer: `ruimte.html#/lv` en `ruimte.html#/lv/rondleiding/1`.
 
-Gebruik de schakelaar Ruimte | Lees in de kopbalk, of `?lees=1`.
-
-## Prompthulp
-
-Van leerdoel naar chatbotprompt of BOUW-bouwbeschrijving, met de testkaart "Test als een lerende".
-
-## Links
-
-`#/lv`, `#/lv/rol/tutor`, `#/lv/rol/tutor/2`, `#/lv/op/uv`, `#/lv/fundament/3`, `#/lv/bewijs`, `#/lv/rondleiding/1`, `#/lv/prompthulp?rol=coach`
-
-## Sneltoetsen in de ruimte
-
-| Toets | Wat het doet |
-|---|---|
-| `Esc` | Een niveau terug |
-| `←` `→` | Naar de buur op hetzelfde niveau |
-| `1`–`7` | Naar een rol |
-| `F` | Fundament |
-| `O` | Bewijs |
-| `D` | Dossier verbergen |
-| `P` | Prompthulp |
-| `T` | Rondleiding |
-| `L` | Leesmodus |
-| `?` | Overzicht van de sneltoetsen |
-
-De inhoud staat in `index.html` (ROLES, OPS, UP, STAPPEN) en komt uit de Verkenner Leerverrijking. Eén statisch bestand, geen server, geen tracking.
+De inhoud staat in `index.html` (ROLES, OPS, UP, STAPPEN) en komt uit de Verkenner Leerverrijking. Statische bestanden, geen server, geen tracking.
 
 AI voor Docenten · door docenten, voor het onderwijs · aivoordocenten.nl
 
