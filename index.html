@@ -319,7 +319,7 @@ footer b{color:#e8e4f0;font-weight:600}
   .claims{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .top .wrap{gap:10px}.brand small{display:none}.brand b{white-space:nowrap;font-size:15px}.nav{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}.nav::-webkit-scrollbar{display:none}.nav a{padding:7px 10px;font-size:13px}
+  .top .wrap{gap:10px}.brand small,.brand-t{display:none}.brand .logo{height:38px}.brand b{white-space:nowrap;font-size:15px}.nav{overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}.nav::-webkit-scrollbar{display:none}.nav a{padding:7px 10px;font-size:13px}
   .fw-grid,.up-grid,.roles,.clusters,.steps4,.chain,.versus,.duo,.facts{grid-template-columns:1fr}
   .role.wide{grid-column:auto}
   .rolepick{grid-template-columns:repeat(2,1fr)}
@@ -334,7 +334,7 @@ footer b{color:#e8e4f0;font-weight:600}
 
 
 /* ================= LEERVERRIJKING · ATLAS (uitvergroting) ================= */
-:root{--pa:#f4efe6;--pa2:#ebe4d6;--pc:#fbf8f2;--ik:#1d1826;--mu:#6c6377;--ln:#dcd2c2;--ln2:#c9bda8;--pu:#5F3792;--vi:#A25DF8;--lv:#ECDFFE;--te:#2f6f73;--rd:#a8362a;
+:root{--pa:#f7f4fd;--pa2:#ede6fb;--pc:#ffffff;--ik:#1d1826;--mu:#6a6480;--ln:#e3dbf1;--ln2:#cdc0e5;--pu:#5F3792;--vi:#A25DF8;--lv:#ECDFFE;--te:#2f6f73;--rd:#a8362a;
   --serif:Fraunces,Georgia,serif;--sans:'Instrument Sans',system-ui,sans-serif;--amono:'JetBrains Mono',ui-monospace,monospace}
 body.atlas{background:var(--pa);color:var(--ik);font-family:var(--sans);--c-geletterd:#4b3f9e;--c-kies:#a8475f;--c-bouw:#2f6f73;--c-lv:#5F3792}
 body.atlas #toast{background:var(--ik);color:var(--pa);font:600 13.5px var(--sans);border-radius:4px}
@@ -344,10 +344,12 @@ body.atlas.lvmode>footer{display:none}
 body.atlas::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
   background-image:linear-gradient(var(--ln) 1px,transparent 1px),linear-gradient(90deg,var(--ln) 1px,transparent 1px);background-size:44px 44px;
   -webkit-mask-image:radial-gradient(70% 70% at 30% 45%,#000 0%,transparent 75%);mask-image:radial-gradient(70% 70% at 30% 45%,#000 0%,transparent 75%)}
-body.atlas .top{background:rgba(244,239,230,.92);border-bottom:1px solid var(--ln);backdrop-filter:blur(8px)}
+body.atlas .top{background:rgba(255,255,255,.95);border-bottom:1px solid var(--ln);backdrop-filter:blur(8px)}
 body.atlas .top .brand{color:var(--ik)}
 body.atlas .top .brand b{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:0}
 body.atlas .top .brand small{font-family:var(--amono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.brand .logo{display:block;height:48px;width:auto}
+.brand-t{font:600 15px/1 var(--sans);color:var(--ik);padding-left:14px;border-left:1px solid var(--ln2);letter-spacing:.01em}
 body.atlas .nav a{color:var(--ik);font-family:var(--sans);font-weight:500}
 body.atlas .nav a:hover{background:var(--pa2);color:var(--ik)}
 body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 var(--pu);border-radius:0}
@@ -466,7 +468,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 .plinth{list-style:none;margin:0;padding:0}.plinth li{display:flex;min-width:0}.plinth li .pb{flex:1;min-width:0}.plinth li:first-child .pb{border-left:0}
 .pb i{font:700 22px/1 var(--serif);font-style:normal;color:var(--pu);min-width:28px}
 .pb span{font:500 13.5px/1.35 var(--sans);color:#3a3442}
-.pb:hover{background:rgba(251,248,242,.88)}
+.pb:hover{background:rgba(255,255,255,.88)}
 .pb.on{background:var(--pc)}
 .pb.on::after{content:"";position:absolute;inset:4px;border:1.2px solid var(--pu);border-radius:2px}
 .plinth.big{border-top:2px solid var(--ik)}
@@ -492,7 +494,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 .rg:hover,.rg:focus-visible{background:rgba(236,223,254,.4)}
 .idx.fl{margin-top:22px}.idx .nr.rm{font-family:var(--serif);font-size:14px}
 /* de lens en de haarlijnen */
-.lensf{position:fixed;display:none;z-index:60;pointer-events:none;border:1.5px solid var(--pu);border-radius:4px;background:rgba(251,248,242,.18)}
+.lensf{position:fixed;display:none;z-index:60;pointer-events:none;border:1.5px solid var(--pu);border-radius:4px;background:rgba(255,255,255,.18)}
 .lensf span{position:absolute;left:12px;top:-10px;background:var(--pa);padding:0 6px;font:600 10px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--pu);white-space:nowrap}
 .hair{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:1}
 .hair .hl{fill:none;stroke:var(--pu);stroke-width:1;opacity:.5}
@@ -502,7 +504,7 @@ body.atlas .nav a.on{background:none;color:var(--pu);box-shadow:inset 0 -2px 0 v
 .uv-f a,.uv-f button{color:var(--mu);text-decoration:none;background:none;border:0;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
 .uv-f a:hover,.uv-f button:hover,.uv-f .on{color:var(--pu)}
 /* knipmap in de kop van de plaat */
-.kmap{position:relative;display:flex;align-items:center;gap:9px;background:var(--ik);color:#f4efe6;border:0;border-radius:4px;padding:5px 12px 5px 6px;font:600 11px var(--amono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 14px 30px -14px rgba(29,24,38,.7)}
+.kmap{position:relative;display:flex;align-items:center;gap:9px;background:var(--ik);color:#fff;border:0;border-radius:4px;padding:5px 12px 5px 6px;font:600 11px var(--amono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 14px 30px -14px rgba(29,24,38,.7)}
 .kmap i{width:22px;height:22px;border-radius:50%;background:var(--vi);color:#fff;display:grid;place-items:center;font:700 12px var(--serif);font-style:normal;letter-spacing:0}
 .kmap[hidden]{display:none}
 .kpanel{position:absolute;right:0;top:calc(100% + 8px);z-index:30;width:min(460px,calc(100vw - 24px));max-height:70vh;display:none;flex-direction:column;background:var(--pc);border:1px solid var(--ln2);border-radius:5px;box-shadow:0 30px 70px -20px rgba(29,24,38,.45)}
@@ -642,7 +644,7 @@ button.lk{border:0;background:none;padding:0;cursor:pointer;text-align:left}
 .lk.big{font:italic 500 17px var(--serif)}
 .lks{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 /* knipkaart */
-.knip{position:relative;background:#fffdf8;border:1px solid var(--ln2);border-radius:3px;margin:18px 0 6px;box-shadow:0 18px 30px -26px rgba(40,25,60,.55)}
+.knip{position:relative;background:#ffffff;border:1px solid var(--ln2);border-radius:3px;margin:18px 0 6px;box-shadow:0 18px 30px -26px rgba(40,25,60,.55)}
 .knip::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:6px;background:radial-gradient(circle at 4px 0,var(--pc) 3px,transparent 3.5px) 0 0/12px 6px repeat-x;opacity:.9}
 .kn-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px 9px;border-bottom:1.5px dashed var(--ln2);font:600 10.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
 .kn-h .sc{font-size:13px;margin-right:6px;color:var(--pu);letter-spacing:0}
@@ -803,7 +805,7 @@ body.atlas .card h3{font:700 19px var(--serif);color:var(--ik);letter-spacing:0}
 body.atlas .card h3 .s{width:28px;height:28px;border-radius:50%;background:var(--pu);font:700 13px var(--serif)}
 body.atlas .card .hint{font:400 13.5px/1.5 var(--sans);color:var(--mu)}
 body.atlas .card .hint b{color:var(--ik)}
-body.atlas textarea,body.atlas input[type=text]{background:#fffdf8;border:1px solid var(--ln2);border-radius:4px;font:15px/1.5 var(--sans);color:var(--ik)}
+body.atlas textarea,body.atlas input[type=text]{background:#ffffff;border:1px solid var(--ln2);border-radius:4px;font:15px/1.5 var(--sans);color:var(--ik)}
 body.atlas textarea:focus,body.atlas input[type=text]:focus{border-color:var(--pu);box-shadow:0 0 0 3px rgba(95,55,146,.12)}
 body.atlas .rolepick{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
 body.atlas .rpk{flex-direction:row;justify-content:flex-start;gap:9px;padding:7px 10px;border:1px solid var(--ln);border-radius:4px;background:var(--pc);font:600 13px/1.25 var(--sans);color:var(--ik);text-align:left}
@@ -828,7 +830,7 @@ body.atlas .chip:hover{border-color:var(--pu);color:var(--pu)}
 body.atlas .chip.on{background:var(--pu);border-color:var(--pu);color:#fff}
 .opsel:empty{display:none}
 /* het vel met de prompt: een knipkaart, geen codeblok */
-body.atlas .out{position:relative;background:#fffdf8;color:var(--ik);border:1px solid var(--ln2);border-radius:3px;padding:0;box-shadow:0 30px 60px -36px rgba(40,25,60,.5)}
+body.atlas .out{position:relative;background:#ffffff;color:var(--ik);border:1px solid var(--ln2);border-radius:3px;padding:0;box-shadow:0 30px 60px -36px rgba(40,25,60,.5)}
 
 .out-h{display:flex;justify-content:space-between;gap:10px;padding:13px 18px 10px;border-bottom:1.5px dashed var(--ln2);font:600 10.5px var(--amono);letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
 .out-h .sc{color:var(--pu);margin-right:6px;letter-spacing:0;font-size:13px}
@@ -983,7 +985,7 @@ body.atlas .nav a.on[data-n="bouw"]{color:var(--c-bouw);box-shadow:inset 0 -2px 
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="#/"><span class="mark" aria-hidden="true"><i style="background:var(--c-geletterd)"></i><i style="background:var(--c-kies)"></i><i style="background:var(--c-bouw)"></i><i style="background:var(--c-lv)"></i></span><span><b>AVD-raamwerken</b><small>AI voor Docenten</small></span></a>
+  <a class="brand" href="#/" aria-label="AI voor Docenten, raamwerken: naar het overzicht"><img class="logo" src="logo-ai-voor-docenten.png" alt="AI voor Docenten" width="112" height="48"><span class="brand-t">Raamwerken</span></a>
   <nav class="nav" aria-label="Hoofdnavigatie">
     <a href="#/" data-n="home">Raamwerken</a>
     <a href="#/geletterdheid" data-n="geletterd">AI-geletterdheid</a>
